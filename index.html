@@ -1,0 +1,1677 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Downtown Doggies - Dog Walking and Care in Inner West Sydney</title>
+         <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;400;700&display=swap');
+    
+            :root {
+                --primary-color: #3A5A40;
+                --secondary-color: #A3B18A;
+                --accent-color: #DAD7CD;
+                --text-color: #333;
+                --light-text: #fff;
+                --overlay-color: rgba(0, 0, 0, 0.4);
+                --transition-duration: 1.5s;
+            }
+    
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+    
+            body {
+                font-family: 'Roboto', sans-serif;
+                line-height: 1.6;
+                color: var(--text-color);
+                background-color: var(--accent-color);
+            }
+    
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+    
+            header {
+                position: absolute;
+                width: 100%;
+                z-index: 1000;
+                padding: 1rem 0;
+            }
+    
+            nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            nav ul {
+                display: flex;
+                list-style: none;
+            }
+    
+            nav ul li {
+                margin-left: 2rem;
+            }
+    
+            nav ul li a {
+                color: var(--light-text);
+                text-decoration: none;
+                font-weight: 400;
+                transition: color 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+    
+            nav ul li a:hover {
+                color: var(--secondary-color);
+            }
+    
+            .hero {
+                height: 100vh;
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .hero-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                opacity: 0;
+                transition: opacity var(--transition-duration) ease-in-out;
+            }
+    
+            .hero-image.active {
+                opacity: 1;
+            }
+    
+            .hero-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--overlay-color);
+            }
+    
+            .hero-content {
+                position: absolute;
+                top: 50%;
+                left: 10%;
+                transform: translateY(-50%);
+                z-index: 1;
+                color: var(--light-text);
+                max-width: 600px;
+            }
+    
+            .hero-logo {
+                width: 300px;
+                margin-bottom: 1rem;
+            }
+    
+            .hero h1 {
+                font-family: 'Fredoka One', cursive;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+    
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+    
+            .btn {
+                display: inline-block;
+                background-color: var(--secondary-color);
+                color: var(--primary-color);
+                padding: 0.75rem 1.5rem;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+    
+            .btn:hover {
+                background-color: var(--primary-color);
+                color: var(--light-text);
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+    
+            section {
+                padding: 6rem 0;
+            }
+    
+            h2 {
+                font-family: 'Fredoka One', cursive;
+                color: var(--primary-color);
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                text-align: center;
+            }
+    
+            
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+  #about {
+        background-color: var(--accent-color);;
+    }
+        .about {
+            padding: 100px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .about h2 {
+            color:white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 20px auto 0;
+            transition: width 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 180px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.5fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .image-gallery {
+            Margin-top: 20%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px;
+            height: auto;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 2;
+        }
+
+        .gallery-item:nth-child(2),
+        .gallery-item:nth-child(3),
+        .gallery-item:nth-child(4),
+        .gallery-item:nth-child(5) {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            color: black;
+        }
+
+        .lead {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-style: italic;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .lead.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .text-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .text-content p.visible {
+            opacity: 1;
+            transform: translateY(0);
+            color: black;
+        }
+
+        .services-highlight {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .services-highlight.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .services-highlight:hover {
+            transform: translateY(-10px);
+        }
+
+        .services-highlight h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .service-list {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .service-item {
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%);
+            transform: scale(0);
+            transition: transform 0.5s ease-out;
+        }
+
+        .service-item:hover::before {
+            transform: scale(1);
+        }
+
+        .service-item:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .service-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .service-desc {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            align-self: flex-start;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
+        }
+
+        .cta-button.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+        }
+
+        @media (max-width: 1200px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(2, 1fr);
+                height: auto;
+            }
+
+            .gallery-item:nth-child(5) {
+                display: none;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .lead {
+                font-size: 1.3rem;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(2, 1fr);
+                height: auto;
+            }
+
+            .gallery-item:nth-child(5) {
+                display: none;
+            }
+
+            .gallery-item:nth-child(n) {
+                grid-column: auto;
+                grid-row: auto;
+            }
+        }
+            body {
+            background-image: url('https://i.ibb.co/WHjhPBW/container12-10ca4219.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            
+        }
+    
+        .cta-section {
+            background-color: rgba(58, 90, 64, 0.7);
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .cta-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+            .cta-text h2 {
+                font-family: 'Fredoka One', cursive;
+                color: white;
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                text-align: center;
+            }    
+        .cta-text {
+            color: #fff;
+            max-width: 60%;
+        }
+    
+        .cta-text h2 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        .cta-text p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+    
+        .cta-btn {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #3A5A40;
+            background-color: #DAD7CD;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .cta-btn:hover {
+            background-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+    
+        .cta-image {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+    
+        .cta-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+    
+        .cta-image:hover img {
+            transform: scale(1.05);
+        }
+    
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    
+        .cta-image {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+    
+        @media (max-width: 768px) {
+            .cta-container {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            .cta-text {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+    
+            .cta-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+            .services {
+      background-color: var(--accent-color);
+      padding: 100px 0;
+      overflow: hidden;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    
+    .section-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .section-subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.2s ease forwards;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    
+    .service-card {
+      background-color: var(--light-text);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.4s ease forwards;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 30px;
+      background-color: var(--secondary-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover .service-icon {
+      background-color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    
+    .service-icon svg {
+      width: 40px;
+      height: 40px;
+      color: var(--light-text);
+    }
+    
+    .service-card h3 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .service-card p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-bottom: 25px;
+    }
+    
+    .service-link {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .service-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--secondary-color);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .service-link:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .cta-container {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s 0.6s ease forwards;
+    }
+    
+    .cta-button {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--light-text);
+      background-color: var(--primary-color);
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .cta-button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    </style>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-title, .lead, .text-content p, .services-highlight, .cta-button').forEach(el => {
+            observer.observe(el);
+        });
+
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.style.zIndex = '10';
+            });
+            item.addEventListener('mouseout', () => {
+                item.style.zIndex = '1';
+            });
+        });
+
+        function createPawPrint() {
+            const pawPrint = document.createElement('div');
+            pawPrint.classList.add('paw-print');
+            pawPrint.style.top = `${Math.random() * 80}%`;  // Adjusted to keep prints more in view
+            pawPrint.style.left = '-40px';  // Start off-screen
+            pawPrint.style.animationDuration = `${15 + Math.random() * 10}s`;
+            document.getElementById('paw-print-container').appendChild(pawPrint);
+
+            pawPrint.addEventListener('animationend', () => {
+                pawPrint.remove();
+            });
+        }
+
+        function startPawPrints() {
+            setInterval(createPawPrint, 2000);
+        }
+
+        startPawPrints();
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const serviceCards = document.querySelectorAll('.service-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = `fadeInUp 0.8s ${entry.target.dataset.delay} ease forwards`;
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      serviceCards.forEach((card, index) => {
+        card.dataset.delay = `${0.2 + index * 0.1}s`;
+        observer.observe(card);
+      });
+    });
+    </script>
+    <style>
+    .booking {
+        background-color: var(--accent-color);
+        padding: 4rem 0;
+      }
+    
+      .booking h2 {
+        font-family: 'Fredoka One', cursive;
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    
+      .booking p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--text-color);
+      }
+    
+      .calendar-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: var(--light-text);
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+    
+      .calendar-placeholder {
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        border: 2px dashed var(--secondary-color);
+      }
+    
+      .calendar-placeholder p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin: 0.5rem 0;
+      }
+    
+      @media (max-width: 768px) {
+        .booking h2 {
+          font-size: 2rem;
+        }
+    
+        .booking p {
+          font-size: 1rem;
+        }
+    
+        .calendar-placeholder {
+          height: 400px;
+        }
+      }
+    
+             .service-areas {
+        background-color: #f7f7f7;
+        padding: 100px 0;
+    }
+
+    .section-title {
+        font-family: 'Fredoka One', sans-serif;
+        font-size: 3rem;
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-color);
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .service-areas-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .map-section {
+        flex: 1;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .map-section iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 15px;
+    }
+
+    .map-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        border-radius: 15px;
+    }
+
+    .map-section:hover .map-overlay {
+        opacity: 1;
+    }
+
+    .map-overlay h3 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .map-overlay p {
+        font-size: 1rem;
+    }
+
+    .area-info {
+        flex: 1;
+        background-color: var(--light-text);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .area-info h3 {
+        font-family: 'Fredoka One', sans-serif;
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 20px;
+    }
+
+    .area-info ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .area-info ul li {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1.1rem;
+        color: var(--text-color);
+        padding: 10px 0;
+        border-bottom: 1px solid var(--accent-color);
+    }
+
+    .area-info p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+
+    .area-info a {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .area-info a:hover {
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .service-areas-grid {
+            flex-direction: column;
+        }
+
+        .map-section, .area-info {
+            flex: 1;
+        }
+    }
+    .faq {
+                background-color: var(--accent-color);
+            }
+    
+            .faq-item {
+                background-color: var(--light-text);
+                margin-bottom: 1rem;
+                border-radius: 5px; 
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+    
+            .faq-question {
+                padding: 1rem;
+                cursor: pointer;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .faq-question::after {
+                content: '+';
+                font-size: 1.5rem;
+            }
+    
+            .faq-question.active::after {
+                content: '-';
+            }
+    
+            .faq-answer {
+                padding: 0 1rem 1rem;
+                display: none;
+            }
+    .waiver-form-section {
+    background-color: #f9f9f9;
+    padding: 4rem 0;
+}
+
+.waiver-form-section h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.waiver-form-section p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#waiverForm {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#waiverForm .form-group {
+    margin-bottom: 2rem;
+}
+
+#waiverForm .form-group h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+}
+
+#waiverForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#waiverForm label span {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+#waiverForm input[type="text"],
+#waiverForm input[type="email"],
+#waiverForm input[type="tel"],
+#waiverForm input[type="number"],
+#waiverForm select,
+#waiverForm textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+#waiverForm textarea {
+    resize: vertical;
+}
+
+#waiverForm input:focus,
+#waiverForm select:focus,
+#waiverForm textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#waiverForm .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#waiverForm .checkbox-container input {
+    margin-right: 0.5rem;
+}
+
+#waiverForm .checkbox-container .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+}
+
+#waiverForm .checkbox-container input:checked + .checkmark {
+    background-color: var(--primary-color);
+}
+
+#waiverForm .checkbox-container .checkmark::after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+#waiverForm .checkbox-container input:checked + .checkmark::after {
+    display: block;
+}
+
+#waiverForm .checkbox-container .checkmark::after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+#waiverForm button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#waiverForm button:hover {
+    background-color: var(--secondary-color);
+}
+
+.input-error {
+    border-color: red !important;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 3rem 0;
+}
+
+footer .business-info {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer .business-info h3 {
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+footer .business-info p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+footer .business-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .business-info ul li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    position: relative;
+    padding-left: 25px;
+}
+
+footer .business-info ul li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-bottom p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #waiverForm {
+        padding: 1.5rem;
+    }
+
+    #waiverForm .form-group h3 {
+        font-size: 1.3rem;
+    }
+
+    footer .business-info h3 {
+        font-size: 1.8rem;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <a href="#" class="logo">
+                        <!-- Small logo can be added here if needed -->
+                    </a>
+                    <ul>
+                        <li><a href="#team">The Team</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#testimonials">Our Testimonials</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    
+        <section class="hero">
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/WHjhPBW/container12-10ca4219.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/bb551bR/container12-7aab1f4d.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/h9hwSdp/container12-313c994d.jpg');"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <img src="https://i.ibb.co/3r53wpW/image01.png" alt="Downtown Doggies Logo" class="hero-logo">
+                <h1>Servicing Inner West Sydney</h1>
+                <p>Your local dog walking and care service, focusing on socialisation, enrichment, and positive reinforcement. Tailored care for your dogs.</p>
+                <a href="#contact" class="btn">Contact Us</a>
+            </div>
+        </section>
+    
+        <main>
+<section id="about" class="about">
+        <div id="paw-print-container"></div>
+        <div class="container">
+            <h2 class="section-title">About Downtown Doggies</h2>
+            <div class="about-content">
+                <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80" alt="Happy dogs running together">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=500&q=80" alt="Dog walker with multiple dogs">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1626070789695-acbd8e64d238?auto=format&fit=crop&w=500&q=80" alt="Playful dog in daycare">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog enjoying outdoor activities">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Placeholder image for uniform gallery layout">
+                    </div>
+                </div>
+                <div class="text-content">
+                    <p class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</p>
+                    <p>At Downtown Doggies, we're not just passionate about dogs—we're obsessed with their wellbeing, happiness, and the joy they bring to our lives. Our team of certified dog lovers is dedicated to providing top-notch care that goes beyond the ordinary.</p>
+                    <div class="services-highlight">
+                        <h3>Tailored Services for Your Furry Friends</h3>
+                        <ul class="service-list">
+                            <li class="service-item">
+                                <span class="service-icon">🐾</span>
+                                <span class="service-name">Pack Walks</span>
+                                <span class="service-desc">Socialization and fun for friendly pups</span>
+                            </li>
+                            <li class="service-item">
+                                <span class="service-icon">🦺</span>
+                                <span class="service-name">Solo Adventures</span>
+                                <span class="service-desc">One-on-one attention for your dog</span>
+                            </li>
+                            <li class="service-item">
+                                <span class="service-icon">🏠</span>
+                                <span class="service-name">Doggy Daycare</span>
+                                <span class="service-desc">A fun-filled day for your furry friend</span></li>
+                            <li class="service-item">
+                                <span class="service-icon">🛏️</span>
+                                <span class="service-name">Slumber Parties</span>
+                                <span class="service-desc">Cozy overnight care when you're away</span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <a href="#contact" class="cta-button">Book a Tail-Wagging Experience</a>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-text">
+                <h2>Ready for a Pawsome Experience?</h2>
+                <p>Join the Downtown Doggies family today and give your furry friend the adventure they deserve! Our expert team is ready to provide top-notch care, exciting walks, and unforgettable playtime.</p>
+                <a href="#contact" class="cta-btn">Get Started Today</a>
+            </div>
+            <div class="cta-image">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8ZG9nLHBldHx8fHx8fDE2OTc0NzY1OTg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" alt="Happy dog with Downtown Doggies">
+            </div>
+        </div>
+    </section>
+        <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title">Exceptional Pet Care Services</h2>
+        <p class="section-subtitle">Tailored experiences for your beloved companions</p>
+        
+        <div class="services-grid">
+          <div class="service-card" data-service="walking">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><polyline points="9 17 12 14 15 17"/><line x1="12" y1="14" x2="12" y2="9"/></svg>
+            </div>
+            <h3>Premium Dog Walking</h3>
+            <p>Tailored walks in picturesque locations, ensuring exercise and enrichment.</p>
+            <a href="#" class="service-link">Explore Service</a>
+          </div>
+          
+          <div class="service-card" data-service="sitting">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>Luxury In-Home Pet Sitting</h3>
+            <p>Personalized care in the comfort of your home, maintaining your pet's routine.</p>
+            <a href="#" class="service-link">Explore Service</a>
+          </div>
+          
+          <div class="service-card" data-service="training">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Expert Puppy Training</h3>
+            <p>Specialized programs to nurture well-behaved and socialized puppies.</p>
+            <a href="#" class="service-link">Explore Service</a>
+          </div>
+          
+          <div class="service-card" data-service="grooming">
+            <div class="service-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+            </div>
+            <h3>Spa-Quality Grooming</h3>
+            <p>Rejuvenating grooming sessions using premium, pet-safe products.</p>
+            <a href="#" class="service-link">Explore Service</a>
+          </div>
+        </div>
+        
+        <div class="cta-container">
+          <a href="#contact" class="cta-button">Schedule a Consultation</a>
+        </div>
+      </div>
+    </section>
+    <section id="booking" class="booking">
+      <div class="container">
+        <h2>Book a Meet and Greet</h2>
+        <p>Schedule a time for us to meet you and your furry friend!</p>
+        <div class="calendar-container">
+          <!-- Placeholder for Google Calendar Embed -->
+          <div class="calendar-placeholder">
+            <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1zKco6Eq3krfuVkNzlgP01zBSTTmVFrDcxRUmQ-6U2ZfbahmD4xP4LGhIL6muX48CdeElwyMuH?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="service-areas" class="service-areas">
+    <div class="container">
+        <h2 class="section-title">Our Service Areas</h2>
+        <p class="section-subtitle">Explore the neighborhoods we proudly serve in Inner West Sydney.</p>
+        
+        <div class="service-areas-grid">
+            <div class="map-section">
+              <iframe src="https://www.google.com/maps/d/embed?mid=1UBKPEVGGkuPaPzHBMmdlyhN8TrBzl0I&ehbc=2E312F" width="640" height="480"></iframe>
+            </div>
+
+            <div class="area-info">
+                <h3>Our Service Areas</h3>
+                <ul>
+                    <li>Balmain</li>
+                    <li>Leichhardt</li>
+                    <li>Marrickville</li>
+                    <li>Annandale</li>
+                    <li>Haberfield</li>
+                    <li>Rozelle</li>
+                    <li>Newtown</li>
+                    <li>And more!</li>
+                </ul>
+                <p>If you’re not sure if we cover your location, feel free to <a href="#contact">reach out to us</a>. We’d love to discuss your needs!</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+            <section id="faq" class="faq">
+                <div class="container">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">What areas do you serve?</div>
+                        <div class="faq-answer">We proudly serve the Inner West Sydney area. Contact us for specific coverage details in your neighborhood.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How long are your dog walks?</div>
+                        <div class="faq-answer">Our standard dog walks are 30 minutes, but we also offer 60-minute options for more active dogs or upon request.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Are you insured and bonded?</div>
+                        <div class="faq-answer">Yes, we are fully insured and bonded for your peace of mind and the safety of your pets.</div>
+                    </div>
+                </div>
+            </section>
+    <section id="waiver-form" class="waiver-form-section">
+    <div class="container">
+        <h2>Waiver Form</h2>
+        <p>Please complete the form below before your first service. Your information is confidential and secure.</p>
+        <form id="waiverForm">
+            <!-- Personal Information -->
+            <div class="form-group">
+                <h3>Personal Information</h3>
+                <label for="fullName">Full Name<span>*</span></label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email Address<span>*</span></label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone Number<span>*</span></label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="address">Address<span>*</span></label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <!-- Pet Information -->
+            <div class="form-group">
+                <h3>Pet Information</h3>
+                <label for="petName">Pet's Name<span>*</span></label>
+                <input type="text" id="petName" name="petName" required>
+
+                <label for="petBreed">Breed<span>*</span></label>
+                <input type="text" id="petBreed" name="petBreed" required>
+
+                <label for="petAge">Age<span>*</span></label>
+                <input type="number" id="petAge" name="petAge" required>
+
+                <label for="petGender">Gender<span>*</span></label>
+                <select id="petGender" name="petGender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label for="petMedical">Medical Conditions or Allergies</label>
+                <textarea id="petMedical" name="petMedical" rows="4" placeholder="Please specify if any"></textarea>
+            </div>
+
+            <!-- Waiver Agreement -->
+            <div class="form-group waiver-agreement">
+                <h3>Waiver Agreement</h3>
+                <p>By checking the box below, you agree to our terms and conditions.</p>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="waiverAgreement" name="waiverAgreement" required>
+                    <span class="checkmark"></span>
+                    I have read and agree to the <a href="#terms" target="_blank">Terms and Conditions</a><span>*</span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Submit Waiver</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <!-- License & Qualifications Section -->
+        <div class="business-info">
+            <h3>License & Qualifications</h3>
+            <p>We are committed to providing the highest quality care for your pets. Our credentials include:</p>
+            <ul>
+                <li><strong>ABN:</strong> 12 345 678 910</li>
+                <li><strong>Certifications:</strong> Dog First Aid and CPR, Animal Behavior</li>
+                <li><strong>Memberships:</strong> National Association of Professional Pet Sitters (NAPPS)</li>
+                <li><strong>Insurance:</strong> Fully Insured and Bonded</li>
+            </ul>
+        </div>
+
+        <!-- Footer Bottom Content -->
+        <div class="footer-bottom">
+            <p>&copy; 2024 Downtown Doggies. All rights reserved.</p>
+            <p>Contact: bark@downtowndoggies.com | (02) 1234 5678</p>
+        </div>
+    </div>
+</footer>
+    
+        <script>
+        // Waiver Form Validation and Submission
+document.addEventListener('DOMContentLoaded', function() {
+    const waiverForm = document.getElementById('waiverForm');
+
+    waiverForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Perform form validation
+        const formData = new FormData(waiverForm);
+        let valid = true;
+
+        // Clear previous error states
+        waiverForm.querySelectorAll('.input-error').forEach(function(el) {
+            el.classList.remove('input-error');
+        });
+
+        // Validate required fields
+        waiverForm.querySelectorAll('input[required], textarea[required], select[required]').forEach(function(input) {
+            if (!input.value.trim()) {
+                valid = false;
+                input.classList.add('input-error');
+            }
+        });
+
+        if (valid) {
+            // Submit form data via AJAX or fetch
+            // For demonstration, we'll display a success message
+            alert('Thank you! Your waiver form has been submitted.');
+            waiverForm.reset();
+        } else {
+            alert('Please fill in all required fields.');
+        }
+    });
+});
+
+         document.addEventListener('DOMContentLoaded', function() {
+                const ctaSection = document.querySelector('.cta-section');
+                const numPawPrints = 15;
+    
+                for (let i = 0; i < numPawPrints; i++) {
+                    createPawPrint();
+                }
+    
+                function createPawPrint() {
+                    const pawPrint = document.createElement('div');
+                    pawPrint.classList.add('paw-print');
+                    pawPrint.style.left = `${Math.random() * 100}%`;
+                    pawPrint.style.top = `${Math.random() * 100}%`;
+                    pawPrint.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    ctaSection.appendChild(pawPrint);
+    
+                    animatePawPrint(pawPrint);
+                }
+    
+                function animatePawPrint(pawPrint) {
+                    const duration = 5000 + Math.random() * 5000;
+                    const keyframes = [
+                        { opacity: 0, transform: 'translateY(0) rotate(0deg)' },
+                        { opacity: 0.2, transform: `translateY(-${20 + Math.random() * 30}px) rotate(${Math.random() * 360}deg)` },
+                        { opacity: 0, transform: `translateY(-${50 + Math.random() * 50}px) rotate(${Math.random() * 360}deg)` }
+                    ];
+    
+                    pawPrint.animate(keyframes, {
+                        duration: duration,
+                        iterations: Infinity,
+                        delay: Math.random() * 2000
+                    });
+                }
+            });
+          // Hero image cycling
+    const heroImages = document.querySelectorAll('.hero-image');
+    let currentImageIndex = 0;
+    
+    function cycleHeroImages() {
+        heroImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+        heroImages[currentImageIndex].classList.add('active');
+    }
+    
+    // Set the first image as active
+    heroImages[0].classList.add('active');
+    
+    // Cycle images every 5 seconds
+    setInterval(cycleHeroImages, 5000);
+    
+    // FAQ functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isOpen = answer.style.display === 'block';
+    
+            // Close all other answers
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                a.style.display = 'none';
+            });
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+            });
+    
+            // Toggle the clicked question
+            if (!isOpen) {
+                answer.style.display = 'block';
+                question.classList.add('active');
+            }
+        });
+    });
+        </script>
+    </body>
+    </html>
