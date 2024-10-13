@@ -174,158 +174,144 @@
   #about {
         background-color: var(--accent-color);;
     }
-      .about {
-    background-color: var(--accent-color);
+     
+.about {
     padding: 80px 0;
-    overflow: hidden;
-}
-
-.about .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    background-color: #f9f9f9;
 }
 
 .about-content {
     display: flex;
     gap: 40px;
-    align-items: flex-start;
+}
+
+.image-gallery, .text-content {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 30px;
 }
 
 .image-gallery {
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    max-width: 50%;
 }
 
 .gallery-item {
-    aspect-ratio: 1 / 1;
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-.text-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .lead {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--primary-color);
+    font-size: 2.2rem;
+    color: #3A5A40;
     margin-bottom: 20px;
-    font-style: italic;
+    font-weight: 600;
 }
 
 .text-content p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--text-color);
     margin-bottom: 30px;
+    color: #333;
 }
 
 .services-highlight {
-    background-color: #fff;
+    background-color: #f0f7f4;
     border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
     margin-bottom: 30px;
 }
 
 .services-highlight h4 {
-    color: var(--primary-color);
+    color: #3A5A40;
+    font-size: 1.8rem;
     margin-bottom: 20px;
-    font-size: 1.5rem;
+    text-align: center;
 }
 
 .service-list {
-    list-style-type: none;
-    padding: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
 .service-item {
-    padding: 15px;
-    background-color: #f0f0f0;
+    background-color: white;
     border-radius: 10px;
-    transition: all 0.3s ease;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-item:hover {
-    background-color: var(--secondary-color);
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .service-icon {
-    font-size: 1.5rem;
-    margin-right: 10px;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
 }
 
-.service-name {
-    font-weight: 600;
-    color: var(--primary-color);
-    font-size: 1rem;
+.service-icon img {
+    width: 100%;
+    height: 100%;
 }
 
-.service-desc {
-    display: block;
+.service-item h5 {
+    font-size: 1.3rem;
+    color: #3A5A40;
+    margin-bottom: 10px;
+}
+
+.service-item p {
     font-size: 0.9rem;
-    color: #666;
-    margin-top: 5px;
+    color: #555;
 }
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-    color: #fff;
+    background: linear-gradient(45deg, #3A5A40, #588157);
+    color: white;
     padding: 15px 30px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
-    align-self: center;
-    margin-top: 20px;
     text-align: center;
 }
 
 .cta-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(45deg, #588157, #3A5A40);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 1024px) {
     .about-content {
         flex-direction: column;
     }
-
     .image-gallery, .text-content {
-        max-width: 100%;
+        width: 100%;
     }
 }
 
@@ -333,13 +319,10 @@
     .service-list {
         grid-template-columns: 1fr;
     }
-    
-    .image-gallery {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
+    .lead {
+        font-size: 1.8rem;
     }
 }
-
         @media (max-width: 1200px) {
             .about-content {
                 grid-template-columns: 1fr;
@@ -385,7 +368,7 @@
             }
         }
             body {
-            background-image: url('/images/THUMBNAIL-445.jpg');
+            background-image: url('https://i.ibb.co/WHjhPBW/container12-10ca4219.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -1189,8 +1172,8 @@ footer .business-info ul li::before {
         </header>
     
         <section class="hero">
-            <div class="hero-image" style="background-image: url('/images/THUMBNAIL-445.jpg');"></div>
- <div class="hero-image" style="background-image: url('https://i.ibb.co/bb551bR/container12-7aab1f4d.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/WHjhPBW/container12-10ca4219.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/bb551bR/container12-7aab1f4d.jpg');"></div>
             <div class="hero-image" style="background-image: url('https://i.ibb.co/h9hwSdp/container12-313c994d.jpg');"></div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
@@ -1207,46 +1190,48 @@ footer .business-info ul li::before {
         <h2 class="section-title">About Downtown Doggies</h2>
         <div class="about-content">
             <div class="image-gallery">
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Happy dogs playing together">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/XpX6JQQ/THUMBNAIL-624.jpg" alt="Dog enjoying outdoor activities">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/YT80F1s/THUMBNAIL-653.jpg" alt="Playful dog in daycare">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs">
-                </div>
+                <div class="gallery-item"><img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Happy dogs playing together"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/XpX6JQQ/THUMBNAIL-624.jpg" alt="Dog enjoying outdoor activities"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/YT80F1s/THUMBNAIL-653.jpg" alt="Playful dog in daycare"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/z7F2HM9/THUMBNAIL-445.jpg" alt="Happy dog outdoors"></div>
+                <div class="gallery-item"><img src="https://i.ibb.co/jzvPN2x/THUMBNAIL-549.jpg" alt="Dogs playing in the park"></div>
             </div>
             <div class="text-content">
                 <h3 class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</h3>
                 <p>At Downtown Doggies, we're not just passionate about dogs—we're obsessed with their wellbeing, happiness, and the joy they bring to our lives. Our team of certified dog lovers is dedicated to providing top-notch care that goes beyond the ordinary.</p>
                 <div class="services-highlight">
                     <h4>Tailored Services for Your Furry Friends</h4>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <span class="service-icon">🐾</span>
-                            <span class="service-name">Pack Walks</span>
-                            <span class="service-desc">Socialization and fun for friendly pups</span>
-                        </li>
-                        <li class="service-item">
-                            <span class="service-icon">🦺</span>
-                            <span class="service-name">Solo Adventures</span>
-                            <span class="service-desc">One-on-one attention for your dog</span>
-                        </li>
-                        <li class="service-item">
-                            <span class="service-icon">🏠</span>
-                            <span class="service-name">Doggy Daycare</span>
-                            <span class="service-desc">A fun-filled day for your furry friend</span>
-                        </li>
-                        <li class="service-item">
-                            <span class="service-icon">🛏️</span>
-                            <span class="service-name">Slumber Parties</span>
-                            <span class="service-desc">Cozy overnight care when you're away</span>
-                        </li>
-                    </ul>
+                    <div class="service-list">
+                        <div class="service-item">
+                            <div class="service-icon">
+                               <a href='https://svgshare.com/s/1BS7' ><img src='https://svgshare.com/i/1BS7.svg' title='' /></a>
+                            </div>
+                            <h5>Pack Walks</h5>
+                            <p>Socialization and fun for friendly pups</p>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <img src="path_to_icon/solo_adventures.svg" alt="Solo Adventures Icon">
+                            </div>
+                            <h5>Solo Adventures</h5>
+                            <p>One-on-one attention for your dog</p>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <img src="path_to_icon/doggy_daycare.svg" alt="Doggy Daycare Icon">
+                            </div>
+                            <h5>Doggy Daycare</h5>
+                            <p>A fun-filled day for your furry friend</p>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <img src="path_to_icon/slumber_parties.svg" alt="Slumber Parties Icon">
+                            </div>
+                            <h5>Slumber Parties</h5>
+                            <p>Cozy overnight care when you're away</p>
+                        </div>
+                    </div>
                 </div>
                 <a href="#contact" class="cta-button">Book a Tail-Wagging Experience</a>
             </div>
