@@ -174,276 +174,171 @@
   #about {
         background-color: var(--accent-color);;
     }
-        .about {
-            padding: 100px 0;
-            overflow: hidden;
-            position: relative;
-        }
-        .about h2 {
-            color:white;
-        }
+      .about {
+    background-color: var(--accent-color);
+    padding: 80px 0;
+    overflow: hidden;
+}
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
+.about .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .section-title {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 3.5rem;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 50px;
-            position: relative;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+.about-content {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
 
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.image-gallery {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 50%;
+}
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 120px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 20px auto 0;
-            transition: width 0.3s ease;
-        }
+.gallery-item {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
-        .section-title:hover::after {
-            width: 180px;
-        }
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1.5fr 2fr;
-            gap: 40px;
-            align-items: start;
-        }
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
 
-        .image-gallery {
-            Margin-top: 20%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 20px;
-            height: auto;
-        }
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
 
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
+.text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
+.lead {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-style: italic;
+}
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
+.text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
+.services-highlight {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
 
-        .gallery-item:nth-child(1) {
-            grid-column: 1 / span 2;
-            grid-row: 1 / span 2;
-        }
+.services-highlight h4 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
 
-        .gallery-item:nth-child(2),
-        .gallery-item:nth-child(3),
-        .gallery-item:nth-child(4),
-        .gallery-item:nth-child(5) {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
+.service-list {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
-        .text-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            color: black;
-        }
+.service-item {
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
 
-        .lead {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-style: italic;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+.service-item:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
 
-        .lead.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+.service-icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
 
-        .text-content p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+.service-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
 
-        .text-content p.visible {
-            opacity: 1;
-            transform: translateY(0);
-            color: black;
-        }
+.service-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+}
 
-        .services-highlight {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 30px 0;
-            transition: transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    align-self: center;
+    margin-top: 20px;
+    text-align: center;
+}
 
-        .services-highlight.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
 
-        .services-highlight:hover {
-            transform: translateY(-10px);
-        }
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+    }
 
-        .services-highlight h3 {
-            font-family: 'Fredoka', sans-serif;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
+    .image-gallery, .text-content {
+        max-width: 100%;
+    }
+}
 
-        .service-list {
-            list-style-type: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .service-item {
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-item::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%);
-            transform: scale(0);
-            transition: transform 0.5s ease-out;
-        }
-
-        .service-item:hover::before {
-            transform: scale(1);
-        }
-
-        .service-item:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .service-name {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 1.1rem;
-        }
-
-        .service-desc {
-            display: block;
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            align-self: flex-start;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease;
-        }
-
-        .cta-button.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(255,255,255,0.1);
-            transform: rotate(45deg);
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-        }
+@media (max-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .image-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
 
         @media (max-width: 1200px) {
             .about-content {
@@ -1308,60 +1203,56 @@ footer .business-info ul li::before {
     
         <main>
 <section id="about" class="about">
-        <div id="paw-print-container"></div>
-        <div class="container">
-            <h2 class="section-title">About Downtown Doggies</h2>
-            <div class="about-content">
-                <div class="image-gallery">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80" alt="Happy dogs running together">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=500&q=80" alt="Dog walker with multiple dogs">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1626070789695-acbd8e64d238?auto=format&fit=crop&w=500&q=80" alt="Playful dog in daycare">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Dog enjoying outdoor activities">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=500&q=80" alt="Placeholder image for uniform gallery layout">
-                    </div>
+    <div class="container">
+        <h2 class="section-title">About Downtown Doggies</h2>
+        <div class="about-content">
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Happy dogs playing together">
                 </div>
-                <div class="text-content">
-                    <p class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</p>
-                    <p>At Downtown Doggies, we're not just passionate about dogs—we're obsessed with their wellbeing, happiness, and the joy they bring to our lives. Our team of certified dog lovers is dedicated to providing top-notch care that goes beyond the ordinary.</p>
-                    <div class="services-highlight">
-                        <h3>Tailored Services for Your Furry Friends</h3>
-                        <ul class="service-list">
-                            <li class="service-item">
-                                <span class="service-icon">🐾</span>
-                                <span class="service-name">Pack Walks</span>
-                                <span class="service-desc">Socialization and fun for friendly pups</span>
-                            </li>
-                            <li class="service-item">
-                                <span class="service-icon">🦺</span>
-                                <span class="service-name">Solo Adventures</span>
-                                <span class="service-desc">One-on-one attention for your dog</span>
-                            </li>
-                            <li class="service-item">
-                                <span class="service-icon">🏠</span>
-                                <span class="service-name">Doggy Daycare</span>
-                                <span class="service-desc">A fun-filled day for your furry friend</span></li>
-                            <li class="service-item">
-                                <span class="service-icon">🛏️</span>
-                                <span class="service-name">Slumber Parties</span>
-                                <span class="service-desc">Cozy overnight care when you're away</span>
-                            </li>
-                        </ul>
-                    </div>
-    
-                    <a href="#contact" class="cta-button">Book a Tail-Wagging Experience</a>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/XpX6JQQ/THUMBNAIL-624.jpg" alt="Dog enjoying outdoor activities">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/YT80F1s/THUMBNAIL-653.jpg" alt="Playful dog in daycare">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs">
                 </div>
             </div>
+            <div class="text-content">
+                <h3 class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</h3>
+                <p>At Downtown Doggies, we're not just passionate about dogs—we're obsessed with their wellbeing, happiness, and the joy they bring to our lives. Our team of certified dog lovers is dedicated to providing top-notch care that goes beyond the ordinary.</p>
+                <div class="services-highlight">
+                    <h4>Tailored Services for Your Furry Friends</h4>
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <span class="service-icon">🐾</span>
+                            <span class="service-name">Pack Walks</span>
+                            <span class="service-desc">Socialization and fun for friendly pups</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-icon">🦺</span>
+                            <span class="service-name">Solo Adventures</span>
+                            <span class="service-desc">One-on-one attention for your dog</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-icon">🏠</span>
+                            <span class="service-name">Doggy Daycare</span>
+                            <span class="service-desc">A fun-filled day for your furry friend</span>
+                        </li>
+                        <li class="service-item">
+                            <span class="service-icon">🛏️</span>
+                            <span class="service-name">Slumber Parties</span>
+                            <span class="service-desc">Cozy overnight care when you're away</span>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#contact" class="cta-button">Book a Tail-Wagging Experience</a>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
         <section class="cta-section">
         <div class="cta-container">
             <div class="cta-text">
