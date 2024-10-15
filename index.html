@@ -38,7 +38,48 @@
                 margin: 0 auto;
                 overflow: hidden;
             }
-    
+    .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border: 5px solid var(--secondary-color);
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader-logo {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url('https://i.ibb.co/3r53wpW/image01.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+body > *:not(.loader-container) {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
             header {
                 position: absolute;
                 width: 100%;
@@ -73,8 +114,7 @@
             nav ul li a:hover {
                 color: var(--secondary-color);
             }
-    
-            .hero {
+    .hero {
                 height: 100vh;
                 position: relative;
                 overflow: hidden;
@@ -116,8 +156,9 @@
             }
     
             .hero-logo {
-                width: 300px;
+                width: 400px;
                 margin-bottom: 1rem;
+                margin-right: 10px;
             }
     
             .hero h1 {
@@ -241,7 +282,9 @@
     font-size: 2.2rem;
     color: #3A5A40;
     margin-bottom: 20px;
-    font-weight: 600;
+    font-weight: 600; 
+    margin-top: -10px;
+
 }
 
 .text-content p {
@@ -267,7 +310,7 @@
     margin-top: auto;
     align-self: center; /* Center the button */
     margin-top: auto; /* Push the button to the bottom */
-    margin-bottom: 20px; /* Add some space at the bottom */
+    margin-bottom: -10px; /* Add some space at the bottom */
 }
 
 .about-cta-button:hover {
@@ -732,8 +775,8 @@
 }
 
 .service-icon {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: var(--hover-color);
   border-radius: 50%;
   display: flex;
@@ -1625,6 +1668,13 @@ document.addEventListener('DOMContentLoaded', function() {
         </style>
     </head>
     <body>
+     <body>
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="loader-logo"></div>
+    </div>
+
+
         <header>
             <div class="container">
                 <nav>
@@ -1641,9 +1691,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </header>
     
         <section class="hero">
-            <div class="hero-image" style="background-image: url('https://i.ibb.co/WHjhPBW/container12-10ca4219.jpg');"></div>
-            <div class="hero-image" style="background-image: url('https://i.ibb.co/bb551bR/container12-7aab1f4d.jpg');"></div>
-            <div class="hero-image" style="background-image: url('https://i.ibb.co/h9hwSdp/container12-313c994d.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.postimg.cc/tRchJSBW/THUMBNAIL-648.jpg');"></div>
+            <div class="hero-image" style="background-image: url('https://i.postimg.cc/cJTFb70h/THUMBNAIL-534.jpg');"></div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <img src="https://i.ibb.co/3r53wpW/image01.png" alt="Downtown Doggies Logo" class="hero-logo">
@@ -1662,7 +1712,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="gallery-item"><img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs"></div>
                 <div class="gallery-item"><img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Happy dogs playing together"></div>
                 <div class="gallery-item"><img src="https://i.ibb.co/XpX6JQQ/THUMBNAIL-624.jpg" alt="Dog enjoying outdoor activities"></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/YT80F1s/THUMBNAIL-653.jpg" alt="Playful dog in daycare"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/W2mCZgLh/THUMBNAIL-527.jpg" alt="Playful dog in daycare"></div>
             </div>
             <div class="text-content">
                 <h3 class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</h3>
@@ -1695,12 +1745,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="services-grid">
       <div class="service-card" data-service="walking">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10z"/>
-            <path d="M20 21V8"/>
-            <path d="M16 17a2 2 0 0 0 2 2h2"/>
-            <path d="M13 7h.01"/>
-          </svg>
+          <img src="https://svgshare.com/i/1BY5.svg" alt="Walking Icon" />
         </div>
         <h3>Pawsome Walks</h3>
         <p>Energizing strolls through Sydney's beautiful parks and beaches.</p>
@@ -1711,14 +1756,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
         <a href="/services/dog-walking" class="service-link">Walkies Details</a>
       </div>
-      
+
       <div class="service-card" data-service="sitting">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <path d="M9 22V12h6v10"/>
-            <circle cx="12" cy="7" r="2"/>
-          </svg>
+          <img src="https://svgshare.com/i/1BWh.svg" alt="Sitting Icon" />
         </div>
         <h3>Cozy Pet Sitting</h3>
         <p>Home comfort for your furry friend while you're away.</p>
@@ -1729,14 +1770,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
         <a href="/services/pet-sitting" class="service-link">Sitting Info</a>
       </div>
-      
+
       <div class="service-card" data-service="training">
         <div class="service-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
+          <img src="https://svgshare.com/i/1BYo.svg" alt="Training Icon" />
         </div>
         <h3>Puppy Playtime</h3>
         <p>Fun-filled sessions to socialize and train your little furball.</p>
@@ -2065,5 +2102,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
         </script>
+           <script>
+        window.addEventListener('load', function() {
+            const loaderContainer = document.querySelector('.loader-container');
+            const content = document.body.children;
+            
+            setTimeout(function() {
+                loaderContainer.style.opacity = '0';
+                loaderContainer.style.visibility = 'hidden';
+                for (let i = 1; i < content.length; i++) {
+                    content[i].style.opacity = '1';
+                }
+            }, 2000); // Adjust this delay as needed
+        });
+    </script>
     </body>
     </html>
