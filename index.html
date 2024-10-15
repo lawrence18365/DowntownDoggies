@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Downtown Doggies - Dog Walking and Care in Inner West Sydney</title>
          <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;400;700&display=swap');
     
@@ -171,51 +172,69 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-  #about {
-        background-color: var(--accent-color);;
-    }
-     
-.about {
+ 
+    .about {
     padding: 80px 0;
     background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    margin-bottom:;
 }
 
 .about-content {
     display: flex;
     gap: 40px;
-}
-
-.image-gallery, .text-content {
-    flex: 1;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 30px;
+    align-items: stretch;
 }
 
 .image-gallery {
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    aspect-ratio: 1 / 1;
 }
 
 .gallery-item {
-    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.text-content {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .lead {
@@ -223,130 +242,193 @@
     color: #3A5A40;
     margin-bottom: 20px;
     font-weight: 600;
-    text-align: center;
 }
-
 
 .text-content p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 30px;
     color: #333;
-    text-align: center;
-
 }
 
-.services-highlight {
-    background-color: #f0f7f4;
-    border-radius: 15px;
-    padding: 25px;
-    margin-bottom: 30px;
-}
-
-.services-highlight h4 {
-    color: #3A5A40;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.service-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.service-item {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.service-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 15px;
-}
-
-.service-icon img {
-    width: 100%;
-    height: 100%;
-}
-
-.service-item h5 {
-    font-size: 1.3rem;
-    color: #3A5A40;
-    margin-bottom: 10px;
-}
-
-.service-item p {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.cta-button {
-    display: inline-block;
+.about-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
     background: linear-gradient(45deg, #3A5A40, #588157);
     color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
     transition: all 0.3s ease;
-    text-align: center;
+    align-self: flex-start;
+    margin-top: auto;
+    align-self: center; /* Center the button */
+    margin-top: auto; /* Push the button to the bottom */
+    margin-bottom: 20px; /* Add some space at the bottom */
 }
 
-.cta-button:hover {
-    background: linear-gradient(45deg, #588157, #3A5A40);
+.about-cta-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(58, 90, 64, 0.3);
+}
+
+.button-icon {
+    margin-left: 10px;
+    font-size: 1.4rem;
 }
 
 @media (max-width: 1024px) {
     .about-content {
         flex-direction: column;
     }
+
     .image-gallery, .text-content {
         width: 100%;
+    }
+
+    .image-gallery {
+        aspect-ratio: 16 / 9;
     }
 }
 
 @media (max-width: 768px) {
-    .service-list {
-        grid-template-columns: 1fr;
-    }
     .lead {
         font-size: 1.8rem;
     }
 }
-        @media (max-width: 1200px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .image-gallery {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: repeat(2, 1fr);
-                height: auto;
-            }
 
-            .gallery-item:nth-child(5) {
-                display: none;
-            }
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+    }
 
-            .service-list {
-                grid-template-columns: 1fr;
-            }
-        }
+    .image-gallery, .text-content {
+        width: 100%;
+    }
 
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+    .lead {
+        font-size: 1.8rem;
+    }
+}
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .image-gallery, .text-content {
+        width: 100%;
+    }
+
+    .image-gallery {
+        min-height: 400px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .item1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .item2 {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    .item3, .item4, .item5 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        min-height: 300px;
+    }
+
+    .item1 {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .item2, .item3, .item4, .item5 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .lead {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 1fr);
+        min-height: 500px;
+    }
+
+    .item1, .item2, .item3, .item4, .item5 {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+@media (max-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .lead {
+        font-size: 1.8rem;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .gallery-item.large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .gallery-item.vertical {
+        grid-row: span 1;
+    }
+}
         @media (max-width: 768px) {
             .section-title {
                 font-size: 2.5rem;
@@ -395,7 +477,20 @@
             align-items: center;
             position: relative;
             z-index: 2;
+              Margin-right: 40px;
+
         }
+        .cta-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.cta-button {
+    /* ... existing styles ... */
+    align-self: center; /* Center the button vertically if needed */
+    margin: 0 auto; /* Center the button horizontally */
+}
             .cta-text h2 {
                 font-family: 'Fredoka One', cursive;
                 color: white;
@@ -435,6 +530,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
+              Margin-right: 40px;
+
         }
     
         .cta-btn:hover {
@@ -494,152 +591,298 @@
                 height: 200px;
             }
         }
-            .services {
-      background-color: var(--accent-color);
-      padding: 100px 0;
-      overflow: hidden;
-    }
-    
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-    }
-    
-    .section-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: 2.5rem;
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    
-    .section-subtitle {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.1rem;
-      color: var(--text-color);
-      text-align: center;
-      margin-bottom: 60px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.2s ease forwards;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-    
-    .service-card {
-      background-color: var(--light-text);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      padding: 40px;
-      text-align: center;
-      transition: all 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.4s ease forwards;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-    
-    .service-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 30px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .service-card:hover .service-icon {
-      background-color: var(--primary-color);
-      transform: scale(1.1);
-    }
-    
-    .service-icon svg {
-      width: 40px;
-      height: 40px;
-      color: var(--light-text);
-    }
-    
-    .service-card h3 {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.5rem;
-      color: var(--primary-color);
-      margin-bottom: 15px;
-    }
-    
-    .service-card p {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1rem;
-      color: var(--text-color);
-      margin-bottom: 25px;
-    }
-    
-    .service-link {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--secondary-color);
-      text-decoration: none;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .service-link::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: var(--secondary-color);
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
-    
-    .service-link:hover::after {
-      transform: scaleX(1);
-    }
-    
-    .cta-container {
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.8s 0.6s ease forwards;
-    }
-    
+          
+.services {
+  background-color: var(--accent-color);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(74, 111, 165, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(77, 204, 189, 0.05) 0%, transparent 20%);
+  z-index: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 3rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.service-card {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--hover-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  background-color: var(--primary-color);
+}
+
+.service-icon svg {
+  width: 40px;
+  height: 40px;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon svg {
+  color: var(--light-text);
+}
+
+.service-card h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.service-card p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 25px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.service-features {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.service-features li {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.service-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.service-link {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.service-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.service-link:hover {
+  color: var(--accent-color);
+}
+
+.service-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+.text-content {
+   display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; /* Center items horizontally */
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #3A5A40;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    max-width: 200px;
+}
+
+.cta-button:hover {
+    background-color: #4a7553;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Remove this if it's causing conflicts */
+.text-content .cta-button {
+    display: inline-block;
+}
+
+/* Specific styles for the about section if needed */
+#about .cta-button {
+    margin-top: 30px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
     .cta-button {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--light-text);
-      background-color: var(--primary-color);
-      padding: 15px 40px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: inline-block;
+        padding: 10px 20px;
+        font-size: 14px;
+        max-width: 180px;
     }
-    
-    .cta-button:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
+}
+
+@media (max-width: 768px) {
+  #services .cta-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    width: 80%;
+    max-width: 300px;
+      Margin-right: 40px;
+
+  }
+}
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(74, 111, 165, 0.4);
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+
+  .service-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .service-card p {
+    font-size: 1rem;
+  }
+
+  .service-features li {
+    font-size: 0.9rem;
+  }
+
+  .service-link {
+    font-size: 1rem;
+  }
     
     @keyframes fadeInUp {
       to {
@@ -664,6 +907,41 @@
     </style>
     
     <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const serviceCards = document.querySelectorAll('.service-card');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  serviceCards.forEach(card => {
+    observer.observe(card);
+  });
+
+  serviceCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transform = 'translateY(-10px)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
+  });
+
+  const ctaButton = document.querySelector('.cta-button');
+  ctaButton.addEventListener('mouseenter', () => {
+    ctaButton.style.transform = 'translateY(-3px)';
+  });
+  
+  ctaButton.addEventListener('mouseleave', () => {
+    ctaButton.style.transform = 'translateY(0)';
+  });
+});
       document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -971,6 +1249,7 @@
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 #waiverForm .form-group {
@@ -1088,72 +1367,186 @@
 }
 
 /* Footer Styles */
-footer {
+.site-footer {
     background-color: var(--primary-color);
     color: #fff;
-    padding: 3rem 0;
+    position: relative;
+    padding: 6rem 0 2rem;
+    font-family: 'Roboto', sans-serif;
 }
 
-footer .business-info {
-    max-width: 800px;
+.footer-waves {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.footer-waves svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 100px;
+}
+
+.footer-waves .shape-fill {
+    fill: var(--primary-color);
+}
+
+.footer-content {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
+    padding: 0 20px;
 }
 
-footer .business-info h3 {
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-column h3 {
     font-family: 'Fredoka One', cursive;
-    margin-bottom: 1rem;
-    font-size: 2rem;
-}
-
-footer .business-info p {
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
 }
 
-footer .business-info ul {
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.footer-column p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.footer-column ul {
     list-style: none;
     padding: 0;
 }
 
-footer .business-info ul li {
+.footer-column ul li {
     margin-bottom: 0.75rem;
-    font-size: 1rem;
-    position: relative;
-    padding-left: 25px;
 }
 
-footer .business-info ul li::before {
-    content: '\f058';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    position: absolute;
-    left: 0;
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
     color: var(--secondary-color);
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 2rem;
+.social-links {
+    display: flex;
+    gap: 15px;
 }
 
-.footer-bottom p {
-    margin-bottom: 0.5rem;
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
     font-size: 1rem;
 }
 
-/* Responsive Styles */
+.newsletter-form button {
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #8FA57F;
+}
+
+.footer-bottom {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.footer-legal a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--secondary-color);
+}
+
 @media (max-width: 768px) {
-    #waiverForm {
-        padding: 1.5rem;
+    .footer-grid {
+        grid-template-columns: 1fr;
     }
 
-    #waiverForm .form-group h3 {
-        font-size: 1.3rem;
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
     }
 
-    footer .business-info h3 {
-        font-size: 1.8rem;
+    .footer-legal {
+        margin-top: 1rem;
+        justify-content: center;
     }
 }
         </style>
@@ -1193,50 +1586,18 @@ footer .business-info ul li::before {
         <h2 class="section-title">About Downtown Doggies</h2>
         <div class="about-content">
             <div class="image-gallery">
+                <div class="gallery-item"><img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs"></div>
                 <div class="gallery-item"><img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Happy dogs playing together"></div>
                 <div class="gallery-item"><img src="https://i.ibb.co/XpX6JQQ/THUMBNAIL-624.jpg" alt="Dog enjoying outdoor activities"></div>
                 <div class="gallery-item"><img src="https://i.ibb.co/YT80F1s/THUMBNAIL-653.jpg" alt="Playful dog in daycare"></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Dog walker with multiple dogs"></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/z7F2HM9/THUMBNAIL-445.jpg" alt="Happy dog outdoors"></div>
-                <div class="gallery-item"><img src="https://i.ibb.co/jzvPN2x/THUMBNAIL-549.jpg" alt="Dogs playing in the park"></div>
             </div>
             <div class="text-content">
                 <h3 class="lead">Unleashing happiness across Inner West Sydney, one wag at a time.</h3>
                 <p>At Downtown Doggies, we're not just passionate about dogs—we're obsessed with their wellbeing, happiness, and the joy they bring to our lives. Our team of certified dog lovers is dedicated to providing top-notch care that goes beyond the ordinary.</p>
-                <div class="services-highlight">
-                    <h4>Tailored Services for Your Furry Friends</h4>
-                    <div class="service-list">
-                        <div class="service-item">
-                            <div class="service-icon">
-                               <a href='https://svgshare.com/s/1BS7' ><img src='https://svgshare.com/i/1BS7.svg' title='' /></a>
-                            </div>
-                            <h5>Pack Walks</h5>
-                            <p>Socialization and fun for friendly pups</p>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <img src="path_to_icon/solo_adventures.svg" alt="Solo Adventures Icon">
-                            </div>
-                            <h5>Solo Adventures</h5>
-                            <p>One-on-one attention for your dog</p>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <img src="path_to_icon/doggy_daycare.svg" alt="Doggy Daycare Icon">
-                            </div>
-                            <h5>Doggy Daycare</h5>
-                            <p>A fun-filled day for your furry friend</p>
-                        </div>
-                        <div class="service-item">
-                            <div class="service-icon">
-                                <img src="path_to_icon/slumber_parties.svg" alt="Slumber Parties Icon">
-                            </div>
-                            <h5>Slumber Parties</h5>
-                            <p>Cozy overnight care when you're away</p>
-                        </div>
-                    </div>
-                </div>
-                <a href="#contact" class="cta-button">Book a Tail-Wagging Experience</a>
+                <a href="#contact" class="about-cta-button">
+                    <span class="button-text">Book Now</span>
+                    <span class="button-icon">🐾</span>
+                </a>
             </div>
         </div>
     </div>
@@ -1253,54 +1614,73 @@ footer .business-info ul li::before {
             </div>
         </div>
     </section>
-        <section id="services" class="services">
-      <div class="container">
-        <h2 class="section-title">Exceptional Pet Care Services</h2>
-        <p class="section-subtitle">Tailored experiences for your beloved companions</p>
-        
-        <div class="services-grid">
-          <div class="service-card" data-service="walking">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><polyline points="9 17 12 14 15 17"/><line x1="12" y1="14" x2="12" y2="9"/></svg>
-            </div>
-            <h3>Premium Dog Walking</h3>
-            <p>Tailored walks in picturesque locations, ensuring exercise and enrichment.</p>
-            <a href="#" class="service-link">Explore Service</a>
-          </div>
-          
-          <div class="service-card" data-service="sitting">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            </div>
-            <h3>Luxury In-Home Pet Sitting</h3>
-            <p>Personalized care in the comfort of your home, maintaining your pet's routine.</p>
-            <a href="#" class="service-link">Explore Service</a>
-          </div>
-          
-          <div class="service-card" data-service="training">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <h3>Expert Puppy Training</h3>
-            <p>Specialized programs to nurture well-behaved and socialized puppies.</p>
-            <a href="#" class="service-link">Explore Service</a>
-          </div>
-          
-          <div class="service-card" data-service="grooming">
-            <div class="service-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
-            </div>
-            <h3>Spa-Quality Grooming</h3>
-            <p>Rejuvenating grooming sessions using premium, pet-safe products.</p>
-            <a href="#" class="service-link">Explore Service</a>
-          </div>
+<section id="services" class="services">
+  <div class="container">
+    <h2 class="section-title">Tail-Wagging Services</h2>
+    <p class="section-subtitle">Unleash happiness for your furry friends</p>
+    
+    <div class="services-grid">
+      <div class="service-card" data-service="walking">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10z"/>
+            <path d="M20 21V8"/>
+            <path d="M16 17a2 2 0 0 0 2 2h2"/>
+            <path d="M13 7h.01"/>
+          </svg>
         </div>
-        
-        <div class="cta-container">
-          <a href="#contact" class="cta-button">Schedule a Consultation</a>
-        </div>
+        <h3>Pawsome Walks</h3>
+        <p>Energizing strolls through Sydney's beautiful parks and beaches.</p>
+        <ul class="service-features">
+          <li>Tailored routes</li>
+          <li>Solo or group walks</li>
+          <li>Real-time updates</li>
+        </ul>
+        <a href="/services/dog-walking" class="service-link">Walkies Details</a>
       </div>
-    </section>
+      
+      <div class="service-card" data-service="sitting">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <path d="M9 22V12h6v10"/>
+            <circle cx="12" cy="7" r="2"/>
+          </svg>
+        </div>
+        <h3>Cozy Pet Sitting</h3>
+        <p>Home comfort for your furry friend while you're away.</p>
+        <ul class="service-features">
+          <li>24/7 loving care</li>
+          <li>Daily photo updates</li>
+          <li>Home security check</li>
+        </ul>
+        <a href="/services/pet-sitting" class="service-link">Sitting Info</a>
+      </div>
+      
+      <div class="service-card" data-service="training">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <h3>Puppy Playtime</h3>
+        <p>Fun-filled sessions to socialize and train your little furball.</p>
+        <ul class="service-features">
+          <li>Positive reinforcement</li>
+          <li>Basic commands</li>
+          <li>Socialization skills</li>
+        </ul>
+        <a href="/services/puppy-training" class="service-link">Puppy Fun</a>
+      </div>
+    </div>
+    
+    <div class="cta-container">
+      <a href="#contact" class="cta-button">Book a Furry Adventure</a>
+    </div>
+  </div>
+</section>
     <section id="booking" class="booking">
       <div class="container">
         <h2>Book a Meet and Greet</h2>
@@ -1420,29 +1800,90 @@ footer .business-info ul li::before {
 </section>
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <!-- License & Qualifications Section -->
-        <div class="business-info">
-            <h3>License & Qualifications</h3>
-            <p>We are committed to providing the highest quality care for your pets. Our credentials include:</p>
-            <ul>
-                <li><strong>ABN:</strong> 12 345 678 910</li>
-                <li><strong>Certifications:</strong> Dog First Aid and CPR, Animal Behavior</li>
-                <li><strong>Memberships:</strong> National Association of Professional Pet Sitters (NAPPS)</li>
-                <li><strong>Insurance:</strong> Fully Insured and Bonded</li>
-            </ul>
+<footer class="site-footer">
+    <div class="footer-waves">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+    <div class="footer-content">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Downtown Doggies is committed to providing top-notch care for your furry friends in Inner West Sydney. Our team of certified professionals ensures your pets receive the love and attention they deserve.</p>
+                    <ul class="social-links">
+                        <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Dog Walking</a></li>
+                        <li><a href="#">Pet Sitting</a></li>
+                        <li><a href="#">Daycare</a></li>
+                        <li><a href="#">Grooming</a></li>
+                        <li><a href="#">Training</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Stay updated with our latest news and offers!</p>
+                    <form class="newsletter-form" action="#" method="post">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <!-- Footer Bottom Content -->
-        <div class="footer-bottom">
-            <p>&copy; 2024 Downtown Doggies. All rights reserved.</p>
-            <p>Contact: bark@downtowndoggies.com | (02) 1234 5678</p>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-content">
+                <p>&copy; 2024 Downtown Doggies. All rights reserved.</p>
+                <ul class="footer-legal">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </footer>
     
         <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.querySelector('.newsletter-form');
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        alert(`Thank you for subscribing with: ${email}`);
+        this.reset();
+    });
+
+    const socialLinks = document.querySelectorAll('.social-links a');
+    socialLinks.forEach(link => {
+        link.addEventListener('mouseover', function() {
+            this.style.transform = 'translateY(-5px) rotate(5deg)';
+        });
+        link.addEventListener('mouseout', function() {
+            this.style.transform = 'translateY(0) rotate(0deg)';
+        });
+    });
+});
         // Waiver Form Validation and Submission
 document.addEventListener('DOMContentLoaded', function() {
     const waiverForm = document.getElementById('waiverForm');
@@ -1515,7 +1956,6 @@ document.addEventListener('DOMContentLoaded', function() {
           // Hero image cycling
     const heroImages = document.querySelectorAll('.hero-image');
     let currentImageIndex = 0;
-    
     function cycleHeroImages() {
         heroImages[currentImageIndex].classList.remove('active');
         currentImageIndex = (currentImageIndex + 1) % heroImages.length;
