@@ -461,7 +461,7 @@
             
         }
     
-        .cta-section {
+      .cta-section {
             background-color: rgba(58, 90, 64, 0.7);
             padding: 4rem 0;
             position: relative;
@@ -469,6 +469,7 @@
         }
     
         .cta-container {
+            text-align: center;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -477,20 +478,7 @@
             align-items: center;
             position: relative;
             z-index: 2;
-              Margin-right: 40px;
-
         }
-        .cta-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.cta-button {
-    /* ... existing styles ... */
-    align-self: center; /* Center the button vertically if needed */
-    margin: 0 auto; /* Center the button horizontally */
-}
             .cta-text h2 {
                 font-family: 'Fredoka One', cursive;
                 color: white;
@@ -530,8 +518,6 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
-              Margin-right: 40px;
-
         }
     
         .cta-btn:hover {
@@ -559,6 +545,38 @@
             transform: scale(1.05);
         }
     
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    
+        .cta-image {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+    
+        @media (max-width: 768px) {
+            .cta-container {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            .cta-text {
+                max-width: 100%;
+                margin-bottom: 2rem;
+            }
+    
+            .cta-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
         @keyframes floatAnimation {
             0% {
                 transform: translateY(0);
@@ -786,13 +804,21 @@
     align-items: center; /* Center items horizontally */
 }
 
+.cta-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
 .cta-button {
     display: inline-block;
     background-color: #3A5A40;
     color: #ffffff;
-    padding: 12px 24px;
+    padding: 15px 30px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
@@ -800,9 +826,23 @@
     border: none;
     cursor: pointer;
     width: auto;
-    max-width: 200px;
+    max-width: none;
 }
 
+.cta-button:hover {
+    background-color: #4a7553;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .cta-button {
+        width: 80%;
+        max-width: 300px;
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+}
 .cta-button:hover {
     background-color: #4a7553;
     transform: translateY(-3px);
