@@ -611,7 +611,7 @@
         }
           
 .services {
-  background-color: var(--accent-color);
+  background-color: white;
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -639,14 +639,47 @@
 }
 
 .section-title {
-  font-size: 3rem;
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: 700;
-  letter-spacing: -1px;
+    font-family: 'Fredoka One', sans-serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 15px;
 }
 
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-title::after {
+        width: 50px;
+    }
+}
 .section-subtitle {
   font-size: 1.2rem;
   color: var(--text-color);
@@ -665,7 +698,7 @@
 }
 
 .service-card {
-  background-color: white;
+  background-color: var(--accent-color);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 40px;
@@ -758,7 +791,7 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: var(--primary-color);
   font-weight: bold;
   font-size: 1.2rem;
 }
