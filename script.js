@@ -166,24 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     counters.forEach(counter => counterObserver.observe(counter));
 
-    // Services section animation
-    const servicesSection = document.querySelector('#services');
-    const serviceCards = document.querySelectorAll('.service-card');
-    const servicesObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            servicesSection.classList.add('animate');
-            serviceCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('animate');
-                }, index * 200);
-            });
-            servicesObserver.unobserve(servicesSection);
-        }
-    }, { threshold: 0.1 });
-    if (servicesSection) {
-        servicesObserver.observe(servicesSection);
-    }
-
     // Testimonial slider
     const testimonialSlider = document.querySelector('.testimonial-slider');
     const testimonials = document.querySelectorAll('.testimonial');
