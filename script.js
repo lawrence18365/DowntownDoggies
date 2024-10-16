@@ -368,3 +368,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
     counterElements.forEach(el => counterObserver.observe(el));
 });
+
+// JavaScript for Services Page
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Animate services cards on scroll
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.services-page-offering-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Pricing toggle functionality (if needed)
+    const pricingToggle = document.getElementById('pricing-toggle');
+    const pricingItems = document.querySelectorAll('.services-page-pricing-item');
+
+    if (pricingToggle) {
+        pricingToggle.addEventListener('change', function() {
+            pricingItems.forEach(item => {
+                const monthlyPrice = item.querySelector('.monthly-price');
+                const yearlyPrice = item.querySelector('.yearly-price');
+                if (this.checked) {
+                    monthlyPrice.style.display = 'none';
+                    yearlyPrice.style.display = 'block';
+                } else {
+                    monthlyPrice.style.display = 'block';
+                    yearlyPrice.style.display = 'none';
+                }
+            });
+        });
+    }
+});
