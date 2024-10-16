@@ -4,217 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Downtown Doggies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .services-hero {
-            background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .services-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--overlay-color);
-        }
-        .services-hero .hero-content {
-            text-align: center;
-            color: var(--light-text);
-            position: relative;
-            z-index: 1;
-        }
-        .detailed-service {
-            padding: 4rem 0;
-        }
-        .service-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-        .service-description {
-            flex: 1;
-        }
-        .service-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .service-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .service-content {
-                flex-direction: column;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">
-                    <img src="https://i.ibb.co/3r53wpW/image01.png" alt="Downtown Doggies Logo" width="150">
+                <a href="#" class="logo">
+                    <!-- Small logo can be added here if needed -->
                 </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                <ul>
+                    <li><a href="index.html#team">The Team</a></li>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="index.html#testimonials">Our Testimonials</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="main-content-wrapper">
-        <section class="services-hero">
-            <div class="hero-content container">
-                <h1>Our Pawsome Services</h1>
-                <p>Tailored care for your furry friends in Inner West Sydney</p>
+    <main>
+        <section class="services-page-hero">
+            <div class="services-page-hero-overlay"></div>
+            <div class="services-page-hero-content">
+                <h1>Professional Dog Walking Services in Sydney</h1>
+                <p>Reliable and loving care for your furry friends</p>
+                <a href="#services-page-contact" class="services-page-cta-button">Book a Walk</a>
             </div>
         </section>
 
-        <section id="services-overview" class="section services">
+        <section id="services-page-offerings" class="services-page-offerings-section">
             <div class="container">
-                <h2 class="section-title">What We Offer</h2>
-                <p class="section-subtitle">At Downtown Doggies, we provide a range of services to keep your pets happy, healthy, and thriving.</p>
-                <div class="services-grid">
-                    <div class="service-card" data-service="walking">
-                        <div class="service-icon">
-                            <img src="https://svgshare.com/i/1BY5.svg" alt="Dog Walking Icon">
-                        </div>
-                        <h3>Dog Walking</h3>
-                        <p>Energizing strolls through Sydney's beautiful parks and beaches.</p>
-                        <ul class="service-features">
-                            <li>Tailored routes</li>
-                            <li>Solo or group walks</li>
-                            <li>Real-time updates</li>
-                        </ul>
-                        <a href="#dog-walking" class="service-link">Learn More</a>
+                <h2>Our Services</h2>
+                <div class="services-page-offerings-grid">
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/solo_walk.svg" alt="Solo Walk Icon">
+                        <h3>Solo Walks</h3>
+                        <p>Personalized attention for your dog with one-on-one walks.</p>
                     </div>
-                    <div class="service-card" data-service="sitting">
-                        <div class="service-icon">
-                            <img src="https://svgshare.com/i/1BWh.svg" alt="Pet Sitting Icon">
-                        </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/group_walk.svg" alt="Group Walk Icon">
+                        <h3>Group Walks</h3>
+                        <p>Fun and social walks with other friendly dogs.</p>
+                    </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/puppy_visit.svg" alt="Puppy Visit Icon">
+                        <h3>Puppy Visits</h3>
+                        <p>Special care visits for your puppies, including playtime and feeding.</p>
+                    </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/dog_running.svg" alt="Dog Running Icon">
+                        <h3>Dog Running</h3>
+                        <p>High-energy exercise for active dogs, ensuring they get the physical activity they need.</p>
+                    </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/pet_sitting.svg" alt="Pet Sitting Icon">
                         <h3>Pet Sitting</h3>
-                        <p>Home comfort for your furry friend while you're away.</p>
-                        <ul class="service-features">
-                            <li>24/7 loving care</li>
-                            <li>Daily photo updates</li>
-                            <li>Home security check</li>
-                        </ul>
-                        <a href="#pet-sitting" class="service-link">Learn More</a>
+                        <p>Trusted care for your pets while you're away, with feeding, playtime, and companionship.</p>
                     </div>
-                    <div class="service-card" data-service="training">
-                        <div class="service-icon">
-                            <img src="https://svgshare.com/i/1BYo.svg" alt="Puppy Training Icon">
-                        </div>
-                        <h3>Puppy Training</h3>
-                        <p>Fun-filled sessions to socialize and train your little furball.</p>
-                        <ul class="service-features">
-                            <li>Positive reinforcement</li>
-                            <li>Basic commands</li>
-                            <li>Socialization skills</li>
-                        </ul>
-                        <a href="#puppy-training" class="service-link">Learn More</a>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/daycare.svg" alt="Daycare Icon">
+                        <h3>Daycare</h3>
+                        <p>A safe space for dogs to socialize and play during the day while you're at work.</p>
+                    </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/grooming.svg" alt="Grooming Icon">
+                        <h3>Grooming Services</h3>
+                        <p>Convenient grooming to keep your dog looking clean and fresh.</p>
+                    </div>
+                    <div class="services-page-offering-card">
+                        <img src="path_to_icon/training.svg" alt="Training Icon">
+                        <h3>Training</h3>
+                        <p>Basic obedience training sessions to improve your dog's behavior.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="dog-walking" class="section detailed-service">
+        <section id="services-page-benefits" class="services-page-benefits-section">
             <div class="container">
-                <h2 class="section-title">Dog Walking</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>Our dog walking service is designed to give your furry friend the exercise and stimulation they need. We offer tailored walks that cater to your dog's energy level, age, and preferences.</p>
-                        <h3>What's Included:</h3>
-                        <ul>
-                            <li>Customized walking routes</li>
-                            <li>Flexible scheduling (30 or 60-minute walks)</li>
-                            <li>Solo walks or small group adventures</li>
-                            <li>Real-time updates and photos</li>
-                            <li>Fresh water and treats (if allowed)</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book a Walk</a>
+                <h2>Why Choose Us?</h2>
+                <ul class="services-page-benefits-list">
+                    <li>Experienced and passionate dog walkers</li>
+                    <li>Flexible scheduling to suit your needs</li>
+                    <li>Fully insured and background-checked staff</li>
+                    <li>Real-time updates and photos of your dog's walk</li>
+                    <li>Eco-friendly and responsible care for your pets</li>
+                    <li>Trusted by the local community with a strong reputation</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="services-page-pricing" class="services-page-pricing-section">
+            <div class="container">
+                <h2>Pricing</h2>
+                <div class="services-page-pricing-table">
+                    <div class="services-page-pricing-item">
+                        <h3>Solo Walks</h3>
+                        <p>30 minutes: $25</p>
+                        <p>60 minutes: $40</p>
                     </div>
-                    <div class="service-image">
-                        <img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Happy dogs on a walk">
+                    <div class="services-page-pricing-item">
+                        <h3>Group Walks</h3>
+                        <p>30 minutes: $20</p>
+                        <p>60 minutes: $35</p>
+                    </div>
+                    <div class="services-page-pricing-item">
+                        <h3>Puppy Visits</h3>
+                        <p>Per visit (30 minutes): $30</p>
+                    </div>
+                    <div class="services-page-pricing-item">
+                        <h3>Dog Running</h3>
+                        <p>Per session (45 minutes): $40</p>
+                    </div>
+                    <div class="services-page-pricing-item">
+                        <h3>Pet Sitting</h3>
+                        <p>Overnight stay: $70</p>
+                        <p>Daytime visit (per hour): $25</p>
+                    </div>
+                    <div class="services-page-pricing-item">
+                        <h3>Grooming</h3>
+                        <p>Starting at $50 (depending on dog size)</p>
+                    </div>
+                    <div class="services-page-pricing-item">
+                        <h3>Training</h3>
+                        <p>Per session (1 hour): $50</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="pet-sitting" class="section detailed-service">
+        <section id="services-page-contact" class="services-page-contact-section">
             <div class="container">
-                <h2 class="section-title">Pet Sitting</h2>
-                <div class="service-content">
-                    <div class="service-image">
-                        <img src="https://i.ibb.co/8bDLCpR/THUMBNAIL-549.jpg" alt="Comfortable pet at home">
-                    </div>
-                    <div class="service-description">
-                        <p>Our pet sitting service ensures your furry family members are well-cared for in the comfort of their own home while you're away. We provide personalized care tailored to your pet's needs and routines.</p>
-                        <h3>What's Included:</h3>
-                        <ul>
-                            <li>Feeding and fresh water</li>
-                            <li>Playtime and cuddles</li>
-                            <li>Medication administration (if required)</li>
-                            <li>Daily photo updates</li>
-                            <li>Mail collection and plant watering</li>
-                            <li>Home security check</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book Pet Sitting</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="puppy-training" class="section detailed-service">
-            <div class="container">
-                <h2 class="section-title">Puppy Training</h2>
-                <div class="service-content">
-                    <div class="service-description">
-                        <p>Our puppy training sessions are designed to set your new furry family member up for success. We use positive reinforcement techniques to make learning fun and effective for your puppy.</p>
-                        <h3>What's Included:</h3>
-                        <ul>
-                            <li>Basic obedience commands</li>
-                            <li>Leash training</li>
-                            <li>Socialization exercises</li>
-                            <li>Potty training tips</li>
-                            <li>Behavior problem solving</li>
-                            <li>Take-home training guides</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book Training Session</a>
-                    </div>
-                    <div class="service-image">
-                        <img src="https://i.postimg.cc/W2mCZgLh/THUMBNAIL-527.jpg" alt="Puppy in training">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="booking" class="section booking">
-            <div class="container">
-                <h2 class="section-title">Book a Service</h2>
-                <p class="section-subtitle">Ready to give your pet the best care? Book a service now!</p>
-                <div class="calendar-container">
-                    <div class="calendar-placeholder">
-                        <p>Calendar integration coming soon!</p>
-                        <p>Please contact us to schedule an appointment.</p>
-                    </div>
-                </div>
+                <h2>Contact Us</h2>
+                <p>Reach out to us for any questions or to book a walk for your furry friend!</p>
+                <a href="index.html#contact" class="services-page-cta-button">Go to Contact Form</a>
             </div>
         </section>
     </main>
@@ -230,69 +155,50 @@
                 <div class="footer-grid">
                     <div class="footer-column">
                         <h3>About Us</h3>
-                        <p>Downtown Doggies is committed to providing top-notch care for your furry friends in Inner West Sydney.</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                        <p>Downtown Doggies is committed to providing top-notch care for your furry friends in Inner West Sydney. Our team of certified professionals ensures your pets receive the love and attention they deserve.</p>
+                        <ul class="social-links">
+                            <li><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
                     </div>
                     <div class="footer-column">
                         <h3>Our Services</h3>
                         <ul>
-                            <li><a href="#dog-walking">Dog Walking</a></li>
-                            <li><a href="#pet-sitting">Pet Sitting</a></li>
-                            <li><a href="#puppy-training">Puppy Training</a></li>
+                            <li><a href="#services-page-offerings">Dog Walking</a></li>
+                            <li><a href="#services-page-offerings">Pet Sitting</a></li>
+                            <li><a href="#services-page-offerings">Daycare</a></li>
+                            <li><a href="#services-page-offerings">Grooming</a></li>
+                            <li><a href="#services-page-offerings">Training</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About Us</a></li>
                             <li><a href="services.html">Services</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="index.html#testimonials">Testimonials</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h3>Newsletter</h3>
                         <p>Stay updated with our latest news and offers!</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Enter your email" required>
+                        <form class="newsletter-form" action="#" method="post">
+                            <input type="email" name="email" placeholder="Enter your email" required>
                             <button type="submit">Subscribe</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2024 Downtown Doggies. All rights reserved.</p>
-                <ul class="footer-legal">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Cookie Policy</a></li>
-                </ul>
-            </div>
+        <div class="footer-acknowledgment">
+            <p>We acknowledge the traditional custodians of the land on which we walk, play, and rest - The Gadigal People of the Eora Nation. We pay our respects to elders past and present. ❤️💛🖤</p>
         </div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <script>
-        // Additional JavaScript for the services page
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceLinks = document.querySelectorAll('.service-link');
-            serviceLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
