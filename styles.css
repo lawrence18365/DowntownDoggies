@@ -1500,225 +1500,476 @@ main {
 .footer-legal a:hover {
     color: var(--secondary-color);
 }
-/* === Services Page Styles === */
+/* services-page.css */
 
-/* Services Hero Section */
-.services-page-hero {
-    height: 60vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
+:root {
+    --primary-color: #3A5A40;
+    --secondary-color: #A3B18A;
+    --accent-color: #DAD7CD;
+    --text-color: #333;
+    --light-text: #fff;
+    --overlay-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Header Styles */
+.services-header {
+    background-color: rgba(58, 90, 64, 0.9);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.services-header.scrolled {
+    background-color: rgba(58, 90, 64, 1);
+}
+
+.header-logo {
+    height: 60px;
+    transition: height 0.3s ease;
+}
+
+.services-header.scrolled .header-logo {
+    height: 50px;
+}
+
+/* Hero Section */
+.services-hero {
+    height: 100vh;
+    background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
 }
 
-.services-page-hero-content {
+.services-hero-content {
     text-align: center;
     color: var(--light-text);
+    z-index: 2;
     max-width: 800px;
     padding: 0 20px;
 }
 
-.services-page-hero h1 {
-    font-family: 'Fredoka One', cursive;
-    font-size: 3.5rem;
+.services-hero h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 4rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(50px);
 }
 
-.services-page-hero p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.services-page-cta-button {
-    display: inline-block;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.services-page-cta-button:hover {
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-/* Services Offerings Section */
-.services-page-offerings-section {
-    padding: 100px 0;
-    background-color: var(--accent-color);
-}
-
-.services-page-offerings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.services-page-offering-card {
-    background-color: var(--light-text);
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.services-page-offering-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.services-page-offering-card img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-}
-
-.services-page-offering-card h3 {
-    font-family: 'Fredoka One', cursive;
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.services-page-offering-card p {
-    font-size: 1.1rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-/* Services Benefits Section */
-.services-page-benefits-section {
-    padding: 100px 0;
-    background-color: var(--light-text);
-}
-
-.services-page-benefits-list {
-    list-style-type: none;
-    padding: 0;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.services-page-benefits-list li {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    margin-bottom: 20px;
-    padding-left: 40px;
-    position: relative;
-}
-
-.services-page-benefits-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary-color);
+.services-hero p {
     font-size: 1.5rem;
-    font-weight: bold;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
-/* Services Pricing Section */
-.services-page-pricing-section {
+.services-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(58, 90, 64, 0.6), rgba(58, 90, 64, 0.8));
+    z-index: 1;
+}
+
+/* Services Overview */
+.services-overview {
     padding: 100px 0;
     background-color: var(--accent-color);
 }
 
-.services-page-pricing-table {
+.services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 50px;
 }
 
-.services-page-pricing-item {
+.service-card {
     background-color: var(--light-text);
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 40px;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
 }
 
-.services-page-pricing-item:hover {
+.service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.services-page-pricing-item h3 {
-    font-family: 'Fredoka One', cursive;
-    font-size: 2rem;
+.service-icon {
+    font-size: 3rem;
     color: var(--primary-color);
     margin-bottom: 20px;
 }
 
-.services-page-pricing-item p {
-    font-size: 1.3rem;
+.service-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 1.1rem;
     color: var(--text-color);
-    margin-bottom: 10px;
-}
-
-/* Services Contact Section */
-.services-page-contact-section {
-    padding: 100px 0;
-    background-color: var(--primary-color);
-    color: var(--light-text);
-    text-align: center;
-}
-
-.services-page-contact-section h2 {
-    color: var(--light-text);
     margin-bottom: 20px;
 }
 
-.services-page-contact-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-/* Add this to your CSS file */
-.services-page-offering-card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+.service-link {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
 }
 
-.services-page-offering-card.animate {
-    opacity: 1;
-    transform: translateY(0);
+.service-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
 }
+
+.service-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* Service Detail Sections */
+.service-detail {
+    padding: 100px 0;
+}
+
+.service-detail:nth-child(odd) {
+    background-color: var(--accent-color);
+}
+
+.service-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.service-text {
+    flex: 1;
+}
+
+.service-text h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.service-text p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Continuing service-detail styles */
+.service-text ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.service-text ul li {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.service-text ul li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.service-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.service-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.service-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 100px 0;
+    background-color: var(--accent-color);
+}
+
+.pricing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.pricing-toggle span {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 0 15px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--secondary-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.pricing-card {
+    background-color: var(--light-text);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-card.featured {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    transform: scale(1.05);
+}
+
+.pricing-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.pricing-card .price {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.pricing-card .price .period {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.pricing-card .features {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.pricing-card .features li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.pricing-card .cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.pricing-card.featured .cta-button {
+    background-color: var(--light-text);
+    color: var(--primary-color);
+}
+
+.pricing-card .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Booking Section */
+.booking-section {
+    padding: 100px 0;
+    background-color: var(--light-text);
+}
+
+.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.booking-form .cta-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.booking-form .cta-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .services-page-hero h1 {
-        font-size: 2.5rem;
+    .services-hero h1 {
+        font-size: 3rem;
     }
 
-    .services-page-hero p {
-        font-size: 1.1rem;
+    .services-hero p {
+        font-size: 1.2rem;
     }
 
-    .services-page-offerings-grid {
+    .service-content {
+        flex-direction: column;
+    }
+
+    .service-image {
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .pricing-grid {
         grid-template-columns: 1fr;
     }
 
-    .services-page-pricing-table {
-        grid-template-columns: 1fr;
+    .pricing-card.featured {
+        transform: scale(1);
+    }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 
