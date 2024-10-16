@@ -602,7 +602,9 @@ main {
     justify-content: space-between;
     align-items: center; /* Center items horizontally */
 }
-
+.hero-image:first-child {
+    opacity: 1;
+}
 .cta-container {
     display: flex;
     justify-content: center;
