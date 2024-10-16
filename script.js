@@ -1,5 +1,9 @@
-// main.js
+// Main JavaScript file for Downtown Doggies
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Add content-loaded class to body
+    document.body.classList.add('content-loaded');
+
     // Service card animations
     const serviceCards = document.querySelectorAll('.service-card');
     const observer = new IntersectionObserver((entries) => {
@@ -18,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // CTA button hover effect
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) {
-        ctaButton.addEventListener('mouseenter', () => ctaButton.style.transform = 'translateY(-3px)');
-        ctaButton.addEventListener('mouseleave', () => ctaButton.style.transform = 'translateY(0)');
-    }
+    const ctaButtons = document.querySelectorAll('.cta-button, .cta-btn');
+    ctaButtons.forEach(button => {
+        button.addEventListener('mouseenter', () => button.style.transform = 'translateY(-3px)');
+        button.addEventListener('mouseleave', () => button.style.transform = 'translateY(0)');
+    });
 
     // Fade-in animations for various elements
-    const fadeElements = document.querySelectorAll('.section-title, .lead, .text-content p, .services-highlight, .cta-button');
+    const fadeElements = document.querySelectorAll('.section-title, .lead, .text-content p, .services-highlight, .cta-button, .about-cta-button');
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -39,8 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Gallery item hover effect
     const galleryItems = document.querySelectorAll('.gallery-item');
     galleryItems.forEach(item => {
-        item.addEventListener('mouseover', () => item.style.zIndex = '10');
-        item.addEventListener('mouseout', () => item.style.zIndex = '1');
+        item.addEventListener('mouseover', () => {
+            item.style.zIndex = '10';
+            item.querySelector('img').style.transform = 'scale(1.1)';
+        });
+        item.addEventListener('mouseout', () => {
+            item.style.zIndex = '1';
+            item.querySelector('img').style.transform = 'scale(1)';
+        });
     });
 
     // Paw print animation
@@ -70,9 +80,19 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            alert(`Thank you for subscribing with: ${email}`);
-            this.reset();
+            if (validateEmail(email)) {
+                alert(`Thank you for subscribing with: ${email}`);
+                this.reset();
+            } else {
+                alert('Please enter a valid email address.');
+            }
         });
+    }
+
+    // Email validation function
+    function validateEmail(email) {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
     }
 
     // Social links hover effect
@@ -137,4 +157,134 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Lazy loading for images
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                lazyImageObserver.unobserve(img);
+            }
+        });
+    });
+    lazyImages.forEach(img => lazyImageObserver.observe(img));
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuToggle.classList.toggle('active');
+        });
+    }
+
+    // Scroll-to-top button
+    const scrollToTopButton = document.createElement('button');
+    scrollToTopButton.innerHTML = '&#8593;';
+    scrollToTopButton.className = 'scroll-to-top';
+    document.body.appendChild(scrollToTopButton);
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            scrollToTopButton.style.display = 'block';
+        } else {
+            scrollToTopButton.style.display = 'none';
+        }
+    });
+
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Testimonial slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    let currentTestimonialIndex = 0;
+
+    function showNextTestimonial() {
+        testimonials[currentTestimonialIndex].classList.remove('active');
+        currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+        testimonials[currentTestimonialIndex].classList.add('active');
+    }
+
+    if (testimonials.length > 0) {
+        testimonials[0].classList.add('active');
+        setInterval(showNextTestimonial, 5000);
+    }
+
+    // Service area map interaction
+    const mapSection = document.querySelector('.map-section');
+    const mapOverlay = document.querySelector('.map-overlay');
+    if (mapSection && mapOverlay) {
+        mapSection.addEventListener('mouseenter', () => mapOverlay.style.opacity = '1');
+        mapSection.addEventListener('mouseleave', () => mapOverlay.style.opacity = '0');
+    }
+
+    // Dynamic copyright year
+    const copyrightYear = document.querySelector('.copyright-year');
+    if (copyrightYear) {
+        copyrightYear.textContent = new Date().getFullYear();
+    }
+
+    // Form input animation
+    const formInputs = document.querySelectorAll('.form-input');
+    formInputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.labels[0].classList.add('active');
+        });
+        input.addEventListener('blur', () => {
+            if (input.value === '') {
+                input.labels[0].classList.remove('active');
+            }
+        });
+    });
+
+    // Service card flip effect
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
+    });
+
+    // Animated counter for statistics
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-target'));
+        const duration = 2000; // ms
+        const step = target / (duration / 16); // 60 fps
+        let current = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            el.textContent = Math.round(current);
+        }, 16);
+    }
+
+    const counterElements = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counterElements.forEach(el => counterObserver.observe(el));
 });
