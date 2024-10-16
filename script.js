@@ -377,3 +377,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 });
+// Add this to your existing script.js file
+document.addEventListener('DOMContentLoaded', function() {
+    const heroImages = document.querySelectorAll('.hero-image');
+    let currentImageIndex = 0;
+
+    function cycleHeroImages() {
+        heroImages[currentImageIndex].style.opacity = '0';
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+        heroImages[currentImageIndex].style.opacity = '1';
+    }
+
+    // Set initial state
+    heroImages.forEach((img, index) => {
+        img.style.opacity = index === 0 ? '1' : '0';
+        img.style.transition = 'opacity 1s ease-in-out';
+    });
+
+    // Start the slideshow
+    setInterval(cycleHeroImages, 5000); // Change image every 5 seconds
+});
