@@ -204,23 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
         copyrightYear.textContent = new Date().getFullYear();
     }
 
-    // Back to top button
-    const backToTopButton = document.querySelector('.back-to-top');
-    if (backToTopButton) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
