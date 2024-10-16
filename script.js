@@ -1,3 +1,4 @@
+// main.js
 document.addEventListener('DOMContentLoaded', function() {
     // Service card animations
     const serviceCards = document.querySelectorAll('.service-card');
@@ -136,20 +137,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-
-// Loader functionality
-window.addEventListener('load', function() {
-    const loaderContainer = document.querySelector('.loader-container');
-    const content = document.body.children;
-    
-    setTimeout(function() {
-        if (loaderContainer) {
-            loaderContainer.style.opacity = '0';
-            loaderContainer.style.visibility = 'hidden';
-        }
-        for (let i = 1; i < content.length; i++) {
-            content[i].style.opacity = '1';
-        }
-    }, 2000); // 2 second delay
 });
