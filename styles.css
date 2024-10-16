@@ -1692,7 +1692,17 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
+/* Add this to your CSS file */
+.services-page-offering-card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
+.services-page-offering-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
     .services-page-hero h1 {
