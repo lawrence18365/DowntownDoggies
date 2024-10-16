@@ -955,7 +955,7 @@
       .services-grid {
         grid-template-columns: 1fr;
       }
-    }
+
 .booking {
         background-color: var(--accent-color);
         padding: 4rem 0;
