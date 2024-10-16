@@ -842,7 +842,10 @@ main {
         text-decoration: underline;
     }
 }
-  
+  .faq-section{
+                background-color: var(--accent-color);
+            }
+    
     .faq {
                 background-color: var(--accent-color);
             }
