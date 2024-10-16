@@ -15,7 +15,19 @@
                 margin: 0;
                 padding: 0;
             }
-    
+    body {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.loader-container {
+    /* Your existing loader styles */
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
             body {
                 font-family: 'Roboto', sans-serif;
                 line-height: 1.6;
