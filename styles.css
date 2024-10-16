@@ -1500,171 +1500,219 @@ main {
 .footer-legal a:hover {
     color: var(--secondary-color);
 }
-/* Services Page Specific Styles */
+/* === Services Page Styles === */
 
-.services-hero {
-    background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
+/* Services Hero Section */
+.services-page-hero {
+    height: 60vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
     background-size: cover;
     background-position: center;
-    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
-.services-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.services-hero .hero-content {
+.services-page-hero-content {
     text-align: center;
-    color: #fff;
-    position: relative;
-    z-index: 1;
+    color: var(--light-text);
+    max-width: 800px;
+    padding: 0 20px;
 }
 
-.services-hero h1 {
+.services-page-hero h1 {
     font-family: 'Fredoka One', cursive;
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.services-hero p {
+.services-page-hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.services-page-cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 50px;
     font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.detailed-service {
-    padding: 80px 0;
-    background-color: #f9f9f9;
+.services-page-cta-button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-.service-content {
-    display: flex;
+/* Services Offerings Section */
+.services-page-offerings-section {
+    padding: 100px 0;
+    background-color: var(--accent-color);
+}
+
+.services-page-offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    align-items: center;
+    margin-top: 50px;
 }
 
-.service-description {
-    flex: 1;
+.services-page-offering-card {
+    background-color: var(--light-text);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.service-image {
-    flex: 1;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+.services-page-offering-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-.service-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+.services-page-offering-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
 }
 
-.pricing-grid {
+.services-page-offering-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.services-page-offering-card p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Services Benefits Section */
+.services-page-benefits-section {
+    padding: 100px 0;
+    background-color: var(--light-text);
+}
+
+.services-page-benefits-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.services-page-benefits-list li {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    padding-left: 40px;
+    position: relative;
+}
+
+.services-page-benefits-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Services Pricing Section */
+.services-page-pricing-section {
+    padding: 100px 0;
+    background-color: var(--accent-color);
+}
+
+.services-page-pricing-table {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
-.pricing-card {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 30px;
+.services-page-pricing-item {
+    background-color: var(--light-text);
+    border-radius: 20px;
+    padding: 40px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.pricing-card:hover {
-    transform: translateY(-5px);
+.services-page-pricing-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
-.pricing-card.featured {
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-.pricing-card h3 {
+.services-page-pricing-item h3 {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.pricing-card .price {
     font-size: 2rem;
-    font-weight: bold;
+    color: var(--primary-color);
     margin-bottom: 20px;
 }
 
-.pricing-features {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
-}
-
-.pricing-features li {
+.services-page-pricing-item p {
+    font-size: 1.3rem;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
-.booking-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Services Contact Section */
+.services-page-contact-section {
+    padding: 100px 0;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
 }
 
-.form-group {
+.services-page-contact-section h2 {
+    color: var(--light-text);
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.services-page-contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .services-page-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .services-page-hero p {
+        font-size: 1.1rem;
+    }
+
+    .services-page-offerings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-page-pricing-table {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-.services-hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-    .service-content {
-        flex-direction: column;
-    }
-
-    .service-image {
-        order: -1;
-    }
-
-    .pricing-grid {
-        grid-template-columns: 1fr;
-    }
     .footer-grid {
         grid-template-columns: 1fr;
     }
