@@ -22,6 +22,9 @@
                 z-index: 1000;
                 padding: 1rem 0;
             }
+main {
+    flex: 1 0 auto;
+}
     
             nav {
                 display: flex;
@@ -1307,6 +1310,7 @@
     position: relative;
     padding: 6rem 0 2rem;
     font-family: 'Roboto', sans-serif;
+    margin-top: auto; /* Push footer to bottom */
 }
 
 .footer-waves {
