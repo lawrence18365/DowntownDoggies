@@ -369,9 +369,69 @@ document.addEventListener('DOMContentLoaded', function() {
     counterElements.forEach(el => counterObserver.observe(el));
 });
 
-// JavaScript for Services Page
+// services-page.js
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate hero content
+    gsap.to('.services-hero h1', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.5
+    });
+
+    gsap.to('.services-hero p', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.8
+    });
+
+    // Animate service cards
+    gsap.utils.toArray('.service-card').forEach((card, index) => {
+        gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 80%'
+            },
+            delay: index * 0.2
+        });
+    });
+
+    // Animate service images
+    gsap.utils.toArray('.service-image').forEach(image => {
+        gsap.to(image, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: image,
+                start: 'top 80%'
+            }
+        });
+    });
+
+    // Pricing toggle functionality
+    const pricingSwitch = document.getElementById('pricing-switch');
+    const monthlyPrices = document.querySelectorAll('.price .monthly');
+    const yearlyPrices = document.querySelectorAll('.price .yearly');
+
+    pricingSwitch.addEventListener('change', function() {
+        if (this.checked) {
+            monthlyPrices.forEach(price => price.style.display = 'none');
+            yearlyPrices.forEach(price => price.style.display = 'inline');
+        } else {
+            monthlyPrices.forEach(price => price.style.display = 'inline');
+            yearlyPrices.forEach(price => price.style.display = 'none');
+        }
+    });
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -382,43 +442,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Animate services cards on scroll
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.services-page-offering-card').forEach(card => {
-        observer.observe(card);
+    // Header scroll effect
+    const header = document.querySelector('.services-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 
-    // Pricing toggle functionality (if needed)
-    const pricingToggle = document.getElementById('pricing-toggle');
-    const pricingItems = document.querySelectorAll('.services-page-pricing-item');
-
-    if (pricingToggle) {
-        pricingToggle.addEventListener('change', function() {
-            pricingItems.forEach(item => {
-                const monthlyPrice = item.querySelector('.monthly-price');
-                const yearlyPrice = item.querySelector('.yearly-price');
-                if (this.checked) {
-                    monthlyPrice.style.display = 'none';
-                    yearlyPrice.style.display = 'block';
-                } else {
-                    monthlyPrice.style.display = 'block';
-                    yearlyPrice.style.display = 'none';
-                }
-            });
-        });
-    }
+    // Form submission (you'd replace this with your actual form handling logic)
+    const bookingForm = document.querySelector('.booking-form');
+    bookingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for booking! We\'ll be in touch soon.');
+        this.reset();
+    });
 });
