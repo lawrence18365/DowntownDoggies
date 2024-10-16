@@ -6,7 +6,60 @@
     <title>Our Services - Downtown Doggies</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="services-styles.css">
+    <style>
+        .services-hero {
+            background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--overlay-color);
+        }
+        .services-hero .hero-content {
+            text-align: center;
+            color: var(--light-text);
+            position: relative;
+            z-index: 1;
+        }
+        .detailed-service {
+            padding: 4rem 0;
+        }
+        .service-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .service-description {
+            flex: 1;
+        }
+        .service-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .service-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .service-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,11 +74,6 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </nav>
         </div>
     </header>
@@ -38,7 +86,7 @@
             </div>
         </section>
 
-        <section id="services-overview" class="section">
+        <section id="services-overview" class="section services">
             <div class="container">
                 <h2 class="section-title">What We Offer</h2>
                 <p class="section-subtitle">At Downtown Doggies, we provide a range of services to keep your pets happy, healthy, and thriving.</p>
@@ -157,88 +205,16 @@
             </div>
         </section>
 
-        <section id="pricing" class="section">
+        <section id="booking" class="section booking">
             <div class="container">
-                <h2 class="section-title">Our Pricing</h2>
-                <p class="section-subtitle">Transparent and flexible pricing to suit your pet's needs</p>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>Dog Walking</h3>
-                        <div class="price">From $25</div>
-                        <ul class="pricing-features">
-                            <li>30-minute walk: $25</li>
-                            <li>60-minute walk: $40</li>
-                            <li>Group walks available</li>
-                            <li>Discounts for regular bookings</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book Now</a>
-                    </div>
-                    <div class="pricing-card featured">
-                        <h3>Pet Sitting</h3>
-                        <div class="price">From $50</div>
-                        <ul class="pricing-features">
-                            <li>Day visit (1 hour): $50</li>
-                            <li>Overnight stay: $80</li>
-                            <li>Multiple pet discounts</li>
-                            <li>Holiday rates may apply</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book Now</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Puppy Training</h3>
-                        <div class="price">From $60</div>
-                        <ul class="pricing-features">
-                            <li>Single session (1 hour): $60</li>
-                            <li>Package of 5 sessions: $250</li>
-                            <li>Small group classes available</li>
-                            <li>Customized training plans</li>
-                        </ul>
-                        <a href="#booking" class="cta-button">Book Now</a>
+                <h2 class="section-title">Book a Service</h2>
+                <p class="section-subtitle">Ready to give your pet the best care? Book a service now!</p>
+                <div class="calendar-container">
+                    <div class="calendar-placeholder">
+                        <p>Calendar integration coming soon!</p>
+                        <p>Please contact us to schedule an appointment.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="booking" class="section">
-            <div class="container">
-                <h2 class="section-title">Book Our Services</h2>
-                <p class="section-subtitle">Ready to give your pet the best care? Book a service now!</p>
-                <form id="booking-form" class="booking-form">
-                    <div class="form-group">
-                        <label for="service">Select Service:</label>
-                        <select id="service" name="service" required>
-                            <option value="">Choose a service</option>
-                            <option value="dog-walking">Dog Walking</option>
-                            <option value="pet-sitting">Pet Sitting</option>
-                            <option value="puppy-training">Puppy Training</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Preferred Date:</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="time">Preferred Time:</label>
-                        <input type="time" id="time" name="time" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="name">Your Name:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Your Phone:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Additional Information:</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="cta-button">Book Now</button>
-                </form>
             </div>
         </section>
     </main>
@@ -304,6 +280,19 @@
 
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
-    <script src="services-script.js"></script>
+    <script>
+        // Additional JavaScript for the services page
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceLinks = document.querySelectorAll('.service-link');
+            serviceLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
