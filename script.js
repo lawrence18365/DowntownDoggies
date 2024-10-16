@@ -1,24 +1,56 @@
-// Main JavaScript file for Downtown Doggies
+// Master JavaScript file for Downtown Doggies
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
     // Add content-loaded class to body
     document.body.classList.add('content-loaded');
 
+    // Animate hero content
+    gsap.to('.services-hero h1', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.5
+    });
+
+    gsap.to('.services-hero p', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.8
+    });
+
     // Service card animations
     const serviceCards = document.querySelectorAll('.service-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
+    gsap.utils.toArray('.service-card').forEach((card, index) => {
+        gsap.to(card, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 80%'
+            },
+            delay: index * 0.2
         });
-    }, { threshold: 0.1 });
 
-    serviceCards.forEach(card => {
-        observer.observe(card);
         card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-10px)');
         card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0)');
+    });
+
+    // Animate service images
+    gsap.utils.toArray('.service-image').forEach(image => {
+        gsap.to(image, {
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            scrollTrigger: {
+                trigger: image,
+                start: 'top 80%'
+            }
+        });
     });
 
     // CTA button hover effect
@@ -68,11 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function startPawPrints() {
-        setInterval(createPawPrint, 2000);
-    }
-
-    startPawPrints();
+    setInterval(createPawPrint, 2000);
 
     // Newsletter form submission
     const newsletterForm = document.querySelector('.newsletter-form');
@@ -269,37 +297,49 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { threshold: 0.5 });
 
     counterElements.forEach(el => counterObserver.observe(el));
-});
-// Services Page Specific Scripts
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for service links
-    const serviceLinks = document.querySelectorAll('.service-link');
-    serviceLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-    });
+    // Pricing toggle functionality
+    const pricingSwitch = document.getElementById('pricing-switch');
+    const monthlyPrices = document.querySelectorAll('.price .monthly');
+    const yearlyPrices = document.querySelectorAll('.price .yearly');
 
-    // Form validation and submission
-    const bookingForm = document.getElementById('booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (validateForm()) {
-                // Simulating form submission
-                alert('Booking submitted successfully! We will contact you shortly.');
-                bookingForm.reset();
+    if (pricingSwitch) {
+        pricingSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                monthlyPrices.forEach(price => price.style.display = 'none');
+                yearlyPrices.forEach(price => price.style.display = 'inline');
+            } else {
+                monthlyPrices.forEach(price => price.style.display = 'inline');
+                yearlyPrices.forEach(price => price.style.display = 'none');
             }
         });
     }
 
-    function validateForm() {
+    // Header scroll effect
+    const header = document.querySelector('.services-header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Booking form submission
+    const bookingForm = document.querySelector('.booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm(this)) {
+                alert('Thank you for booking! We\'ll be in touch soon.');
+                this.reset();
+            }
+        });
+    }
+
+    function validateForm(form) {
         let isValid = true;
-        const requiredFields = bookingForm.querySelectorAll('[required]');
+        const requiredFields = form.querySelectorAll('[required]');
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
@@ -315,148 +355,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
         return isValid;
     }
-
-    // Service card hover effect
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-        });
-    });
-
-    // Pricing toggle (if you want to add monthly/yearly pricing option)
-    const pricingToggle = document.getElementById('pricing-toggle');
-    const priceElements = document.querySelectorAll('.price');
-    if (pricingToggle) {
-        pricingToggle.addEventListener('change', function() {
-            priceElements.forEach(el => {
-                const monthlyPrice = el.getAttribute('data-monthly');
-                const yearlyPrice = el.getAttribute('data-yearly');
-                el.textContent = this.checked ? yearlyPrice : monthlyPrice;
-            });
-        });
-    }
-
-    // Animated counter for statistics (if you want to add a statistics section)
-    function animateCounter(el) {
-        const target = parseInt(el.getAttribute('data-target'));
-        const duration = 2000; // ms
-        const step = target / (duration / 16); // 60 fps
-        let current = 0;
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                clearInterval(timer);
-                current = target;
-            }
-            el.textContent = Math.round(current);
-        }, 16);
-    }
-
-    const counterElements = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                counterObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counterElements.forEach(el => counterObserver.observe(el));
-});
-
-// services-page.js
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize GSAP
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate hero content
-    gsap.to('.services-hero h1', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.5
-    });
-
-    gsap.to('.services-hero p', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.8
-    });
-
-    // Animate service cards
-    gsap.utils.toArray('.service-card').forEach((card, index) => {
-        gsap.to(card, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 80%'
-            },
-            delay: index * 0.2
-        });
-    });
-
-    // Animate service images
-    gsap.utils.toArray('.service-image').forEach(image => {
-        gsap.to(image, {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: image,
-                start: 'top 80%'
-            }
-        });
-    });
-
-    // Pricing toggle functionality
-    const pricingSwitch = document.getElementById('pricing-switch');
-    const monthlyPrices = document.querySelectorAll('.price .monthly');
-    const yearlyPrices = document.querySelectorAll('.price .yearly');
-
-    pricingSwitch.addEventListener('change', function() {
-        if (this.checked) {
-            monthlyPrices.forEach(price => price.style.display = 'none');
-            yearlyPrices.forEach(price => price.style.display = 'inline');
-        } else {
-            monthlyPrices.forEach(price => price.style.display = 'inline');
-            yearlyPrices.forEach(price => price.style.display = 'none');
-        }
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Header scroll effect
-    const header = document.querySelector('.services-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // Form submission (you'd replace this with your actual form handling logic)
-    const bookingForm = document.querySelector('.booking-form');
-    bookingForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for booking! We\'ll be in touch soon.');
-        this.reset();
-    });
 });
