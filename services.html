@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Downtown Doggies</title>
+    <title>Premium Dog Services - Downtown Doggies</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="services-page.css">
 </head>
 <body>
-    <header>
+    <header class="services-header">
         <div class="container">
             <nav>
-                <a href="#" class="logo">
-                    <!-- Small logo can be added here if needed -->
+                <a href="index.html" class="logo">
+                    <img src="https://i.ibb.co/3r53wpW/image01.png" alt="Downtown Doggies Logo" class="header-logo">
                 </a>
                 <ul>
                     <li><a href="index.html#team">The Team</a></li>
-                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="services.html" class="active">Our Services</a></li>
                     <li><a href="index.html#testimonials">Our Testimonials</a></li>
                 </ul>
             </nav>
@@ -25,125 +26,182 @@
     </header>
 
     <main>
-        <section class="services-page-hero">
-            <div class="services-page-hero-overlay"></div>
-            <div class="services-page-hero-content">
-                <h1>Professional Dog Walking Services in Sydney</h1>
-                <p>Reliable and loving care for your furry friends</p>
-                <a href="#services-page-contact" class="services-page-cta-button">Book a Walk</a>
+        <section class="services-hero">
+            <div class="services-hero-content">
+                <h1>Exceptional Care for Exceptional Dogs</h1>
+                <p>Discover our premium dog services tailored to meet the unique needs of your furry companion</p>
+                <a href="#services-overview" class="cta-button">Explore Our Services</a>
             </div>
+            <div class="services-hero-overlay"></div>
         </section>
 
-        <section id="services-page-offerings" class="services-page-offerings-section">
+        <section id="services-overview" class="services-overview">
             <div class="container">
-                <h2>Our Services</h2>
-                <div class="services-page-offerings-grid">
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/solo_walk.svg" alt="Solo Walk Icon">
-                        <h3>Solo Walks</h3>
-                        <p>Personalized attention for your dog with one-on-one walks.</p>
+                <h2>Our Premium Services</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-service="walking">
+                        <div class="service-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h3>Luxury Dog Walking</h3>
+                        <p>Tailored walks in Sydney's most scenic locations</p>
+                        <a href="#walking" class="service-link">Learn More</a>
                     </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/group_walk.svg" alt="Group Walk Icon">
-                        <h3>Group Walks</h3>
-                        <p>Fun and social walks with other friendly dogs.</p>
+                    <div class="service-card" data-service="sitting">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Elite Pet Sitting</h3>
+                        <p>Personalized in-home care for your furry friend</p>
+                        <a href="#sitting" class="service-link">Learn More</a>
                     </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/puppy_visit.svg" alt="Puppy Visit Icon">
-                        <h3>Puppy Visits</h3>
-                        <p>Special care visits for your puppies, including playtime and feeding.</p>
+                    <div class="service-card" data-service="training">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Advanced Training</h3>
+                        <p>Expert behavior modification and skill development</p>
+                        <a href="#training" class="service-link">Learn More</a>
                     </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/dog_running.svg" alt="Dog Running Icon">
-                        <h3>Dog Running</h3>
-                        <p>High-energy exercise for active dogs, ensuring they get the physical activity they need.</p>
-                    </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/pet_sitting.svg" alt="Pet Sitting Icon">
-                        <h3>Pet Sitting</h3>
-                        <p>Trusted care for your pets while you're away, with feeding, playtime, and companionship.</p>
-                    </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/daycare.svg" alt="Daycare Icon">
-                        <h3>Daycare</h3>
-                        <p>A safe space for dogs to socialize and play during the day while you're at work.</p>
-                    </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/grooming.svg" alt="Grooming Icon">
-                        <h3>Grooming Services</h3>
-                        <p>Convenient grooming to keep your dog looking clean and fresh.</p>
-                    </div>
-                    <div class="services-page-offering-card">
-                        <img src="path_to_icon/training.svg" alt="Training Icon">
-                        <h3>Training</h3>
-                        <p>Basic obedience training sessions to improve your dog's behavior.</p>
+                    <div class="service-card" data-service="grooming">
+                        <div class="service-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3>Spa & Grooming</h3>
+                        <p>Luxurious grooming experiences for pampered pooches</p>
+                        <a href="#grooming" class="service-link">Learn More</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services-page-benefits" class="services-page-benefits-section">
+        <section id="walking" class="service-detail">
             <div class="container">
-                <h2>Why Choose Us?</h2>
-                <ul class="services-page-benefits-list">
-                    <li>Experienced and passionate dog walkers</li>
-                    <li>Flexible scheduling to suit your needs</li>
-                    <li>Fully insured and background-checked staff</li>
-                    <li>Real-time updates and photos of your dog's walk</li>
-                    <li>Eco-friendly and responsible care for your pets</li>
-                    <li>Trusted by the local community with a strong reputation</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="services-page-pricing" class="services-page-pricing-section">
-            <div class="container">
-                <h2>Pricing</h2>
-                <div class="services-page-pricing-table">
-                    <div class="services-page-pricing-item">
-                        <h3>Solo Walks</h3>
-                        <p>30 minutes: $25</p>
-                        <p>60 minutes: $40</p>
+                <div class="service-content">
+                    <div class="service-text">
+                        <h2>Luxury Dog Walking</h2>
+                        <p>Our premium dog walking service goes beyond a simple stroll. We offer:</p>
+                        <ul>
+                            <li>Customized routes tailored to your dog's energy level and preferences</li>
+                            <li>Small group walks (maximum 3 dogs) or private one-on-one sessions</li>
+                            <li>Real-time GPS tracking and detailed post-walk reports</li>
+                            <li>Hydration stations and gourmet treats during walks</li>
+                            <li>Trained professionals skilled in canine body language and first aid</li>
+                        </ul>
+                        <a href="#booking" class="cta-button">Book a Walk</a>
                     </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Group Walks</h3>
-                        <p>30 minutes: $20</p>
-                        <p>60 minutes: $35</p>
-                    </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Puppy Visits</h3>
-                        <p>Per visit (30 minutes): $30</p>
-                    </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Dog Running</h3>
-                        <p>Per session (45 minutes): $40</p>
-                    </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Pet Sitting</h3>
-                        <p>Overnight stay: $70</p>
-                        <p>Daytime visit (per hour): $25</p>
-                    </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Grooming</h3>
-                        <p>Starting at $50 (depending on dog size)</p>
-                    </div>
-                    <div class="services-page-pricing-item">
-                        <h3>Training</h3>
-                        <p>Per session (1 hour): $50</p>
+                    <div class="service-image">
+                        <img src="https://i.ibb.co/MgMRrPK/THUMBNAIL-476.jpg" alt="Luxury Dog Walking">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services-page-contact" class="services-page-contact-section">
+        <!-- Repeat similar sections for other services (sitting, training, grooming) -->
+
+        <section id="pricing" class="pricing-section">
             <div class="container">
-                <h2>Contact Us</h2>
-                <p>Reach out to us for any questions or to book a walk for your furry friend!</p>
-                <a href="index.html#contact" class="services-page-cta-button">Go to Contact Form</a>
+                <h2>Tailored Pricing Plans</h2>
+                <div class="pricing-toggle">
+                    <span>Monthly</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pricing-switch">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Yearly</span>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Essential Care</h3>
+                        <div class="price">
+                            <span class="monthly">$199</span>
+                            <span class="yearly">$1,990</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features">
+                            <li>3 walks per week</li>
+                            <li>Monthly grooming session</li>
+                            <li>Basic training support</li>
+                        </ul>
+                        <a href="#booking" class="cta-button">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <h3>Premium Package</h3>
+                        <div class="price">
+                            <span class="monthly">$399</span>
+                            <span class="yearly">$3,990</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features">
+                            <li>5 walks per week</li>
+                            <li>Bi-weekly grooming session</li>
+                            <li>Advanced training sessions</li>
+                            <li>Weekend pet sitting</li>
+                        </ul>
+                        <a href="#booking" class="cta-button">Choose Plan</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Luxury Experience</h3>
+                        <div class="price">
+                            <span class="monthly">$599</span>
+                            <span class="yearly">$5,990</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <ul class="features">
+                            <li>Daily walks</li>
+                            <li>Weekly spa treatments</li>
+                            <li>Personalized training program</li>
+                            <li>24/7 pet sitting availability</li>
+                        </ul>
+                        <a href="#booking" class="cta-button">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking" class="booking-section">
+            <div class="container">
+                <h2>Book Your Premium Service</h2>
+                <form class="booking-form">
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Choose a service</option>
+                            <option value="walking">Luxury Dog Walking</option>
+                            <option value="sitting">Elite Pet Sitting</option>
+                            <option value="training">Advanced Training</option>
+                            <option value="grooming">Spa & Grooming</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Preferred Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Preferred Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Special Requests</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Book Now</button>
+                </form>
             </div>
         </section>
     </main>
-
     <footer class="site-footer">
         <div class="footer-waves">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -198,7 +256,8 @@
             <p>We acknowledge the traditional custodians of the land on which we walk, play, and rest - The Gadigal People of the Eora Nation. We pay our respects to elders past and present. ❤️💛🖤</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="services-page.js"></script>
 </body>
 </html>
