@@ -416,7 +416,16 @@ main {
     radial-gradient(circle at 90% 80%, rgba(77, 204, 189, 0.05) 0%, transparent 20%);
   z-index: 0;
 }
+.service-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
+.service-card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
