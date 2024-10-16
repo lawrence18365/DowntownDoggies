@@ -1512,7 +1512,7 @@ main {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left;
 }
 
 .detailed-service {
@@ -1620,6 +1620,12 @@ main {
 }
 
 @media (max-width: 768px) {
+.services-hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
     .service-content {
         flex-direction: column;
     }
