@@ -270,3 +270,101 @@ document.addEventListener('DOMContentLoaded', function() {
 
     counterElements.forEach(el => counterObserver.observe(el));
 });
+// Services Page Specific Scripts
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for service links
+    const serviceLinks = document.querySelectorAll('.service-link');
+    serviceLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+
+    // Form validation and submission
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm()) {
+                // Simulating form submission
+                alert('Booking submitted successfully! We will contact you shortly.');
+                bookingForm.reset();
+            }
+        });
+    }
+
+    function validateForm() {
+        let isValid = true;
+        const requiredFields = bookingForm.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        });
+
+        if (!isValid) {
+            alert('Please fill in all required fields.');
+        }
+
+        return isValid;
+    }
+
+    // Service card hover effect
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+        });
+    });
+
+    // Pricing toggle (if you want to add monthly/yearly pricing option)
+    const pricingToggle = document.getElementById('pricing-toggle');
+    const priceElements = document.querySelectorAll('.price');
+    if (pricingToggle) {
+        pricingToggle.addEventListener('change', function() {
+            priceElements.forEach(el => {
+                const monthlyPrice = el.getAttribute('data-monthly');
+                const yearlyPrice = el.getAttribute('data-yearly');
+                el.textContent = this.checked ? yearlyPrice : monthlyPrice;
+            });
+        });
+    }
+
+    // Animated counter for statistics (if you want to add a statistics section)
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-target'));
+        const duration = 2000; // ms
+        const step = target / (duration / 16); // 60 fps
+        let current = 0;
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                clearInterval(timer);
+                current = target;
+            }
+            el.textContent = Math.round(current);
+        }, 16);
+    }
+
+    const counterElements = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counterElements.forEach(el => counterObserver.observe(el));
+});
