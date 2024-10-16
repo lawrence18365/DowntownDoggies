@@ -1,30 +1,41 @@
 // Master JavaScript file for Downtown Doggies
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize GSAP
-    gsap.registerPlugin(ScrollTrigger);
+    // Initialize GSAP if available
+    if (typeof gsap !== 'undefined' && gsap.registerPlugin) {
+        gsap.registerPlugin(ScrollTrigger);
+    } else {
+        console.warn('GSAP or ScrollTrigger not loaded. Some animations may not work.');
+    }
 
     // Add content-loaded class to body
     document.body.classList.add('content-loaded');
 
     // Animate hero content
-    gsap.to('.services-hero h1', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.5
-    });
+    const heroTitle = document.querySelector('.services-hero h1');
+    const heroParagraph = document.querySelector('.services-hero p');
 
-    gsap.to('.services-hero p', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.8
-    });
+    if (heroTitle) {
+        gsap.to(heroTitle, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.5
+        });
+    }
+
+    if (heroParagraph) {
+        gsap.to(heroParagraph, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.8
+        });
+    }
 
     // Service card animations
     const serviceCards = document.querySelectorAll('.service-card');
-    gsap.utils.toArray('.service-card').forEach((card, index) => {
+    serviceCards.forEach((card, index) => {
         gsap.to(card, {
             opacity: 1,
             y: 0,
@@ -41,7 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Animate service images
-    gsap.utils.toArray('.service-image').forEach(image => {
+    const serviceImages = document.querySelectorAll('.service-image');
+    serviceImages.forEach(image => {
         gsap.to(image, {
             opacity: 1,
             x: 0,
@@ -77,11 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
     galleryItems.forEach(item => {
         item.addEventListener('mouseover', () => {
             item.style.zIndex = '10';
-            item.querySelector('img').style.transform = 'scale(1.1)';
+            const img = item.querySelector('img');
+            if (img) img.style.transform = 'scale(1.1)';
         });
         item.addEventListener('mouseout', () => {
             item.style.zIndex = '1';
-            item.querySelector('img').style.transform = 'scale(1)';
+            const img = item.querySelector('img');
+            if (img) img.style.transform = 'scale(1)';
         });
     });
 
@@ -190,9 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -253,11 +270,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const formInputs = document.querySelectorAll('.form-input');
     formInputs.forEach(input => {
         input.addEventListener('focus', () => {
-            input.labels[0].classList.add('active');
+            const label = input.labels[0];
+            if (label) label.classList.add('active');
         });
         input.addEventListener('blur', () => {
-            if (input.value === '') {
-                input.labels[0].classList.remove('active');
+            const label = input.labels[0];
+            if (label && input.value === '') {
+                label.classList.remove('active');
             }
         });
     });
@@ -317,13 +336,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Header scroll effect
     const header = document.querySelector('.services-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // Booking form submission
     const bookingForm = document.querySelector('.booking-form');
