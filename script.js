@@ -192,24 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Scroll-to-top button
-    const scrollToTopButton = document.createElement('button');
-    scrollToTopButton.innerHTML = '&#8593;';
-    scrollToTopButton.className = 'scroll-to-top';
-    document.body.appendChild(scrollToTopButton);
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
-    });
-
-    scrollToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
     // Testimonial slider
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonialIndex = 0;
