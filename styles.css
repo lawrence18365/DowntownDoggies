@@ -446,6 +446,8 @@ main {
         .cta-image {
             animation: floatAnimation 3s ease-in-out infinite;
         }
+/* Services Section Styles */
+
 .services {
   background-color: white;
   padding: 100px 0;
@@ -465,48 +467,8 @@ main {
     radial-gradient(circle at 90% 80%, rgba(77, 204, 189, 0.05) 0%, transparent 20%);
   z-index: 0;
 }
-/* Update the initial state of service cards */
-.service-card {
-    opacity: 1;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
 
-.service-card.animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Improve layout for service detail sections */
-.service-detail {
-    padding: 100px 0;
-}
-
-.service-detail:nth-child(even) .service-content {
-    flex-direction: row-reverse;
-}
-
-.service-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.service-text, .service-image {
-    flex: 1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .service-content {
-        flex-direction: column;
-    }
-
-    .service-detail:nth-child(even) .service-content {
-        flex-direction: column;
-    }
-}
-
+/* Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -515,27 +477,29 @@ main {
   z-index: 1;
 }
 
+/* Section Titles */
 .section-title {
-    font-family: 'Fredoka One', sans-serif;
-    font-size: 3rem;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 50px;
-    position: relative;
-    padding-bottom: 15px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 3rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-bottom: 15px;
 }
 
 .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-    border-radius: 2px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
 }
+
 .section-subtitle {
   font-size: 1.2rem;
   color: var(--text-color);
@@ -546,6 +510,7 @@ main {
   margin-right: auto;
 }
 
+/* Services Grid */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -553,40 +518,54 @@ main {
   margin-bottom: 60px;
 }
 
+/* Service Card */
 .service-card {
+  opacity: 0; /* Initially hidden */
+  transform: translateY(20px); /* Initially shifted down */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  
   background-color: var(--accent-color);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  
+  /* Decorative Line */
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
+/* Animate Service Card */
+.service-card.animate {
+  opacity: 1; /* Fade in */
+  transform: translateY(0); /* Slide up */
 }
 
+/* Hover Effects on Service Card */
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .service-card:hover::before {
-  transform: scaleX(1);
+  transform: scaleX(1); /* Animate decorative line */
 }
 
+/* Service Icon */
 .service-icon {
   width: 70px;
   height: 70px;
@@ -596,7 +575,8 @@ main {
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
+  z-index: 2; /* Ensure it's above the decorative line */
 }
 
 .service-card:hover .service-icon {
@@ -607,28 +587,33 @@ main {
   width: 40px;
   height: 40px;
   color: var(--primary-color);
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .service-card:hover .service-icon svg {
   color: var(--light-text);
 }
 
+/* Service Title */
 .service-card h3 {
   font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 20px;
   font-weight: 600;
+  z-index: 2; /* Ensure text is above decorative elements */
 }
 
+/* Service Description */
 .service-card p {
   font-size: 1.1rem;
   color: var(--text-color);
   margin-bottom: 25px;
   line-height: 1.6;
   flex-grow: 1;
+  z-index: 2; /* Ensure text is above decorative elements */
 }
 
+/* Service Features */
 .service-features {
   list-style-type: none;
   padding: 0;
@@ -652,12 +637,13 @@ main {
   font-size: 1.2rem;
 }
 
+/* Service Link */
 .service-link {
   font-size: 1.1rem;
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   display: inline-block;
   position: relative;
   padding-bottom: 5px;
@@ -685,6 +671,35 @@ main {
   transform-origin: left;
 }
 
+/* Service Detail Sections */
+.service-detail {
+  padding: 100px 0;
+}
+
+.service-detail:nth-child(even) .service-content {
+  flex-direction: row-reverse;
+}
+
+.service-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.service-text, .service-image {
+  flex: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .service-content {
+    flex-direction: column;
+  }
+
+  .service-detail:nth-child(even) .service-content {
+    flex-direction: column;
+  }
+}
 
 
 .hero-image:first-child {
