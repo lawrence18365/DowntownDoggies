@@ -709,7 +709,7 @@ main {
     width: 100%;
     margin-top: 40px;
 }
-
+/* Existing CTA Button Styles */
 .cta-button {
     display: inline-block;
     background-color: #3A5A40;
@@ -726,6 +726,22 @@ main {
     width: auto;
     max-width: none;
 }
+
+/* New Class to Center CTA Buttons */
+.centered-cta-button {
+    display: block;              /* Converts the button to a block-level element */
+    margin: 20px auto 0;         /* Centers the button horizontally with a top margin */
+    /* Optionally, adjust the width if needed */
+    /* width: fit-content; */
+    /* Override any conflicting styles if necessary */
+}
+
+/* Optional: Add Hover Effects Specific to Centered CTA Buttons */
+.centered-cta-button:hover {
+    background-color: #2E4531; /* Darker shade for hover state */
+    color: #ffffff;            /* Ensures text remains white on hover */
+}
+
 .hero-cta-button {
     display: inline-block;
     background-color: #3A5A40;
