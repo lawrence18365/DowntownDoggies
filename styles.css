@@ -276,10 +276,17 @@ main {
 }
 
 @media (max-width: 767px) {
-    .image-gallery {
+     .image-gallery {
         max-width: 100%;
+        aspect-ratio: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
     }
 
+    .gallery-item {
+        aspect-ratio: 1 / 1;
+    }
     .text-content {
         padding: 20px;
     }
