@@ -1,21 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hero image cycling
-    const heroImages = document.querySelectorAll('.hero-image');
-    let currentImageIndex = 0;
-    
-    function cycleHeroImages() {
-        if (heroImages.length === 0) return; // Prevent errors if no images
-        heroImages[currentImageIndex].classList.remove('active');
-        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-        heroImages[currentImageIndex].classList.add('active');
-    }
-    
-    if (heroImages.length > 0) {
-        heroImages[0].classList.add('active');
-        setInterval(cycleHeroImages, 5000);
-    }
-
-   
+    // Loader
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        const loaderContainer = document.querySelector('.loader-container');
+        if (loaderContainer) {
+            setTimeout(function() {
+                loaderContainer.style.display = 'none';
+            }, 500);
+        }
+    });
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -30,6 +23,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Header scroll effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Hero image slider
+    const heroImages = document.querySelectorAll('.hero-image');
+    let currentImageIndex = 0;
+
+    function cycleHeroImages() {
+        if (heroImages.length === 0) return;
+        heroImages[currentImageIndex].classList.remove('active');
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+        heroImages[currentImageIndex].classList.add('active');
+    }
+
+    if (heroImages.length > 0) {
+        heroImages[0].classList.add('active');
+        setInterval(cycleHeroImages, 5000);
+    }
 
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -195,21 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         copyrightYear.textContent = new Date().getFullYear();
     }
 
-    // Add loaded class to body after a short delay
-    setTimeout(function() {
-        document.body.classList.add('loaded');
-    }, 100);
-
-    // Hide loader after page load
-    window.addEventListener('load', function() {
-        const loaderContainer = document.querySelector('.loader-container');
-        if (loaderContainer) {
-            loaderContainer.style.display = 'none';
-        } else {
-            console.warn('Loader container not found.');
-        }
-    });
-
     // Improve scroll performance
     let scrollTimeout;
     window.addEventListener('scroll', function() {
@@ -235,4 +239,51 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Team member bio expansion
+    const readMoreButtons = document.querySelectorAll('.read-more');
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const expandedBio = this.nextElementSibling;
+            if (expandedBio && expandedBio.classList.contains('expanded-bio')) {
+                expandedBio.style.display = expandedBio.style.display === 'none' ? 'block' : 'none';
+                this.textContent = this.textContent === 'Read More' ? 'Read Less' : 'Read More';
+            }
+        });
+    });
+
+    // Pricing toggle (if exists on the page)
+    const pricingSwitch = document.getElementById('pricing-switch');
+    if (pricingSwitch) {
+        pricingSwitch.addEventListener('change', function() {
+            const monthlyPrices = document.querySelectorAll('.price .monthly');
+            const yearlyPrices = document.querySelectorAll('.price .yearly');
+            const isYearly = this.checked;
+
+            monthlyPrices.forEach(price => price.style.display = isYearly ? 'none' : 'inline');
+            yearlyPrices.forEach(price => price.style.display = isYearly ? 'inline' : 'none');
+        });
+    }
+
+    // Animate elements on scroll
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
 });
