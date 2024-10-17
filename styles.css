@@ -1150,7 +1150,7 @@ main {
     position: relative;
     padding: 6rem 0 2rem;
     font-family: 'Roboto', sans-serif;
-    margin-top: auto; /* Push footer to bottom */
+    margin-top: auto;
 }
 
 .footer-waves {
@@ -1183,12 +1183,27 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.footer-logo-img {
+    max-width: 300px;
+    height: auto;
+    display: inline-block;
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
+    width: 100%;
 }
 
 .footer-column h3 {
@@ -1232,16 +1247,16 @@ main {
 .footer-column ul li a:hover {
     color: var(--secondary-color);
 }
-/* Footer Acknowledgment Styles */
+
 .footer-acknowledgment {
-    background-color: var(--primary-color); /* Use the same primary color as the rest of the footer */
+    background-color: var(--primary-color);
     color: #fff;
     text-align: center;
     padding: 1.5rem 20px;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    border-top: 1px solid var(--secondary-color); /* Add a border for separation */
+    border-top: 1px solid var(--secondary-color);
     margin-top: 2rem;
 }
 
@@ -1250,8 +1265,8 @@ main {
 }
 
 .footer-acknowledgment p::before {
-    content: "❤️💛🖤 ";
-    font-size: 1.2rem; /* Adjust icon size if necessary */
+    content: "❤️💙🔴 ";
+    font-size: 1.2rem;
 }
 
 .footer-acknowledgment p::after {
