@@ -465,26 +465,48 @@ main {
     radial-gradient(circle at 90% 80%, rgba(77, 204, 189, 0.05) 0%, transparent 20%);
   z-index: 0;
 }
+/* Update the initial state of service cards */
 .service-card {
-  opacity: 1; /* Make cards visible by default */
-  transform: none; /* Remove initial transform */
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .service-card.animate {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
     opacity: 1;
     transform: translateY(0);
-  }
 }
+
+/* Improve layout for service detail sections */
+.service-detail {
+    padding: 100px 0;
+}
+
+.service-detail:nth-child(even) .service-content {
+    flex-direction: row-reverse;
+}
+
+.service-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.service-text, .service-image {
+    flex: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-content {
+        flex-direction: column;
+    }
+
+    .service-detail:nth-child(even) .service-content {
+        flex-direction: column;
+    }
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
