@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Loader
+    const loaderContainer = document.querySelector('.loader-container');
+    if (loaderContainer) {
+        loaderContainer.style.display = 'flex'; // Ensure loader is visible immediately
+    }
+
     window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-        const loaderContainer = document.querySelector('.loader-container');
         if (loaderContainer) {
+            document.body.classList.add('loaded');
             setTimeout(function() {
-                loaderContainer.style.display = 'none';
-            }, 500);
+                loaderContainer.style.opacity = '0';
+                setTimeout(function() {
+                    loaderContainer.style.display = 'none';
+                }, 500); // Fade out duration
+            }, 100); // Short delay before starting fade out
         }
     });
 
