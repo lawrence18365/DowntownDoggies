@@ -671,10 +671,7 @@ main {
   transform-origin: left;
 }
 
-/* Service Detail Sections */
-.service-detail {
-  padding: 100px 0;
-}
+
 
 .service-detail:nth-child(even) .service-content {
   flex-direction: row-reverse;
