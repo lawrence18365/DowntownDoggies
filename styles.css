@@ -1494,12 +1494,14 @@ main {
     font-size: 1.2rem;
     color: var(--text-color);
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* Continuing service-detail styles */
 .service-text ul {
     list-style-type: none;
     padding: 0;
+    text-align: center;
 }
 
 .service-text ul li {
@@ -1517,6 +1519,7 @@ main {
     color: var(--primary-color);
     position: absolute;
     left: 0;
+    text-align: center;
 }
 
 .service-image {
