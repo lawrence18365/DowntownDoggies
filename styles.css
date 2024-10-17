@@ -51,6 +51,8 @@ body.loaded {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .loader {
@@ -75,6 +77,11 @@ body.loaded {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+body.loaded .loader-container {
+    opacity: 0;
+    pointer-events: none;
 }
 main {
     flex: 1 0 auto;
