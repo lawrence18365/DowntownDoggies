@@ -274,6 +274,15 @@ main {
         flex: 1;
     }
 }
+@media (max-width: 767px) {
+    .about-content {
+        gap: 20px;
+    }
+
+    .text-content {
+        padding: 20px;
+    }
+}
 
 @media (max-width: 767px) {
      .image-gallery {
