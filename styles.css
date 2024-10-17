@@ -214,6 +214,13 @@ main {
     justify-content: space-between;
     align-items: center;
 }
+.lead {
+    font-size: 2.2rem;
+    color: rgb(58, 90, 64);
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
 
 @media (min-width: 768px) {
     .about-content {
