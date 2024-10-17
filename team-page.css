@@ -1,0 +1,441 @@
+/* Team Page Specific Styles */
+:root {
+    --primary-color: #3A5A40;
+    --secondary-color: #A3B18A;
+    --accent-color: #DAD7CD;
+    --text-color: #333;
+    --light-text: #fff;
+    --overlay-color: rgba(0, 0, 0, 0.4);
+    --transition-duration: 0.3s;
+}
+
+/* Team Header Styles */
+.team-header {
+    background-color: var(--primary-color);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: background-color 0.3s ease;
+}
+
+.team-header.scrolled {
+    background-color: rgba(58, 90, 64, 0.9);
+}
+
+.team-header .logo img {
+    height: 60px;
+    transition: height 0.3s ease;
+}
+
+.team-header.scrolled .logo img {
+    height: 50px;
+}
+
+/* Team Hero Section */
+.team-hero {
+    height: 80vh;
+    background-image: url('https://i.postimg.cc/VYC2kXvS/THUMBNAIL-649.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-hero-content {
+    text-align: center;
+    color: var(--light-text);
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.team-hero h1 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+.team-hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease forwards 0.7s;
+}
+
+.team-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(58, 90, 64, 0.6), rgba(58, 90, 64, 0.8));
+    z-index: 1;
+}
+
+/* About Us Section */
+.about-us-section {
+    padding: 100px 0;
+    background-color: var(--accent-color);
+}
+
+.about-us-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-us-text {
+    flex: 1;
+}
+
+.about-us-text h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.about-us-text p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.about-us-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.about-us-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Our Values Section */
+.our-values-section {
+    padding: 100px 0;
+    background-color: var(--light-text);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.value-card {
+    background-color: var(--accent-color);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.value-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.value-card p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* Team Members Section */
+.team-members-section {
+    padding: 100px 0;
+    background-color: var(--accent-color);
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.team-member-card {
+    background-color: var(--light-text);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.team-member-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.team-member-card .card-content {
+    padding: 30px;
+}
+
+.team-member-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.team-member-card .role {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.team-member-card .bio {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.team-member-card .read-more {
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+}
+
+.team-member-card .read-more::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.team-member-card .read-more:hover::after {
+    transform: scaleX(1);
+}
+
+.team-member-card .expanded-bio {
+    display: none;
+    padding-top: 20px;
+    border-top: 1px solid var(--accent-color);
+    margin-top: 20px;
+}
+
+/* Why Choose Us Section */
+.why-choose-us-section {
+    padding: 100px 0;
+    background-color: var(--light-text);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--accent-color);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.feature p {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Join Our Team Section */
+.join-our-team-section {
+    padding: 100px 0;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+}
+
+.join-our-team-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.join-our-team-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.career-opportunities {
+    margin-bottom: 40px;
+}
+
+.career-opportunities h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.career-opportunities ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.career-opportunities li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .team-hero h1 {
+        font-size: 3rem;
+    }
+
+    .team-hero p {
+        font-size: 1.2rem;
+    }
+
+    .about-us-content {
+        flex-direction: column;
+    }
+
+    .about-us-text,
+    .about-us-image {
+        flex: 0 0 100%;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .feature {
+        padding: 20px;
+    }
+
+    .feature i {
+        font-size: 2.5rem;
+    }
+
+    .feature h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .team-hero p {
+        font-size: 1rem;
+    }
+
+    .about-us-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .about-us-text p {
+        font-size: 1rem;
+    }
+
+    .value-card,
+    .team-member-card,
+    .feature {
+        padding: 20px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+}
