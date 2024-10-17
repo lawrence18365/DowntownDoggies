@@ -2,14 +2,34 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hero image cycling
     const heroImages = document.querySelectorAll('.hero-image');
     let currentImageIndex = 0;
+    
     function cycleHeroImages() {
         heroImages[currentImageIndex].classList.remove('active');
         currentImageIndex = (currentImageIndex + 1) % heroImages.length;
         heroImages[currentImageIndex].classList.add('active');
     }
+    
     if (heroImages.length > 0) {
         heroImages[0].classList.add('active');
         setInterval(cycleHeroImages, 5000);
+    }
+
+    // Services section animation
+    const servicesSection = document.querySelector('.services-overview');
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    if (servicesSection && serviceCards.length > 0) {
+        const servicesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        serviceCards.forEach(card => {
+            servicesObserver.observe(card);
+        });
     }
 
     // Services section animation
