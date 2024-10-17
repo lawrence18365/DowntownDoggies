@@ -198,6 +198,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (copyrightYear) {
         copyrightYear.textContent = new Date().getFullYear();
     }
+    
+
+window.addEventListener('load', () => {
+    document.querySelector('.loader-container').style.display = 'none';
+});
 
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
