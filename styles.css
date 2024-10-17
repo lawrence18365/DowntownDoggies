@@ -164,13 +164,70 @@ main {
     gap: 40px;
     align-items: stretch;
 }
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
 
 .image-gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    margin-bottom: 20px;
+    aspect-ratio: 1 / 1;
+    max-width: 600px;
+    margin: 0 auto;
 }
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.gallery-item::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.gallery-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .image-gallery {
+        flex: 1;
+        max-width: 50%;
+    }
+
+    .text-content {
+        flex: 1;
+    }
+}
+
 .gallery-item {
     overflow: hidden;
     border-radius: 10px;
@@ -185,23 +242,21 @@ main {
     transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .image-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        aspect-ratio: 1 / 1;
+        max-width: 100%;
+    }
+
+    .text-content {
+        padding: 20px;
+    }
+
+    .lead {
+        font-size: 1.8rem;
     }
 
     .gallery-item:nth-child(n+5) {
         display: none;
-    }
-}
-
-@media (max-width: 480px) {
-    .image-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        aspect-ratio: 1 / 1;
     }
 }
 
@@ -1688,19 +1743,12 @@ input:checked + .slider:before {
 }
 /* Tablet and smaller desktop screens */
 @media (max-width: 1024px) {
-    .about-content {
-        flex-direction: column;
-    }
+ 
     .image-gallery,
     .text-content {
         width: 100%;
     }
-    .image-gallery {
-        aspect-ratio: 16 / 9;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        min-height: 400px;
-    }
+ 
     .item1 {
         grid-column: span 2;
         grid-row: span 2;
@@ -1793,11 +1841,7 @@ input:checked + .slider:before {
     .lead {
         font-size: 1.8rem;
     }
-    .image-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        min-height: 300px;
-    }
+  
     .item1 {
         grid-column: span 2;
         grid-row: span 1;
@@ -1897,11 +1941,7 @@ input:checked + .slider:before {
 
 /* Small mobile devices */
 @media (max-width: 480px) {
-    .image-gallery {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        min-height: 500px;
-    }
+
     .item1,
     .item2,
     .item3,
@@ -1913,19 +1953,12 @@ input:checked + .slider:before {
 }
 /* Tablet and smaller desktop screens */
 @media (max-width: 1024px) {
-    .about-content {
-        flex-direction: column;
-    }
+   
     .image-gallery,
     .text-content {
         width: 100%;
     }
-    .image-gallery {
-        aspect-ratio: 16 / 9;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        min-height: 400px;
-    }
+ 
     .item1 {
         grid-column: span 2;
         grid-row: span 2;
@@ -2018,11 +2051,7 @@ input:checked + .slider:before {
     .lead {
         font-size: 1.8rem;
     }
-    .image-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        min-height: 300px;
-    }
+   
     .item1 {
         grid-column: span 2;
         grid-row: span 1;
@@ -2160,11 +2189,7 @@ input:checked + .slider:before {
 
 /* Small mobile devices */
 @media (max-width: 480px) {
-    .image-gallery {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(5, 1fr);
-        min-height: 500px;
-    }
+
     .item1,
     .item2,
     .item3,
