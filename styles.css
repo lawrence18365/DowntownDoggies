@@ -1527,16 +1527,6 @@ main {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transform: translateX(50px);
 }
-.service-image-left{
-    width: 400px; /* Set the desired width */
-    height: 400px; /* Set the desired height */
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateX(50px);
-    margin-right: 125px;
-
-}
 .service-image img {
     width: 100%;
     height: auto;
