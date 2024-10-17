@@ -520,7 +520,6 @@ main {
 
 /* Service Card */
 .service-card {
-  opacity: 0; /* Initially hidden */
   transform: translateY(20px); /* Initially shifted down */
   transition: opacity 0.5s ease, transform 0.5s ease;
   
