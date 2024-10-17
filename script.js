@@ -15,26 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Services section animation
-    const servicesSection = document.querySelector('.services-overview');
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    if (servicesSection && serviceCards.length > 0) {
-        const servicesObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        serviceCards.forEach(card => {
-            servicesObserver.observe(card);
-        });
-    }
-
-    // Services section animation
     const servicesSection = document.querySelector('#services');
     const serviceCards = document.querySelectorAll('.service-card');
+    
     if (servicesSection && serviceCards.length > 0) {
         const servicesObserver = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
@@ -218,9 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (copyrightYear) {
         copyrightYear.textContent = new Date().getFullYear();
     }
-    
 
-document.addEventListener('DOMContentLoaded', function() {
     // Add loaded class to body after a short delay
     setTimeout(function() {
         document.body.classList.add('loaded');
@@ -230,18 +211,18 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         document.querySelector('.loader-container').style.display = 'none';
     });
-});
 
-// Improve scroll performance
-let scrollTimeout;
-window.addEventListener('scroll', function() {
-    if (!scrollTimeout) {
-        scrollTimeout = setTimeout(function() {
-            scrollTimeout = null;
-            // Intensive updates here
-        }, 66);
-    }
-}, false);
+    // Improve scroll performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+                scrollTimeout = null;
+                // Intensive updates here
+            }, 66);
+        }
+    }, false);
+
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
