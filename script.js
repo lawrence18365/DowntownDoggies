@@ -200,10 +200,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 
-window.addEventListener('load', () => {
-    document.querySelector('.loader-container').style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    // Add loaded class to body after a short delay
+    setTimeout(function() {
+        document.body.classList.add('loaded');
+    }, 100);
+
+    // Hide loader after page load
+    window.addEventListener('load', function() {
+        document.querySelector('.loader-container').style.display = 'none';
+    });
 });
 
+// Improve scroll performance
+let scrollTimeout;
+window.addEventListener('scroll', function() {
+    if (!scrollTimeout) {
+        scrollTimeout = setTimeout(function() {
+            scrollTimeout = null;
+            // Intensive updates here
+        }, 66);
+    }
+}, false);
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
