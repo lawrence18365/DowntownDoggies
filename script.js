@@ -15,25 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(cycleHeroImages, 5000);
     }
 
-    // Services section animation
-    const servicesSection = document.querySelector('#services-overview'); // Corrected selector
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    if (servicesSection && serviceCards.length > 0) {
-        const servicesObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    serviceCards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('animate');
-                        }, index * 200);
-                    });
-                    servicesObserver.unobserve(servicesSection);
-                }
-            });
-        }, { threshold: 0.1 });
-        servicesObserver.observe(servicesSection);
-    }
+   
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
