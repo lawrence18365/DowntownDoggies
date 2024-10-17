@@ -188,7 +188,7 @@ main {
             }
     
             section {
-                padding: 6rem 0;
+                padding: 4rem 0;
                 background-color; #dad7ce:
             }
     
@@ -1480,10 +1480,6 @@ main {
     transform: scaleX(1);
 }
 
-/* Service Detail Sections */
-.service-detail {
-    padding: 100px 0;
-}
 
 .service-detail:nth-child(odd) {
     background-color: var(--accent-color);
