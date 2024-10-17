@@ -726,7 +726,23 @@ main {
     width: auto;
     max-width: none;
 }
-
+.hero-cta-button {
+    display: inline-block;
+    background-color: #3A5A40;
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    max-width: none;
+    margin-top: 5%;
+}
 .cta-button:hover {
     background-color: #4a7553;
     transform: translateY(-3px);
