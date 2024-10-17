@@ -151,13 +151,6 @@ main {
     overflow: hidden;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-
 .about-content {
     display: flex;
     flex-direction: column;
@@ -168,23 +161,18 @@ main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    aspect-ratio: 1 / 1;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .gallery-item {
     position: relative;
+    width: 100%;
+    padding-top: 100%; /* This creates a 1:1 aspect ratio */
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.gallery-item::before {
-    content: '';
-    display: block;
-    padding-top: 100%;
 }
 
 .gallery-item img {
@@ -195,11 +183,6 @@ main {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
-}
-
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 .gallery-item:hover img {
@@ -218,47 +201,6 @@ main {
     align-items: center;
 }
 
-.lead {
-    font-size: 2.2rem;
-    color: #3A5A40;
-    margin-bottom: 20px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.text-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #333;
-    text-align: center;
-}
-
-.about-cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 30px;
-    background: linear-gradient(45deg, #3A5A40, #588157);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-top: auto;
-}
-
-.about-cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(58, 90, 64, 0.3);
-}
-
-.button-icon {
-    margin-left: 10px;
-    font-size: 1.4rem;
-}
-
 @media (min-width: 768px) {
     .about-content {
         flex-direction: row;
@@ -274,28 +216,16 @@ main {
         flex: 1;
     }
 }
+
 @media (max-width: 767px) {
     .about-content {
         gap: 20px;
     }
 
-    .text-content {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 767px) {
-     .image-gallery {
+    .image-gallery {
         max-width: 100%;
-        aspect-ratio: auto;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 10px;
     }
 
-    .gallery-item {
-        aspect-ratio: 1 / 1;
-    }
     .text-content {
         padding: 20px;
     }
