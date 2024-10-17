@@ -163,7 +163,7 @@ main {
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
-    margin-top: auto;
+    margin-top: 5%;
     padding: 15px 30px;
     background: linear-gradient(45deg, rgb(58, 90, 64), rgb(88, 129, 87));
     text-decoration: none;
