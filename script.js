@@ -1,21 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     const loaderContainer = document.querySelector('.loader-container');
+    
     if (loaderContainer) {
-        loaderContainer.style.display = 'flex'; // Ensure loader is visible immediately
-    }
-
-    window.addEventListener('load', function() {
-        if (loaderContainer) {
+        // Ensure the loader is visible
+        loaderContainer.style.display = 'flex';
+        
+        // Function to hide the loader
+        function hideLoader() {
             document.body.classList.add('loaded');
-            setTimeout(function() {
-                loaderContainer.style.opacity = '0';
-                setTimeout(function() {
-                    loaderContainer.style.display = 'none';
-                }, 500); // Fade out duration
-            }, 100); // Short delay before starting fade out
+            setTimeout(() => {
+                loaderContainer.style.display = 'none';
+            }, 500); // Match this to your CSS transition time
         }
-    });
 
+        // If the window has already loaded, hide the loader immediately
+        if (document.readyState === 'complete') {
+            hideLoader();
+        } else {
+            // Otherwise, wait for the window to load
+            window.addEventListener('load', hideLoader);
+        }
+    }
+});
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
