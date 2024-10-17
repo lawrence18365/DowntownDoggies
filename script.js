@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentImageIndex = 0;
     
     function cycleHeroImages() {
+        if (heroImages.length === 0) return; // Prevent errors if no images
         heroImages[currentImageIndex].classList.remove('active');
         currentImageIndex = (currentImageIndex + 1) % heroImages.length;
         heroImages[currentImageIndex].classList.add('active');
@@ -15,19 +16,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Services section animation
-    const servicesSection = document.querySelector('#services');
+    const servicesSection = document.querySelector('#services-overview'); // Corrected selector
     const serviceCards = document.querySelectorAll('.service-card');
     
     if (servicesSection && serviceCards.length > 0) {
         const servicesObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                serviceCards.forEach((card, index) => {
-                    setTimeout(() => {
-                        card.classList.add('animate');
-                    }, index * 200);
-                });
-                servicesObserver.unobserve(servicesSection);
-            }
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    serviceCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                        }, index * 200);
+                    });
+                    servicesObserver.unobserve(servicesSection);
+                }
+            });
         }, { threshold: 0.1 });
         servicesObserver.observe(servicesSection);
     }
@@ -64,11 +67,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const isOpen = answer.style.maxHeight;
             faqQuestions.forEach(q => {
                 q.classList.remove('active');
-                q.nextElementSibling.style.maxHeight = null;
+                if (q.nextElementSibling) {
+                    q.nextElementSibling.style.maxHeight = null;
+                }
             });
             if (!isOpen) {
                 question.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + "px";
+                if (answer) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                }
             }
         });
     });
@@ -114,13 +121,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 if (validateForm(this)) {
                     const submitButton = this.querySelector('button[type="submit"]');
-                    submitButton.disabled = true;
-                    submitButton.textContent = 'Submitting...';
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.textContent = 'Submitting...';
+                    }
                     setTimeout(() => {
                         alert(formId === 'booking-form' ? 'Thank you for booking! We\'ll be in touch soon.' : 'Thank you! Your waiver form has been submitted.');
                         this.reset();
-                        submitButton.disabled = false;
-                        submitButton.textContent = formId === 'booking-form' ? 'Book Now' : 'Submit Waiver';
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.textContent = formId === 'booking-form' ? 'Book Now' : 'Submit Waiver';
+                        }
                     }, 2000);
                 }
             });
@@ -209,7 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Hide loader after page load
     window.addEventListener('load', function() {
-        document.querySelector('.loader-container').style.display = 'none';
+        const loaderContainer = document.querySelector('.loader-container');
+        if (loaderContainer) {
+            loaderContainer.style.display = 'none';
+        } else {
+            console.warn('Loader container not found.');
+        }
     });
 
     // Improve scroll performance
@@ -229,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const emailInput = this.querySelector('input[type="email"]');
-            if (emailInput.value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+            if (emailInput && emailInput.value.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
                 alert('Thank you for subscribing to our newsletter!');
                 this.reset();
             } else {
