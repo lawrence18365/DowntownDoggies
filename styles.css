@@ -145,8 +145,7 @@ main {
                 font-size: 2.5rem;
                 text-align: center;
             }
-
-    .about {
+.about {
     padding: 80px 0;
     background-color: #f9f9f9;
     overflow: hidden;
@@ -156,14 +155,9 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    margin-bottom:;
+    box-sizing: border-box;
 }
 
-.about-content {
-    display: flex;
-    gap: 40px;
-    align-items: stretch;
-}
 .about-content {
     display: flex;
     flex-direction: column;
@@ -212,6 +206,59 @@ main {
     transform: scale(1.1);
 }
 
+.text-content {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lead {
+    font-size: 2.2rem;
+    color: #3A5A40;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.text-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+}
+
+.about-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #3A5A40, #588157);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.about-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(58, 90, 64, 0.3);
+}
+
+.button-icon {
+    margin-left: 10px;
+    font-size: 1.4rem;
+}
+
 @media (min-width: 768px) {
     .about-content {
         flex-direction: row;
@@ -228,20 +275,6 @@ main {
     }
 }
 
-.gallery-item {
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
 @media (max-width: 767px) {
     .image-gallery {
         max-width: 100%;
@@ -254,91 +287,8 @@ main {
     .lead {
         font-size: 1.8rem;
     }
-
-    .gallery-item:nth-child(n+5) {
-        display: none;
-    }
 }
 
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-.text-content {
-    flex: 1;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.lead {
-    font-size: 2.2rem;
-    color: #3A5A40;
-    margin-bottom: 20px;
-    font-weight: 600; 
-    margin-top: -10px;
-    text-align: center;
-
-}
-
-.text-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #333;
-    text-align: center;
-
-}
-
-.about-cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 30px;
-    background: linear-gradient(45deg, #3A5A40, #588157);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    align-self: flex-start;
-    margin-top: auto;
-    align-self: center; /* Center the button */
-    margin-top: auto; /* Push the button to the bottom */
-    margin-bottom: -10px; /* Add some space at the bottom */
-}
-
-.about-cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(58, 90, 64, 0.3);
-}
-
-.button-icon {
-    margin-left: 10px;
-    font-size: 1.4rem;
-}
-
-@keyframes fadeInScale {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}           
            body {
     font-family: 'Lora', serif;
     color: var(--text-color);
@@ -687,12 +637,7 @@ main {
 }
 
 
-.text-content {
-   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center; /* Center items horizontally */
-}
+
 .hero-image:first-child {
     opacity: 1;
 }
@@ -733,10 +678,6 @@ main {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Remove this if it's causing conflicts */
-.text-content .cta-button {
-    display: inline-block;
-}
 
 /* Specific styles for the about section if needed */
 #about .cta-button {
@@ -1741,29 +1682,7 @@ input:checked + .slider:before {
         transform: translateX(0);
     }
 }
-/* Tablet and smaller desktop screens */
-@media (max-width: 1024px) {
- 
-    .image-gallery,
-    .text-content {
-        width: 100%;
-    }
- 
-    .item1 {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-    .item2 {
-        grid-column: span 1;
-        grid-row: span 2;
-    }
-    .item3,
-    .item4,
-    .item5 {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-}
+
 
 /* Mobile devices */
 @media (max-width: 768px) {
@@ -1862,13 +1781,7 @@ input:checked + .slider:before {
     .lead {
         font-size: 1.3rem;
     }
-    .gallery-item:nth-child(5) {
-        display: none;
-    }
-    .gallery-item:nth-child(n) {
-        grid-column: auto;
-        grid-row: auto;
-    }
+
     .cta-container {
         flex-direction: column;
         text-align: center;
@@ -1944,29 +1857,6 @@ input:checked + .slider:before {
 
     .item1,
     .item2,
-    .item3,
-    .item4,
-    .item5 {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-}
-/* Tablet and smaller desktop screens */
-@media (max-width: 1024px) {
-   
-    .image-gallery,
-    .text-content {
-        width: 100%;
-    }
- 
-    .item1 {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-    .item2 {
-        grid-column: span 1;
-        grid-row: span 2;
-    }
     .item3,
     .item4,
     .item5 {
@@ -2072,13 +1962,7 @@ input:checked + .slider:before {
     .lead {
         font-size: 1.3rem;
     }
-    .gallery-item:nth-child(5) {
-        display: none;
-    }
-    .gallery-item:nth-child(n) {
-        grid-column: auto;
-        grid-row: auto;
-    }
+   
     .cta-container {
         flex-direction: column;
         text-align: center;
@@ -2239,6 +2123,15 @@ html, body {
 }
 
 @media (max-width: 768px) {
+ .service-card .service-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .service-card .service-icon img {
+        width: 30px;
+        height: 30px;
+    }
     .container {
         padding: 0 15px;
     }
