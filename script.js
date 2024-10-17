@@ -9,55 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         }
     });
- // Testimonials page specific code
-    const testimonialCards = document.querySelectorAll('.testimonial-card:not(.placeholder)');
-    
-    if (testimonialCards.length > 0) {
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
 
-        const testimonialObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        testimonialCards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            testimonialObserver.observe(card);
-        });
-    }
-
-    // Smooth scrolling for "Share Your Story" button
-    const shareStoryButton = document.querySelector('.testimonials-cta .cta-button');
-    if (shareStoryButton) {
-        shareStoryButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            // You can replace this with the actual form or modal for sharing stories
-            alert('Thank you for wanting to share your story! This feature is coming soon.');
-        });
-    }
-
-    // Header scroll effect for testimonials page
-    const header = document.querySelector('.testimonials-header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    }
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -262,17 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         copyrightYear.textContent = new Date().getFullYear();
     }
 
-    // Improve scroll performance
-    let scrollTimeout;
-    window.addEventListener('scroll', function() {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function() {
-                scrollTimeout = null;
-                // Intensive updates here
-            }, 66);
-        }
-    }, false);
-
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
@@ -301,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Pricing toggle (if exists on the page)
+    // Pricing toggle
     const pricingSwitch = document.getElementById('pricing-switch');
     if (pricingSwitch) {
         pricingSwitch.addEventListener('change', function() {
@@ -334,4 +275,35 @@ document.addEventListener('DOMContentLoaded', function() {
     animatedElements.forEach(element => {
         observer.observe(element);
     });
+
+    // Testimonials page specific code
+    const testimonialCards = document.querySelectorAll('.testimonial-card:not(.placeholder)');
+    
+    if (testimonialCards.length > 0) {
+        const testimonialObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        testimonialCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            testimonialObserver.observe(card);
+        });
+    }
+
+    // Share Your Story button
+    const shareStoryButton = document.querySelector('.testimonials-cta .cta-button');
+    if (shareStoryButton) {
+        shareStoryButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Thank you for wanting to share your story! This feature is coming soon.');
+        });
+    }
 });
