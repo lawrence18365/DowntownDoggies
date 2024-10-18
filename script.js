@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
- if (navToggle && navMenu && navOverlay) {
+if (navToggle && navMenu && navOverlay) {
         function toggleMenu() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
