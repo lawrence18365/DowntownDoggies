@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth < 768) {
         window.addEventListener('scroll', mobileParallax);
     }
-});
+
     // Form validation
     function validateForm(form) {
         let isValid = true;
