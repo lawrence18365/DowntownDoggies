@@ -45,20 +45,36 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     });
-// Animate elements with the class 'animate-on-scroll'
-gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
-    gsap.from(element, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power4.out',
+
+    // Ensure GSAP and ScrollTrigger are registered
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animate elements with the class 'animate-on-scroll'
+    gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
+        gsap.from(element, {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: element,
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+            },
+        });
+    });
+
+    // Parallax background movement
+    gsap.to('.parallax-background', {
+        yPercent: -20,
+        ease: 'none',
         scrollTrigger: {
-            trigger: element,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            trigger: '.parallax-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
         },
     });
-});
 
     // Hero image slider
     const heroImages = document.querySelectorAll('.hero-image');
@@ -332,4 +348,4 @@ gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
             alert('Thank you for wanting to share your story! This feature is coming soon.');
         });
     }
-}); // This correctly closes the DOMContentLoaded event listener
+});
