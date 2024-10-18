@@ -10,17 +10,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.add('loaded');
             setTimeout(() => {
                 loaderContainer.style.display = 'none';
-            }, 500); // Match this to your CSS transition time
+            }, 500); // Match this to your CSS transition time (0.5s)
         }
 
-        // If the window has already loaded, hide the loader immediately
+        // Check if the window is already loaded
         if (document.readyState === 'complete') {
             hideLoader();
         } else {
-            // Otherwise, wait for the window to load
+            // Wait for the window to load
             window.addEventListener('load', hideLoader);
         }
     }
+});
+
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
