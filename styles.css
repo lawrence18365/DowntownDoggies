@@ -101,7 +101,6 @@ body {
 }
 
     
-   /* Navigation Styles */
 nav {
     display: flex;
     justify-content: space-between;
@@ -142,6 +141,16 @@ nav ul.nav-menu li a:hover {
 }
 
 @media (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: transparent;
+        transition: background-color 0.3s ease;
+    }
+
     nav {
         padding: 1rem;
     }
@@ -241,27 +250,6 @@ nav ul.nav-menu li a:hover {
     nav ul.nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
     nav ul.nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
     nav ul.nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
-
-    /* Ensure the menu appears below the header */
-    header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: var(--primary-color);
-        transition: background-color 0.3s ease;
-    }
-
-    header.transparent {
-        background-color: transparent;
-    }
-
-    /* Adjust content to not go under the fixed header */
-    .content {
-        margin-top: 60px; /* Adjust based on your header height */
-        transition: margin-top 0.3s ease;
-    }
 
     /* Overlay */
     .nav-overlay {
