@@ -122,23 +122,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
- const parallaxBg = document.querySelector('.parallax-bg');
-            let ticking = false;
 
-            function updateParallax(scrollPos) {
-                const moveDistance = scrollPos * 0.5;
-                parallaxBg.style.transform = `translateY(${moveDistance}px)`;
-            }
+    // New parallax effect
+    const parallaxBg = document.querySelector('.parallax-bg');
+    let ticking = false;
 
-            window.addEventListener('scroll', function() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        updateParallax(window.pageYOffset);
-                        ticking = false;
-                    });
+    function updateParallax(scrollPos) {
+        const moveDistance = scrollPos * 0.5;
+        parallaxBg.style.transform = `translateY(${moveDistance}px)`;
+    }
 
-                    ticking = true;
-                }
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                updateParallax(window.pageYOffset);
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
     // Form validation
     function validateForm(form) {
         let isValid = true;
