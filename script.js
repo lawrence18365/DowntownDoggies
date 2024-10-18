@@ -21,33 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Hamburger Menu Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (navToggle) {
-        navToggle.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent event bubbling
+    // Navigation toggle
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
     }
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-        }
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-menu a').forEach(anchor => {
-        anchor.addEventListener('click', function() {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-    });
 
     // Smooth scrolling for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
