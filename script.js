@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('load', hideLoader);
         }
     }
-});
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -317,4 +317,5 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             alert('Thank you for wanting to share your story! This feature is coming soon.');
         });
+    }
 });
