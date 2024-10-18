@@ -45,6 +45,20 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     });
+// Animate elements with the class 'animate-on-scroll'
+gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
+    gsap.from(element, {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power4.out',
+        scrollTrigger: {
+            trigger: element,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+        },
+    });
+});
 
     // Hero image slider
     const heroImages = document.querySelectorAll('.hero-image');
