@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const loaderContainer = document.querySelector('.loader-container');
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
+    const header = document.querySelector('header');
     
     // Loader functionality
     if (loaderContainer) {
@@ -26,6 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        navOverlay.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            this.classList.remove('active');
+            document.body.classList.remove('menu-open');
         });
     }
 
@@ -42,18 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Close the menu after clicking
                 if (navMenu) navMenu.classList.remove('active');
                 if (navToggle) navToggle.classList.remove('active');
+                if (navOverlay) navOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
             }
         });
     });
 
     // Header scroll effect
-    const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
+                header.classList.remove('transparent');
             } else {
                 header.classList.remove('scrolled');
+                header.classList.add('transparent');
             }
         });
     }
