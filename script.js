@@ -24,19 +24,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Navigation toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
+    if (navToggle && navMenu && navOverlay) {
+        function toggleMenu() {
+            navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             navOverlay.classList.toggle('active');
             document.body.classList.toggle('menu-open');
-        });
+        }
 
-        navOverlay.addEventListener('click', function() {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            this.classList.remove('active');
-            document.body.classList.remove('menu-open');
+        navToggle.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking on a menu item
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
         });
     }
 
@@ -46,22 +47,21 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                const headerOffset = header ? header.offsetHeight : 0;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
                 window.scrollTo({
-                    top: target.offsetTop - 80,
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
-                // Close the menu after clicking
-                if (navMenu) navMenu.classList.remove('active');
-                if (navToggle) navToggle.classList.remove('active');
-                if (navOverlay) navOverlay.classList.remove('active');
-                document.body.classList.remove('menu-open');
             }
         });
     });
 
     // Header scroll effect
     if (header) {
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
                 header.classList.remove('transparent');
@@ -69,7 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 header.classList.remove('scrolled');
                 header.classList.add('transparent');
             }
-        });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Initial call to set correct state on page load
+        handleScroll();
     }
 
     // GSAP animations (if GSAP is available)
@@ -112,23 +116,23 @@ document.addEventListener('DOMContentLoaded', function() {
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
             const answer = question.nextElementSibling;
+            if (!answer) return;
+            
             const isOpen = answer.style.maxHeight;
             faqQuestions.forEach(q => {
                 q.classList.remove('active');
-                if (q.nextElementSibling) {
-                    q.nextElementSibling.style.maxHeight = null;
-                }
+                const qAnswer = q.nextElementSibling;
+                if (qAnswer) qAnswer.style.maxHeight = null;
             });
+            
             if (!isOpen) {
                 question.classList.add('active');
-                if (answer) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
-                }
+                answer.style.maxHeight = answer.scrollHeight + "px";
             }
         });
     });
 
-    // Form validation
+    // Form validation and submission logic
     function validateForm(form) {
         let isValid = true;
         form.querySelectorAll('[required]').forEach(field => {
@@ -161,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Form submission (Booking and Waiver)
     ['booking-form', 'waiverForm'].forEach(formId => {
         const form = document.getElementById(formId);
         if (form) {
@@ -173,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         submitButton.disabled = true;
                         submitButton.textContent = 'Submitting...';
                     }
+                    // Simulating form submission
                     setTimeout(() => {
                         alert(formId === 'booking-form' ? 'Thank you for booking! We\'ll be in touch soon.' : 'Thank you! Your waiver form has been submitted.');
                         this.reset();
@@ -206,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
+                const target = parseInt(counter.getAttribute('data-target'), 10);
                 let count = 0;
                 const updateCounter = () => {
                     const increment = target / 200;
@@ -248,13 +252,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         showTestimonial(currentTestimonial);
-        setInterval(nextTestimonial, 5000);
+        const sliderInterval = setInterval(nextTestimonial, 5000);
 
         const nextButton = testimonialSlider.querySelector('.next-testimonial');
         const prevButton = testimonialSlider.querySelector('.prev-testimonial');
         
-        if (nextButton) nextButton.addEventListener('click', nextTestimonial);
-        if (prevButton) prevButton.addEventListener('click', prevTestimonial);
+        if (nextButton) nextButton.addEventListener('click', () => {
+            clearInterval(sliderInterval);
+            nextTestimonial();
+        });
+        if (prevButton) prevButton.addEventListener('click', () => {
+            clearInterval(sliderInterval);
+            prevTestimonial();
+        });
     }
 
     // Dynamic copyright year
