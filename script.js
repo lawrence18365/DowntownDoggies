@@ -78,21 +78,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // GSAP animations (if GSAP is available)
     if (typeof gsap !== 'undefined' && gsap.registerPlugin) {
-        gsap.registerPlugin(ScrollTrigger);
+        try {
+            gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
-            gsap.from(element, {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: 'power4.out',
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 80%',
-                    toggleActions: 'play none none none',
-                },
+            gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
+                gsap.from(element, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power4.out',
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none',
+                    },
+                });
             });
-        });
+        } catch (error) {
+            console.error('Error initializing GSAP animations:', error);
+        }
     }
 
     // Hero image slider
@@ -365,4 +369,9 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Thank you for wanting to share your story! This feature is coming soon.');
         });
     }
+
+    // Error handling for third-party scripts
+    window.addEventListener('error', function(event) {
+        console.error('Script error:', event.message, 'at', event.filename, ':', event.lineno);
+    }, true);
 });
