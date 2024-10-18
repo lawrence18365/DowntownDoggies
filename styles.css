@@ -40,6 +40,7 @@ body.loaded {
     backface-visibility: hidden;
 }
 
+/* Loader Styles */
 .loader-container {
     position: fixed;
     top: 0;
@@ -79,13 +80,27 @@ body.loaded {
     100% { transform: rotate(360deg); }
 }
 
+/* Hide loader when page is loaded */
 body.loaded .loader-container {
     opacity: 0;
     pointer-events: none;
 }
-main {
-    flex: 1 0 auto;
+
+/* Main Content Fade-In Effect */
+.content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
+
+body.loaded .content {
+    opacity: 1;
+}
+
+/* Optional: Ensure body has no margin */
+body {
+    margin: 0;
+}
+
     
             nav {
                 display: flex;
