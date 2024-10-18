@@ -317,5 +317,4 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             alert('Thank you for wanting to share your story! This feature is coming soon.');
         });
-    }
 });
