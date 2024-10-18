@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Navigation toggle
-    if (navToggle && navMenu && navOverlay) {
+ if (navToggle && navMenu && navOverlay) {
         function toggleMenu() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -39,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
+
+        console.log('Navigation functionality initialized');
+    } else {
+        console.error('One or more navigation elements are missing');
     }
 
     // Smooth scrolling for all anchor links
