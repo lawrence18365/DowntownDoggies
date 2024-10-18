@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('load', hideLoader);
         }
     }
-});
-
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -320,4 +318,4 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Thank you for wanting to share your story! This feature is coming soon.');
         });
     }
-});
+}); // This correctly closes the DOMContentLoaded event listener
