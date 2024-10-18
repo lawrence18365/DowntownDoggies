@@ -22,14 +22,13 @@
                 z-index: 1000;
                 padding: 1rem 0;
             }
-body {
-    visibility: hidden;
+/* Main Content Fade-In Effect */
+.content {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
-body.loaded {
-    visibility: visible;
+body.loaded .content {
     opacity: 1;
 }
 
