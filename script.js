@@ -64,18 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Parallax background movement
-    gsap.to('.parallax-background', {
-        yPercent: -20,
-        ease: 'none',
-        scrollTrigger: {
-            trigger: '.parallax-section',
-            start: 'top bottom',
-            end: 'bottom top',
-            scrub: true,
-        },
-    });
-
     // Hero image slider
     const heroImages = document.querySelectorAll('.hero-image');
     let currentImageIndex = 0;
@@ -123,25 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // New parallax effect
-    const parallaxBg = document.querySelector('.parallax-bg');
-    let ticking = false;
-
-    function updateParallax(scrollPos) {
-        const moveDistance = scrollPos * 0.5;
-        parallaxBg.style.transform = `translateY(${moveDistance}px)`;
-    }
-
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                updateParallax(window.pageYOffset);
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
+    
     // Form validation
     function validateForm(form) {
         let isValid = true;
