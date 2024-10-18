@@ -346,11 +346,23 @@ body {
     flex-direction: column;
 }
 ]
- .cta-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
+.cta-section {
+    position: relative;
+    z-index: 1;
+    margin-top: -100px; /* Adjust this value as needed */
+    padding-top: 100px; /* Add padding to compensate for the negative margin */
+}
+
+.hero {
+    position: relative;
+    z-index: 0;
+}
+
+.main-content-wrapper {
+    position: relative;
+    z-index: 1;
+    background-color: #fff; /* Or any color that matches your design */
+}
 
         .parallax-bg {
             position: absolute;
