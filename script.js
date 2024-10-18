@@ -122,7 +122,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+ // Parallax effect for CTA background on mobile
+    function mobileParallax() {
+        const ctaBackground = document.querySelector('.cta-background');
+        if (ctaBackground) {
+            const scrolled = window.pageYOffset;
+            ctaBackground.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+        }
+    }
 
+    // Apply the mobile parallax effect if the device width is less than 768px
+    if (window.innerWidth < 768) {
+        window.addEventListener('scroll', mobileParallax);
+    }
+});
     // Form validation
     function validateForm(form) {
         let isValid = true;
