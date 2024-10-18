@@ -338,3 +338,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navToggle) {
+        navToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+// Smooth scrolling for menu links
+document.querySelectorAll('.nav-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        if (this.hash !== "") {
+            e.preventDefault();
+            const target = document.querySelector(this.hash);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80, // Adjust based on your header height
+                    behavior: 'smooth'
+                });
+                // Close the menu after clicking
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        }
+    });
+});
