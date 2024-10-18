@@ -122,20 +122,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
- // Parallax effect for CTA background on mobile
-    function mobileParallax() {
-        const ctaBackground = document.querySelector('.cta-background');
-        if (ctaBackground) {
-            const scrolled = window.pageYOffset;
-            ctaBackground.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
-        }
-    }
+ const parallaxBg = document.querySelector('.parallax-bg');
+            let ticking = false;
 
-    // Apply the mobile parallax effect if the device width is less than 768px
-    if (window.innerWidth < 768) {
-        window.addEventListener('scroll', mobileParallax);
-    }
+            function updateParallax(scrollPos) {
+                const moveDistance = scrollPos * 0.5;
+                parallaxBg.style.transform = `translateY(${moveDistance}px)`;
+            }
 
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        updateParallax(window.pageYOffset);
+                        ticking = false;
+                    });
+
+                    ticking = true;
+                }
     // Form validation
     function validateForm(form) {
         let isValid = true;
