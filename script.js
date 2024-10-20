@@ -118,26 +118,34 @@ if (navToggle && navMenu && navOverlay) {
         setInterval(cycleHeroImages, 5000);
     }
 
-    // FAQ functionality
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            if (!answer) return;
-            
-            const isOpen = answer.style.maxHeight;
-            faqQuestions.forEach(q => {
+   // FAQ functionality
+const faqQuestions = document.querySelectorAll('.faq-question');
+faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        if (!answer) return;
+        
+        const isOpen = question.classList.contains('active');
+        
+        // Close all other questions
+        faqQuestions.forEach(q => {
+            if (q !== question) {
                 q.classList.remove('active');
                 const qAnswer = q.nextElementSibling;
                 if (qAnswer) qAnswer.style.maxHeight = null;
-            });
-            
-            if (!isOpen) {
-                question.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + "px";
             }
         });
+        
+        // Toggle the clicked question
+        if (!isOpen) {
+            question.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            question.classList.remove('active');
+            answer.style.maxHeight = null;
+        }
     });
+});
 
     // Form validation and submission logic
     function validateForm(form) {
