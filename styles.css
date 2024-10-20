@@ -1037,10 +1037,13 @@ nav ul.nav-menu li a:hover {
                 content: '-';
             }
     
-            .faq-answer {
-                padding: 0 1rem 1rem;
-                display: none;
-            }
+           .faq-answer {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
     .waiver-form-section {
     background-color: #f9f9f9;
     padding: 4rem 0;
