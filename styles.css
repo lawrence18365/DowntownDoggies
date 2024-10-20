@@ -1378,6 +1378,10 @@ nav ul.nav-menu li a:hover {
 }
 
 /* Header Styles */
+.services-header {
+background-color: rgba(58, 90, 64, 0.9);
+}
+
 .services-header .container {
     display: flex;
     justify-content: space-between;
