@@ -1378,14 +1378,40 @@ nav ul.nav-menu li a:hover {
 }
 
 /* Header Styles */
-.services-header {
-    background-color: rgba(58, 90, 64, 0.9);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
+.services-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
 }
 
+.services-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.services-header .logo {
+    margin-right: auto; /* This pushes the logo to the left */
+}
+
+.services-header .nav-menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.services-header .nav-menu li {
+    margin-left: 20px;
+}
+
+.services-header .nav-menu a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 500;
+}
 .services-header.scrolled {
     background-color: rgba(58, 90, 64, 1);
 }
