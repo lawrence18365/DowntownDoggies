@@ -15,14 +15,14 @@
                 margin: 0;
                 padding: 0;
             }
-@media (min-width: 769px) {
+
             header {
                 position: absolute;
                 width: 100%;
                 z-index: 1000;
                 padding: 1rem 0;
             }
-}
+
 /* Main Content Fade-In Effect */
 .content {
     opacity: 0;
@@ -1428,10 +1428,6 @@ nav ul.nav-menu li a:hover {
 /* Header Styles */
 .services-header {
     background-color: rgba(58, 90, 64, 0.9);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    transition: background-color 0.3s ease;
 }
 
 .services-header .container {
@@ -1442,7 +1438,7 @@ nav ul.nav-menu li a:hover {
 }
 
 .services-header .logo {
-    margin-right: auto;
+    margin-right: auto; /* This pushes the logo to the left */
 }
 
 .services-header.scrolled {
@@ -1484,17 +1480,13 @@ nav ul.nav-menu li a:hover {
     font-family: 'Fredoka', sans-serif;
     font-size: 4rem;
     margin-bottom: 1rem;
-    opacity: 0;
     transform: translateY(50px);
-    animation: fadeInUp 1s ease forwards;
 }
 
 .services-hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    opacity: 0;
     transform: translateY(50px);
-    animation: fadeInUp 1s ease 0.3s forwards;
 }
 
 .services-hero-overlay {
@@ -1527,12 +1519,7 @@ nav ul.nav-menu li a:hover {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    opacity: 0;
     transform: translateY(50px);
-}
-
-.service-card.animate {
-    animation: fadeInUp 0.5s ease forwards;
 }
 
 .service-card:hover {
@@ -1583,7 +1570,7 @@ nav ul.nav-menu li a:hover {
     transform: scaleX(1);
 }
 
-/* Service Details */
+/* Services Section */
 .service-detail {
     padding: 80px 0;
     border-bottom: 1px solid var(--secondary-color);
@@ -1604,7 +1591,7 @@ nav ul.nav-menu li a:hover {
 .service-content {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -1616,14 +1603,6 @@ nav ul.nav-menu li a:hover {
 
 .service-text {
     flex: 1;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.service-detail.animate .service-text {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .service-text h2 {
@@ -1669,18 +1648,6 @@ nav ul.nav-menu li a:hover {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     border: 5px solid var(--primary-color);
-    opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.service-detail:nth-child(even) .service-image {
-    transform: translateX(-30px);
-}
-
-.service-detail.animate .service-image {
-    opacity: 1;
-    transform: translateX(0);
 }
 
 .service-image img {
@@ -1912,6 +1879,22 @@ input:checked + .slider:before {
     }
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .service-detail:nth-child(even) .service-content {
+        flex-direction: column;
+    }
+
+    .service-image {
+        width: 100%;
+        height: 300px;
+    }
+}
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .services-hero h1 {
