@@ -660,31 +660,37 @@ nav ul.nav-menu li a:hover {
 
 /* Service Icon */
 .service-icon {
-  width: 70px;
-  height: 70px;
-  background-color: var(--hover-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  transition: background-color 0.3s ease;
-  z-index: 2; /* Ensure it's above the decorative line */
+    width: 70px;
+    height: 70px;
+    background-color: var(--hover-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 2; /* Ensure it's above the decorative line */
+    font-size: 3rem;
+    color: var(--primary-color);
 }
 
 .service-card:hover .service-icon {
-  background-color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--hover-color); /* Assuming you want the color to change on hover */
 }
 
 .service-icon svg {
-  width: 40px;
-  height: 40px;
-  color: var(--primary-color);
-  transition: color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    transition: color 0.3s ease;
 }
 
-.service-card:hover .service-icon svg {
-  color: var(--light-text);
+@media (max-width: 768px) {
+    .service-card .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5rem; /* Adjusted for smaller size */
+    }
 }
 
 /* Service Title */
@@ -1526,11 +1532,7 @@ nav ul.nav-menu li a:hover {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.service-icon {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
+
 
 .service-card h3 {
     font-family: 'Fredoka', sans-serif;
