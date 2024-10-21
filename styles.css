@@ -104,7 +104,7 @@ body {
     body.menu-open {
         overflow: hidden;
     }
-}
+
 nav {
     display: flex;
     justify-content: flex-end;
