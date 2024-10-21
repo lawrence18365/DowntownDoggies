@@ -1434,7 +1434,6 @@ nav ul.nav-menu li a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
 }
 
 .services-header .logo {
