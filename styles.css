@@ -1396,6 +1396,143 @@ nav ul.nav-menu li a:hover {
 .footer-acknowledgment p {
     margin: 0;
 }
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5vh auto;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Modal trigger button styles */
+.modal-trigger {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.modal-trigger:hover {
+    color: var(--secondary-color);
+}
+
+/* Fade in animation */
+.modal.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+/* Additional styles for footer legal links */
+.footer-link {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Update modal styles to match your theme */
+.modal-header {
+    background-color: var(--primary-color);
+}
+
+.modal-body h3 {
+    color: var(--primary-color);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-body p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 2vh auto;
+        width: 95%;
+        max-height: 96vh;
+    }
+    
+    .modal-header {
+        padding: 1rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+}
 
 @media (max-width: 768px) {
     .footer-grid {
