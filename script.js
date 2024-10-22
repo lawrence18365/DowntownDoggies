@@ -412,3 +412,53 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal functionality
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.modal-close');
+
+    // Open modal
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const modalId = trigger.dataset.modal === 'privacy' ? 'privacyModal' : 'termsModal';
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    });
+
+    // Close modal functionality
+    function closeModal(modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close button click
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            closeModal(modal);
+        });
+    });
+
+    // Close on overlay click
+    modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modals.forEach(modal => {
+                if (modal.classList.contains('show')) {
+                    closeModal(modal);
+                }
+            });
+        }
+    });
+});
