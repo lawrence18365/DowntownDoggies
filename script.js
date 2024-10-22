@@ -327,34 +327,12 @@ faqQuestions.forEach(question => {
         console.error('Script error:', event.message, 'at', event.filename, ':', event.lineno);
     }, true);
 });
-// Form Validation and Submission Handler
+// Wait for the existing loader to complete before initializing form
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('waiverForm');
-    const progressBar = document.querySelector('.progress-bar');
-    let formFields;
-    let currentProgress = 0;
+    const waiverForm = document.getElementById('waiverForm');
+    if (!waiverForm) return;
 
-    // Initialize the form
-    function initForm() {
-        formFields = form.querySelectorAll('input, select, textarea');
-        setupFieldValidation();
-        setupProgressTracking();
-        setupFloatingLabels();
-    }
-
-    // Setup field validation
-    function setupFieldValidation() {
-        formFields.forEach(field => {
-            field.addEventListener('blur', (e) => validateField(e.target));
-            field.addEventListener('input', (e) => {
-                if (e.target.classList.contains('input-error')) {
-                    validateField(e.target);
-                }
-            });
-        });
-    }
-
-    // Validate individual field
+    // Basic form validation
     function validateField(field) {
         const errorMessage = field.parentNode.querySelector('.error-message');
         if (errorMessage) errorMessage.remove();
@@ -364,32 +342,33 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
 
-        switch (field.type) {
-            case 'email':
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(field.value)) {
-                    showError(field, 'Please enter a valid email address');
-                    return false;
-                }
-                break;
-
-            case 'tel':
-                const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-                if (!phoneRegex.test(field.value)) {
-                    showError(field, 'Please enter a valid phone number');
-                    return false;
-                }
-                break;
-
-            case 'number':
-                if (field.id === 'petAge' && (field.value < 0 || field.value > 30)) {
-                    showError(field, 'Please enter a valid age between 0 and 30');
-                    return false;
-                }
-                break;
+        // Basic email validation
+        if (field.type === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(field.value)) {
+                showError(field, 'Please enter a valid email address');
+                return false;
+            }
         }
 
-        field.classList.remove('input-error');
+        // Basic phone validation
+        if (field.type === 'tel') {
+            const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+            if (!phoneRegex.test(field.value)) {
+                showError(field, 'Please enter a valid phone number');
+                return false;
+            }
+        }
+
+        // Pet age validation
+        if (field.id === 'petAge') {
+            const age = parseInt(field.value);
+            if (isNaN(age) || age < 0 || age > 30) {
+                showError(field, 'Please enter a valid age between 0 and 30');
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -400,172 +379,36 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.className = 'error-message';
         errorDiv.textContent = message;
         field.parentNode.insertBefore(errorDiv, field.nextSibling);
-
-        // Animate the error message
-        field.classList.add('shake');
-        setTimeout(() => field.classList.remove('shake'), 500);
     }
 
-    // Setup progress tracking
-    function setupProgressTracking() {
-        formFields.forEach(field => {
-            field.addEventListener('input', updateProgress);
-        });
-    }
-
-    // Update progress bar
-    function updateProgress() {
-        let filledFields = 0;
-        formFields.forEach(field => {
-            if (field.value.trim() !== '') filledFields++;
-        });
-
-        const progress = (filledFields / formFields.length) * 100;
-        progressBar.style.width = `${progress}%`;
-    }
-
-    // Setup floating labels
-    function setupFloatingLabels() {
-        document.querySelectorAll('.float-label input').forEach(input => {
-            input.addEventListener('focus', e => {
-                e.target.parentNode.classList.add('active');
-            });
-
-            input.addEventListener('blur', e => {
-                if (!e.target.value) {
-                    e.target.parentNode.classList.remove('active');
-                }
-            });
-        });
-    }
-
-    // Show toast notification
-    function showToast(message, type = 'success') {
-        const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        toast.textContent = message;
-
-        const container = document.querySelector('.toast-container') || 
-            (() => {
-                const cont = document.createElement('div');
-                cont.className = 'toast-container';
-                document.body.appendChild(cont);
-                return cont;
-            })();
-
-        container.appendChild(toast);
-
-        setTimeout(() => {
-            toast.style.animation = 'toast-slide-out 0.3s ease forwards';
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
-    }
-
-    // Form submission handler
-    form.addEventListener('submit', async function(e) {
+    // Form submission
+    waiverForm.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Validate all fields
+        
         let isValid = true;
-        formFields.forEach(field => {
-            if (!validateField(field)) isValid = false;
+        const requiredFields = waiverForm.querySelectorAll('[required]');
+        
+        requiredFields.forEach(field => {
+            if (!validateField(field)) {
+                isValid = false;
+            }
         });
 
-        if (!isValid) {
-            showToast('Please fix the errors before submitting', 'error');
-            return;
-        }
-
-        // Show loading state
-        form.classList.add('form-loading');
-        const spinner = document.createElement('div');
-        spinner.className = 'loading-spinner';
-        form.appendChild(spinner);
-
-        try {
-            // Simulate form submission (replace with actual API call)
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // Success handling
-            showToast('Waiver submitted successfully!', 'success');
-            form.reset();
-            updateProgress();
-
-            // Optional: Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        } catch (error) {
-            showToast('Error submitting form. Please try again.', 'error');
-        } finally {
-            // Remove loading state
-            form.classList.remove('form-loading');
-            spinner.remove();
+        if (isValid) {
+            // Here you would typically send the data to your server
+            alert('Form submitted successfully!');
+            waiverForm.reset();
         }
     });
 
-    // Initialize form handling
-    initForm();
-
-    // Optional: Add smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // Clear error state on input
+    waiverForm.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('input', function() {
+            this.classList.remove('input-error');
+            const errorMessage = this.parentNode.querySelector('.error-message');
+            if (errorMessage) {
+                errorMessage.remove();
             }
         });
     });
 });
-
-// Optional: Add autosave functionality
-const autoSave = {
-    key: 'waiver_form_autosave',
-    
-    save: debounce(function(form) {
-        const formData = {};
-        form.querySelectorAll('input, select, textarea').forEach(field => {
-            formData[field.name] = field.value;
-        });
-        localStorage.setItem(this.key, JSON.stringify(formData));
-    }, 1000),
-
-    load: function(form) {
-        const saved = localStorage.getItem(this.key);
-        if (saved) {
-            const formData = JSON.parse(saved);
-            Object.keys(formData).forEach(key => {
-                const field = form.querySelector(`[name="${key}"]`);
-                if (field) field.value = formData[key];
-            });
-        }
-    },
-
-    clear: function() {
-        localStorage.removeItem(this.key);
-    }
-};
-
-// Utility function for debouncing
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func.apply(this, args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Enable autosave
-const form = document.getElementById('waiverForm');
-if (form) {
-    autoSave.load(form);
-    form.addEventListener('input', () => autoSave.save(form));
-    form.addEventListener('submit', () => autoSave.clear());
-}
