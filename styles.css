@@ -1,4 +1,10 @@
             @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+.service-icon i {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+}
     
             :root {
                 --primary-color: #3A5A40;
@@ -660,51 +666,7 @@ nav ul.nav-menu li a:hover {
   transform: scaleX(1); /* Animate decorative line */
 }
 
-/* Service Icon */
-.service-icon {
-   width: 70px;
-    height: 70px;
-    background-color: var(--accent-color); /* Direct color reference instead of hover-color */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
-    transition: all 0.3s ease;
-}
-.service-icon i {
-   font-family: "Font Awesome 6 Free" !important; /* Force Font Awesome font */
-    font-weight: 900 !important; /* Required for solid icons */
-    font-size: var(--icon-size);
-    color: var(--primary-color);
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
 
-/* Ensure icons are visible on hover */
-.service-card:hover .service-icon i {
-    color: var(--light-text);
-}
-
-.service-card:hover .service-icon {
-    background-color: var(--primary-color);
-    color: var(--hover-color); /* Assuming you want the color to change on hover */
-}
-
-.service-icon svg {
-    width: 40px;
-    height: 40px;
-    transition: color 0.3s ease;
-}
-
-@media (max-width: 768px) {
-    .service-card .service-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 2.5rem; /* Adjusted for smaller size */
-    }
-}
 
 /* Service Title */
 .service-card h3 {
@@ -2472,15 +2434,6 @@ html, body {
 }
 
 @media (max-width: 768px) {
- .service-card .service-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .service-card .service-icon img {
-        width: 30px;
-        height: 30px;
-    }
     .container {
         padding: 0 15px;
     }
