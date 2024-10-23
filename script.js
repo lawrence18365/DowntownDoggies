@@ -1,3 +1,44 @@
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Font Awesome Debug - Add this first
+    console.log('=== Font Awesome Debug Start ===');
+    const icons = document.querySelectorAll('.service-icon i');
+    
+    if (icons.length === 0) {
+        console.error('No Font Awesome icons found in DOM');
+    }
+    
+    icons.forEach((icon, index) => {
+        console.log(`Icon ${index + 1}:`);
+        console.log('- Classes:', icon.className);
+        console.log('- Computed style:', window.getComputedStyle(icon));
+        console.log('- Font family:', window.getComputedStyle(icon).fontFamily);
+        console.log('- Display:', window.getComputedStyle(icon).display);
+        console.log('- Visibility:', window.getComputedStyle(icon).visibility);
+        console.log('- Parent element:', icon.parentElement.outerHTML);
+    });
+
+    // Force Font Awesome icons to render
+    setTimeout(() => {
+        icons.forEach(icon => {
+            icon.style.fontFamily = '"Font Awesome 6 Free"';
+            icon.style.fontWeight = '900';
+            icon.style.visibility = 'visible';
+            icon.style.display = 'inline-block';
+        });
+        console.log('Forced Font Awesome styles applied');
+    }, 500);
+
+    // Test if Font Awesome CSS is loaded
+    const fontAwesomeLink = document.querySelector('link[href*="font-awesome"]');
+    if (fontAwesomeLink) {
+        console.log('Font Awesome CSS link found:', fontAwesomeLink.href);
+    } else {
+        console.error('Font Awesome CSS link not found in document head');
+    }
+    
+    console.log('=== Font Awesome Debug End ===');
+
 document.addEventListener('DOMContentLoaded', function() {
     const loaderContainer = document.querySelector('.loader-container');
     const navToggle = document.querySelector('.nav-toggle');
@@ -450,6 +491,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+ // Add this at the end of your DOMContentLoaded handler
+    // Additional Font Awesome check after everything else is loaded
+    window.addEventListener('load', () => {
+        const iconsAfterLoad = document.querySelectorAll('.service-icon i');
+        console.log('=== After Load Font Awesome Check ===');
+        iconsAfterLoad.forEach((icon, index) => {
+            console.log(`Icon ${index + 1} after load:`, {
+                classes: icon.className,
+                computedStyle: window.getComputedStyle(icon)
+            });
+        });
+    });
+});
+
+// Add this new function to your existing code
+function troubleshootFontAwesome() {
+    const iconElements = document.querySelectorAll('.service-icon i');
+    iconElements.forEach((icon, index) => {
+        // Force rebuild the icon element
+        const parent = icon.parentElement;
+        const classes = icon.className;
+        const newIcon = document.createElement('i');
+        newIcon.className = classes;
+        parent.removeChild(icon);
+        parent.appendChild(newIcon);
+        
+        // Apply direct styles
+        newIcon.style.cssText = `
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900 !important;
+            font-style: normal !important;
+            font-size: 2rem !important;
+            line-height: 1 !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+            display: inline-block !important;
+            visibility: visible !important;
+        `;
+    });
+}
+
+// Call the troubleshoot function after a delay
+setTimeout(troubleshootFontAwesome, 1000);
 
     // Close on escape key
     document.addEventListener('keydown', (e) => {
