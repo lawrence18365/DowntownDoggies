@@ -1,4 +1,4 @@
-
+// Main initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Font Awesome Debug - Add this first
     console.log('=== Font Awesome Debug Start ===');
@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     icons.forEach((icon, index) => {
         console.log(`Icon ${index + 1}:`);
         console.log('- Classes:', icon.className);
-        console.log('- Computed style:', window.getComputedStyle(icon));
         console.log('- Font family:', window.getComputedStyle(icon).fontFamily);
         console.log('- Display:', window.getComputedStyle(icon).display);
         console.log('- Visibility:', window.getComputedStyle(icon).visibility);
@@ -21,25 +20,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Force Font Awesome icons to render
     setTimeout(() => {
         icons.forEach(icon => {
-            icon.style.fontFamily = '"Font Awesome 6 Free"';
-            icon.style.fontWeight = '900';
-            icon.style.visibility = 'visible';
-            icon.style.display = 'inline-block';
+            icon.style.cssText = `
+                font-family: "Font Awesome 6 Free" !important;
+                font-weight: 900 !important;
+                font-style: normal !important;
+                font-size: 2rem !important;
+                line-height: 1 !important;
+                -webkit-font-smoothing: antialiased !important;
+                -moz-osx-font-smoothing: grayscale !important;
+                display: inline-block !important;
+                visibility: visible !important;
+            `;
         });
         console.log('Forced Font Awesome styles applied');
     }, 500);
 
-    // Test if Font Awesome CSS is loaded
-    const fontAwesomeLink = document.querySelector('link[href*="font-awesome"]');
-    if (fontAwesomeLink) {
-        console.log('Font Awesome CSS link found:', fontAwesomeLink.href);
-    } else {
-        console.error('Font Awesome CSS link not found in document head');
-    }
-    
-    console.log('=== Font Awesome Debug End ===');
-
-document.addEventListener('DOMContentLoaded', function() {
+    // Initialize core elements
     const loaderContainer = document.querySelector('.loader-container');
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -62,9 +58,13 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             window.addEventListener('load', hideLoader);
         }
+
+        // Failsafe
+        setTimeout(hideLoader, 3000);
     }
 
-if (navToggle && navMenu && navOverlay) {
+    // Navigation functionality
+    if (navToggle && navMenu && navOverlay) {
         function toggleMenu() {
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
@@ -75,26 +75,20 @@ if (navToggle && navMenu && navOverlay) {
         navToggle.addEventListener('click', toggleMenu);
         navOverlay.addEventListener('click', toggleMenu);
 
-        // Close menu when clicking on a menu item
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
-
-        console.log('Navigation functionality initialized');
-    } else {
-        console.error('One or more navigation elements are missing');
     }
 
-    // Smooth scrolling for all anchor links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 const headerOffset = header ? header.offsetHeight : 0;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
@@ -116,15 +110,13 @@ if (navToggle && navMenu && navOverlay) {
         };
 
         window.addEventListener('scroll', handleScroll);
-        // Initial call to set correct state on page load
         handleScroll();
     }
 
-    // GSAP animations (if GSAP is available)
+    // GSAP animations
     if (typeof gsap !== 'undefined' && gsap.registerPlugin) {
         try {
             gsap.registerPlugin(ScrollTrigger);
-
             gsap.utils.toArray('.animate-on-scroll').forEach((element) => {
                 gsap.from(element, {
                     y: 50,
@@ -159,34 +151,34 @@ if (navToggle && navMenu && navOverlay) {
         setInterval(cycleHeroImages, 5000);
     }
 
-   // FAQ functionality
-const faqQuestions = document.querySelectorAll('.faq-question');
-faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-        const answer = question.nextElementSibling;
-        if (!answer) return;
-        
-        const isOpen = question.classList.contains('active');
-        
-        // Close all other questions
-        faqQuestions.forEach(q => {
-            if (q !== question) {
-                q.classList.remove('active');
-                const qAnswer = q.nextElementSibling;
-                if (qAnswer) qAnswer.style.maxHeight = null;
+    // FAQ functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            if (!answer) return;
+            
+            const isOpen = question.classList.contains('active');
+            
+            // Close all other questions
+            faqQuestions.forEach(q => {
+                if (q !== question) {
+                    q.classList.remove('active');
+                    const qAnswer = q.nextElementSibling;
+                    if (qAnswer) qAnswer.style.maxHeight = null;
+                }
+            });
+            
+            if (!isOpen) {
+                question.classList.add('active');
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                question.classList.remove('active');
+                answer.style.maxHeight = null;
             }
         });
-        
-        // Toggle the clicked question
-        if (!isOpen) {
-            question.classList.add('active');
-            answer.style.maxHeight = answer.scrollHeight + "px";
-        } else {
-            question.classList.remove('active');
-            answer.style.maxHeight = null;
-        }
     });
-});
+
     // Lazy loading images
     if ('IntersectionObserver' in window) {
         const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
@@ -264,12 +256,6 @@ faqQuestions.forEach(question => {
         });
     }
 
-    // Dynamic copyright year
-    const copyrightYear = document.querySelector('.copyright-year');
-    if (copyrightYear) {
-        copyrightYear.textContent = new Date().getFullYear();
-    }
-
     // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
@@ -298,251 +284,62 @@ faqQuestions.forEach(question => {
         });
     });
 
-    // Pricing toggle
-    const pricingSwitch = document.getElementById('pricing-switch');
-    if (pricingSwitch) {
-        pricingSwitch.addEventListener('change', function() {
-            const monthlyPrices = document.querySelectorAll('.price .monthly');
-            const yearlyPrices = document.querySelectorAll('.price .yearly');
-            const isYearly = this.checked;
-
-            monthlyPrices.forEach(price => price.style.display = isYearly ? 'none' : 'inline');
-            yearlyPrices.forEach(price => price.style.display = isYearly ? 'inline' : 'none');
-        });
-    }
-
-    // Animate elements on scroll
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const animationObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    animatedElements.forEach(element => {
-        animationObserver.observe(element);
-    });
-
-    // Testimonials page specific code
-    const testimonialCards = document.querySelectorAll('.testimonial-card:not(.placeholder)');
-    
-    if (testimonialCards.length > 0) {
-        const testimonialObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        testimonialCards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            testimonialObserver.observe(card);
-        });
-    }
-
-    // Share Your Story button
-    const shareStoryButton = document.querySelector('.testimonials-cta .cta-button');
-    if (shareStoryButton) {
-        shareStoryButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Thank you for wanting to share your story! This feature is coming soon.');
-        });
-    }
-
-    // Error handling for third-party scripts
-    window.addEventListener('error', function(event) {
-        console.error('Script error:', event.message, 'at', event.filename, ':', event.lineno);
-    }, true);
-});
-// Wait for the existing loader to complete before initializing form
-document.addEventListener('DOMContentLoaded', function() {
-    const waiverForm = document.getElementById('waiverForm');
-    if (!waiverForm) return;
-
-    // Basic form validation
-    function validateField(field) {
-        const errorMessage = field.parentNode.querySelector('.error-message');
-        if (errorMessage) errorMessage.remove();
-
-        if (field.required && !field.value) {
-            showError(field, 'This field is required');
-            return false;
-        }
-
-        // Basic email validation
-        if (field.type === 'email') {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(field.value)) {
-                showError(field, 'Please enter a valid email address');
-                return false;
-            }
-        }
-
-        // Basic phone validation
-        if (field.type === 'tel') {
-            const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-            if (!phoneRegex.test(field.value)) {
-                showError(field, 'Please enter a valid phone number');
-                return false;
-            }
-        }
-
-        // Pet age validation
-        if (field.id === 'petAge') {
-            const age = parseInt(field.value);
-            if (isNaN(age) || age < 0 || age > 30) {
-                showError(field, 'Please enter a valid age between 0 and 30');
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    // Show error message
-    function showError(field, message) {
-        field.classList.add('input-error');
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = message;
-        field.parentNode.insertBefore(errorDiv, field.nextSibling);
-    }
-
-    // Form submission
-    waiverForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        let isValid = true;
-        const requiredFields = waiverForm.querySelectorAll('[required]');
-        
-        requiredFields.forEach(field => {
-            if (!validateField(field)) {
-                isValid = false;
-            }
-        });
-
-        if (isValid) {
-            // Here you would typically send the data to your server
-            alert('Form submitted successfully!');
-            waiverForm.reset();
-        }
-    });
-
-    // Clear error state on input
-    waiverForm.querySelectorAll('input, select, textarea').forEach(field => {
-        field.addEventListener('input', function() {
-            this.classList.remove('input-error');
-            const errorMessage = this.parentNode.querySelector('.error-message');
-            if (errorMessage) {
-                errorMessage.remove();
-            }
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', function() {
     // Modal functionality
     const modalTriggers = document.querySelectorAll('.modal-trigger');
     const modals = document.querySelectorAll('.modal');
     const closeButtons = document.querySelectorAll('.modal-close');
 
-    // Open modal
     modalTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
             const modalId = trigger.dataset.modal === 'privacy' ? 'privacyModal' : 'termsModal';
             const modal = document.getElementById(modalId);
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-    });
-
-    // Close modal functionality
-    function closeModal(modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    // Close button click
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.modal');
-            closeModal(modal);
-        });
-    });
-
-    // Close on overlay click
-    modals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal(modal);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
             }
         });
     });
- // Add this at the end of your DOMContentLoaded handler
-    // Additional Font Awesome check after everything else is loaded
+
+    function closeModal(modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    closeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.modal');
+            if (modal) closeModal(modal);
+        });
+    });
+
+    modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal(modal);
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            modals.forEach(modal => {
+                if (modal.classList.contains('show')) closeModal(modal);
+            });
+        }
+    });
+
+    // Error handling
+    window.addEventListener('error', function(event) {
+        console.error('Script error:', event.message, 'at', event.filename, ':', event.lineno);
+    }, true);
+
+    // Final Font Awesome check
     window.addEventListener('load', () => {
+        console.log('=== Final Font Awesome Check ===');
         const iconsAfterLoad = document.querySelectorAll('.service-icon i');
-        console.log('=== After Load Font Awesome Check ===');
         iconsAfterLoad.forEach((icon, index) => {
             console.log(`Icon ${index + 1} after load:`, {
                 classes: icon.className,
                 computedStyle: window.getComputedStyle(icon)
             });
         });
-    });
-});
-
-// Add this new function to your existing code
-function troubleshootFontAwesome() {
-    const iconElements = document.querySelectorAll('.service-icon i');
-    iconElements.forEach((icon, index) => {
-        // Force rebuild the icon element
-        const parent = icon.parentElement;
-        const classes = icon.className;
-        const newIcon = document.createElement('i');
-        newIcon.className = classes;
-        parent.removeChild(icon);
-        parent.appendChild(newIcon);
-        
-        // Apply direct styles
-        newIcon.style.cssText = `
-            font-family: "Font Awesome 6 Free" !important;
-            font-weight: 900 !important;
-            font-style: normal !important;
-            font-size: 2rem !important;
-            line-height: 1 !important;
-            -webkit-font-smoothing: antialiased !important;
-            -moz-osx-font-smoothing: grayscale !important;
-            display: inline-block !important;
-            visibility: visible !important;
-        `;
-    });
-}
-
-// Call the troubleshoot function after a delay
-setTimeout(troubleshootFontAwesome, 1000);
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            modals.forEach(modal => {
-                if (modal.classList.contains('show')) {
-                    closeModal(modal);
-                }
-            });
-        }
     });
 });
