@@ -8,6 +8,7 @@
                 --light-text: #fff;
                 --overlay-color: rgba(0, 0, 0, 0.4);
                 --transition-duration: 1.5s;
+                --hover-color: var(--accent-color); /* This variable is undefined but being used */
             }
     
             * {
@@ -661,9 +662,9 @@ nav ul.nav-menu li a:hover {
 
 /* Service Icon */
 .service-icon {
-    width: 70px;
+   width: 70px;
     height: 70px;
-    background-color: var(--accent-color);
+    background-color: var(--accent-color); /* Direct color reference instead of hover-color */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -672,9 +673,13 @@ nav ul.nav-menu li a:hover {
     transition: all 0.3s ease;
 }
 .service-icon i {
-    font-size: 2rem; /* Explicit font size for icons */
+   font-family: "Font Awesome 6 Free" !important; /* Force Font Awesome font */
+    font-weight: 900 !important; /* Required for solid icons */
+    font-size: var(--icon-size);
     color: var(--primary-color);
-    line-height: 1; /* Ensures proper vertical alignment */
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Ensure icons are visible on hover */
@@ -1664,6 +1669,7 @@ nav ul.nav-menu li a:hover {
 }
 
 .service-card {
+   position: relative; /* Required for ::before pseudo-element */
     background-color: var(--light-text);
     border-radius: 15px;
     padding: 40px;
@@ -1673,10 +1679,20 @@ nav ul.nav-menu li a:hover {
     transform: translateY(50px);
 }
 
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+.service-card::before { /* Fixed pseudo-element syntax */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 1;
 }
+
 
 
 
