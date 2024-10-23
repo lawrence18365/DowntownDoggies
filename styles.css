@@ -776,29 +776,121 @@ nav ul.nav-menu li a:hover {
 .hero-image:first-child {
     opacity: 1;
 }
-.cta-container {
+/* Service Icon Styling */
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    margin-top: 40px;
+    justify-content: center;
 }
-/* Existing CTA Button Styles */
-.cta-button {
-    display: inline-block;
+
+.service-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Text Styling */
+.service-card h3 {
+    color: #344E41;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: #588157;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Features List Styling */
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    width: 100%;
+}
+
+.service-features li {
+    color: #3A5A40;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.service-features li:hover {
+    color: #588157;
+}
+
+/* Service Link Styling */
+.service-link {
+    color: #3A5A40;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.service-link:hover {
     background-color: #3A5A40;
     color: #ffffff;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
+}
+
+/* New Custom CTA Button Styling */
+.furry-adventure-cta {
     text-align: center;
+    padding: 3rem 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(88,129,87,0.1) 100%);
+}
+
+.furry-adventure-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #3A5A40 0%, #588157 100%);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(58, 90, 64, 0.2);
     border: none;
     cursor: pointer;
-    width: auto;
-    max-width: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.furry-adventure-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 90, 64, 0.3);
+    background: linear-gradient(135deg, #344E41 0%, #3A5A40 100%);
+}
+
+.furry-adventure-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(58, 90, 64, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .furry-adventure-button {
+        padding: 0.875rem 2rem;
+        font-size: 1.1rem;
+    }
 }
 
 /* New Class to Center CTA Buttons */
