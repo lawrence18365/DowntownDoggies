@@ -778,18 +778,36 @@ nav ul.nav-menu li a:hover {
 }
 /* Service Icon Styling */
 .service-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1.5rem;
+    width: 70px;
+    height: 70px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 30px auto;
+    transition: all 0.3s ease;
 }
 
-.service-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.service-icon i {
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-size: 2rem;
+    color: var(--primary-color);
+    line-height: 1;
+    display: inline-block;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.service-card:hover .service-icon {
+    background-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.service-card:hover .service-icon i {
+    color: var(--light-text);
 }
 
 /* Text Styling */
