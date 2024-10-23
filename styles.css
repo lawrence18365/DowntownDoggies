@@ -1396,6 +1396,38 @@ nav ul.nav-menu li a:hover {
 .footer-acknowledgment p {
     margin: 0;
 }
+.footer-link {
+            background: none;
+            border: none;
+            color: white;
+            padding: 0;
+            font: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Remove any default button styling */
+        .footer-link {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        /* Match the other footer links */
+        .quick-links .footer-link {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: white;
+        }
 
         .modal {
             display: none;
