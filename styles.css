@@ -663,16 +663,23 @@ nav ul.nav-menu li a:hover {
 .service-icon {
     width: 70px;
     height: 70px;
-    background-color: var(--hover-color);
+    background-color: var(--accent-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 2; /* Ensure it's above the decorative line */
-    font-size: 3rem;
+    transition: all 0.3s ease;
+}
+.service-icon i {
+    font-size: 2rem; /* Explicit font size for icons */
     color: var(--primary-color);
+    line-height: 1; /* Ensures proper vertical alignment */
+}
+
+/* Ensure icons are visible on hover */
+.service-card:hover .service-icon i {
+    color: var(--light-text);
 }
 
 .service-card:hover .service-icon {
