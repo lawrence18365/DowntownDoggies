@@ -1,4 +1,3 @@
-// Main initialization when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Font Awesome Debug - Add this first
     console.log('=== Font Awesome Debug Start ===');
@@ -34,6 +33,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('Forced Font Awesome styles applied');
     }, 500);
+
+    // Initialize Reviews Carousel
+    function initReviewsCarousel() {
+        const carousel = document.querySelector('.review-carousel');
+        if (!carousel) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.style.cursor = 'grabbing';
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.style.cursor = 'grab';
+        });
+
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.style.cursor = 'grab';
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        // Add touch events for mobile
+        carousel.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('touchend', () => {
+            isDown = false;
+        });
+
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            carousel.scrollLeft = scrollLeft - walk;
+        });
+    }
 
     // Initialize core elements
     const loaderContainer = document.querySelector('.loader-container');
@@ -325,6 +378,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+  // Initialize all components
+    initReviewsCarousel();
 
     // Error handling
     window.addEventListener('error', function(event) {
