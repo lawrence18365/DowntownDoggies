@@ -629,23 +629,6 @@ nav ul.nav-menu li a:hover {
   
 }
 
-/* Animate Service Card */
-.service-card.animate {
-  opacity: 1; /* Fade in */
-  transform: translateY(0); /* Slide up */
-}
-
-/* Hover Effects on Service Card */
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-.service-card:hover::before {
-  transform: scaleX(1); /* Animate decorative line */
-}
-
-
 
 /* Service Title */
 .service-card h3 {
