@@ -780,15 +780,6 @@ nav ul.nav-menu li a:hover {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.service-card:hover .service-icon {
-    background-color: var(--primary-color);
-    transform: translateY(-5px);
-}
-
-.service-card:hover .service-icon i {
-    color: var(--light-text);
-}
-
 /* Text Styling */
 .service-card h3 {
     color: #344E41;
