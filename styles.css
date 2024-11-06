@@ -1841,23 +1841,6 @@ nav ul.nav-menu li a:hover {
     transform: translateY(50px);
 }
 
-.service-card::before { /* Fixed pseudo-element syntax */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-    z-index: 1;
-}
-
-
-
-
 .service-card h3 {
     font-family: 'Fredoka', sans-serif;
     font-size: 1.8rem;
