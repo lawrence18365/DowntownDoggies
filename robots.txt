@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Sitemap: https://downtowndoggies.com/sitemap.xml
+
+# Prevent access to admin areas if you create them
+Disallow: /admin/
+Disallow: /wp-admin/
