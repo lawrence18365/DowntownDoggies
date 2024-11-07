@@ -1716,7 +1716,59 @@ nav ul.nav-menu li a:hover {
     --light-text: #fff;
     --overlay-color: rgba(0, 0, 0, 0.4);
 }
+/* CTA Button Base Styles */
+.cta-button {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Centered CTA Button Specific Styles */
+.centered-cta-button {
+    margin: 2rem auto;
+    max-width: 250px;
+    display: block;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+    
+    .centered-cta-button {
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    
+    .centered-cta-button {
+        max-width: 180px;
+    }
+}
 /* Header Styles */
 .services-header {
     background-color: rgba(58, 90, 64, 0.9);
