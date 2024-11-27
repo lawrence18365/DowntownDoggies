@@ -749,6 +749,13 @@ nav ul.nav-menu li a:hover {
     margin: 0 auto 30px auto;
     transition: all 0.3s ease;
 }
+.service-icon img {
+    width: 200%;
+    height: 200%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
 
 .service-icon i {
     font-family: "Font Awesome 6 Free" !important;
